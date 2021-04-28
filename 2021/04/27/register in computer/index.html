@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+  
+  <title>计算机中的寄存器 - LiangJiSama Offical</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  
+  
+
+  <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+  <meta name="description" content="数据寄存器包括4个16位的寄存器(AX, BX, CX, DX)或者8个8位寄存器(  AH, AL, BH, BL, CH, CL, DH, DL) 这些寄存器都可以用来暂时存放操作数, 运算结果以及其他信息, 但同时又具有某些专用用途">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机中的寄存器">
+<meta property="og:url" content="http://liangjisama.github.io/2021/04/27/register%20in%20computer/index.html">
+<meta property="og:site_name" content="LiangJiSama Offical">
+<meta property="og:description" content="数据寄存器包括4个16位的寄存器(AX, BX, CX, DX)或者8个8位寄存器(  AH, AL, BH, BL, CH, CL, DH, DL) 这些寄存器都可以用来暂时存放操作数, 运算结果以及其他信息, 但同时又具有某些专用用途">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-27T13:11:02.000Z">
+<meta property="article:modified_time" content="2021-04-27T13:28:44.690Z">
+<meta property="article:author" content="Kagamine Len">
+<meta property="article:tag" content="计算机组成原理">
+<meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css?v=1619576065822">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2021/04/27/lVnTj5pPwD4GAyE.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="Kagamine Len" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Kagamine Len">
+            <img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len" alt="Kagamine Len">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>4</div>
+        <div><span>标签</span>3</div>
+        <div><span>分类</span>1</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=site:liangjisama.top" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://github.com/LiangJiSama" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/笔记/">笔记</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 10px;">计算机组成原理</a>
+    </div>
+    
+  </div>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 Kagamine Len
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+
+  <div class="nexmoe-post-right">
+    
+  </div>
+
+  <article>
+    
+        <div class="nexmoe-post-cover" style="padding-bottom: 50%;"> 
+            <img data-src="https://i.loli.net/2021/04/27/lVnTj5pPwD4GAyE.jpg" data-sizes="auto" alt="计算机中的寄存器" class="lazyload">
+            <h1>计算机中的寄存器</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta nexmoe-rainbow-fill" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年04月27日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.1k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 4 分钟</a>
+</div>
+
+    <h1 id="数据寄存器"><a href="#数据寄存器" class="headerlink" title="数据寄存器"></a><strong>数据寄存器</strong></h1><p>包括4个16位的寄存器(AX, BX, CX, DX)或者8个8位寄存器(  AH, AL, BH, BL, CH, CL, DH, DL)</p>
+<p>这些寄存器都可以用来暂时存放操作数, 运算结果以及其他信息, 但同时又具有某些专用用途</p>
+<span id="more"></span>
+
+<p>l AX 数据累加器</p>
+<p>算术运算中的主要寄存器, 在乘除运算中用来指定被除数和被除数, 也是乘, 除,运算后积和商的默认存储单元. 另外I/O指令均使用该寄存器与I/O设备传送信息</p>
+<p>l BX 基址寄存器</p>
+<p>指令寻址时常用做基址寄存器. 存入偏移量或偏移量的构成成分</p>
+<p><strong>DS:BX DS&lt;&lt;4+BX</strong></p>
+<p>l CX 计算寄存器</p>
+<p>在循环指令操作或串处理指令中隐含计数</p>
+<p>l DX 数据寄存器</p>
+<p>在双字节长运算是, 与AX构成32位操作数, DX为高16位. 在某些I/O指令中, DX被用来存放端口地址</p>
+<h1 id="指针及变址寄存器"><a href="#指针及变址寄存器" class="headerlink" title="指针及变址寄存器"></a><strong>指针及变址寄存器</strong></h1><p>这些寄存器都是16位的寄存器, 用来存放16位的操作数或中间结果, 但更经常的用途是存放偏移量, 或位移量</p>
+<p>l SP 堆栈指针寄存器</p>
+<p>始终只是栈顶的位置, 与SS寄存器一起组成栈顶数据的物理地址</p>
+<p>l BP 基址指针寄存器</p>
+<p>系统默认其指向堆栈中某一单元, 即提供栈中该单元的偏移量. 加段前缀后, BP可作非堆栈段的地址指针</p>
+<p><strong>用于寻找堆栈中的某个特定元素</strong></p>
+<p>l SI 源变址寄存器</p>
+<p>与DS联用, 指示数据段中某操作的偏移量. 在做串处理时, SI指示源操作数地址, 并有自动增量或自动减量的功能. 变址寻址时, SI与某一位移量共同构成操作数的偏移量</p>
+<p><strong>[BX+SI] [BX+DI]  DS&lt;&lt;4+BX+SI 用于转移两个相对的数组空间</strong></p>
+<p>l DI 目的变址寄存器</p>
+<p>与DS联用, 指示数据段中某操作数的偏移量, 或与某一位移量共同构成操作数的偏移量. 串处理操作时, DI指示附加段中目的地址, 并有自动增量或减量的功能</p>
+<h1 id="段寄存器"><a href="#段寄存器" class="headerlink" title="段寄存器"></a><strong>段寄存器</strong></h1><p>l CS 代码段</p>
+<p>存放当前程序的指令代码</p>
+<p>l DS 数据段</p>
+<p>存放程序所涉及的源数据或结果</p>
+<p><strong>数据段首地址 即[X] 访问DS:X的地址</strong></p>
+<p>l SS 堆栈段</p>
+<p>以”先入后出”为原则的数据区</p>
+<p>l ES 附加段</p>
+<p>辅助数据区, 存放串或其他数据</p>
+<h1 id="控制寄存器"><a href="#控制寄存器" class="headerlink" title="控制寄存器"></a><strong>控制寄存器</strong></h1><p>l IP 指令指针寄存器</p>
+<p>它始终指向当前将要执行指令在代码段中存放的偏移量</p>
+<p>l FR 控制标志位</p>
+<p>\1.   CF 进位标识位</p>
+<p>进行加减运算时, 如果最高二进制位产生进位或错位, CF则为1, 否则为0. 程序设计中, 常用条件转移指令JC, JNC指令据此标志位实现转移</p>
+<p>\2.   PF 奇偶标志位</p>
+<p>操作结果中二进制位1的个数为偶数是, PF为1, 某则为0</p>
+<p>\3.   AF 辅助进位标志位</p>
+<p>运算时半字节产生进位或借位时, AF为1, 某则为0. 主要用于BCD码的调整</p>
+<p>\4.   ZF 零标志位</p>
+<p>运算结果为0时, ZF为1, 否则为0</p>
+<p>\5.   SF 符号标志位</p>
+<p>当运算结果的最高位为1时, SF为1, 否则为0. 最高位表示符号数的正和负</p>
+<p>\6.   TF 跟踪标志位</p>
+<p>用于调试程序时进入单步方式工作. TF=1时, 每条指令执行完后产生一个内部中断, 让用户检查指令运行后寄存器, 存储器和各标志位的内容. TF=0时, CPU工作正常, 不产生内部中断</p>
+<p>\7.   IF 中断允许标志位</p>
+<p>IF=1同时中断屏蔽寄存器的相应位为0, 允许系统响应可屏蔽中断, 反之, 不接收外部发出的中断请求</p>
+<p>\8.   DF 方向位标志位</p>
+<p>用于控制串操作时地址指针位移方向. 当DF=1时, 指针向高地址方向移动</p>
+<p>\9.   OF 溢出标志位</p>
+<p>算术运算时结果超出系统所能表示的数的范围. 溢出时, OF=1</p>
+
+  </article>
+
+  
+    
+  <div class="nexmoe-post-copyright">
+    <strong>本文作者：</strong>Kagamine Len<br>
+    <strong>本文链接：</strong><a href="http://liangjisama.github.io/2021/04/27/register%20in%20computer/" title="http:&#x2F;&#x2F;liangjisama.github.io&#x2F;2021&#x2F;04&#x2F;27&#x2F;register%20in%20computer&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;liangjisama.github.io&#x2F;2021&#x2F;04&#x2F;27&#x2F;register%20in%20computer&#x2F;</a><br>
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag">计算机组成原理</a>
+    
+</div>
+
+  <div class="nexmoe-post-footer">
+    
+  </div>
+</div>
+        <!--<div class="nexmoe-post-right">
+          <div class="nexmoe-fixed">
+            <div class="nexmoe-tool">
+              <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+            </div>
+          </div>
+        </div>-->
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+ 
+
+<script src="/js/app.js?v=1619576065822"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+  
+
+
+
+
+
+</body>
+
+</html>
