@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
   
-  <link rel="stylesheet" href="/css/style.css?v=1619585477436">
+  <link rel="stylesheet" href="/css/style.css?v=1619614094435">
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="mdui-drawer-body-left">
@@ -46,7 +46,7 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>5</div>
+        <div><span>文章</span>4</div>
         <div><span>标签</span>3</div>
         <div><span>分类</span>1</div>
     </div>
@@ -152,7 +152,8 @@
 
         <article>
             
-                
+                <p><img data-fancybox="gallery" data-sizes="auto" data-src="shareptr.assets/image-20210428110241081.png" alt="image-20210428110241081" class="lazyload"></p>
+
             
         </article>
     </div>
@@ -177,64 +178,6 @@
             
                 <h1 id="虚拟缓存"><a href="#虚拟缓存" class="headerlink" title="虚拟缓存"></a>虚拟缓存</h1><h2 id="虚存的最大大小"><a href="#虚存的最大大小" class="headerlink" title="虚存的最大大小"></a>虚存的最大大小</h2><p>虚拟内存不受计算机中内存指针大小的限制，虚拟内存限制与寻址内存空间不同。可以解决的虚拟内存比使用分页的基于指针的地址空间中可用的虚拟内存更多</p>
 <p>虚拟内存上限由操作系统设置：例如 32位Windows的限制为16TB，而在64位Windows上的限制为256TB。</p>
-<h2 id="虚存的目的"><a href="#虚存的目的" class="headerlink" title="虚存的目的"></a>虚存的目的</h2><p>1.在内存中保留多个进程</p>
-<p>2.进程可以比内存的全部空间还大</p>
-<h2 id="windows-分页机制"><a href="#windows-分页机制" class="headerlink" title="windows 分页机制"></a>windows 分页机制</h2><p>每日三问/操作系统篇&lt;3&gt;： 讲讲Windows/Linux内存管理？</p>
-<p>Windows</p>
-<p>Windows的内存体系结构基于虚拟的线性的地址和分页机制。对于线性地址的分配也是以页为单位进行的，物理地址的管理更是以页为单位。</p>
-<p>当我们在Windows中双击一个应用程序图标后，系统为该应用程序创建一个进程，Windows使得每个进程都拥有2GB的地址空间，这2GB地址空间用于程序存放代码，数据，堆栈，自由存储区（堆），另外2GB用于共享系统使用前面的这些地址并不是物理内存中的地址。</p>
-<p>Windows是多任务的系统，在每个进程创建时，系统为每个进程也创建了一个页表，用于虚拟地址到物理地址的转换。比如现在程序在执行进程A，用户切换到了另外一个进程B，则系统会将进程A在内存中的数据存放到页文件中，并更新进程A的页表（使虚拟地址和页文件形成映射）。然后读取进程B的页表，根据页表判断进程B的数据是在内存中还是在页文件中（通过页文件的类型来判断），如果在内存中就直接读取，如果在页面文件中，就将页面文件内容读入物理内存，然后更新页表（使虚拟地址和物理内存形成映射）。</p>
-<h2 id="TLB-转换检测缓冲区"><a href="#TLB-转换检测缓冲区" class="headerlink" title="TLB 转换检测缓冲区"></a>TLB 转换检测缓冲区</h2><p>![image-20210427220346267](file IO and virtual memory.assets/image-20210427220346267-1619574745952.png)</p>
-<p>为了减少访存读取页表，TLB中包含最近使用的页表项（每个进程都只有一张页表）进程id+PM位（有效、修改位），先检查是否在TLB表中命中，若命中则直接读取对应的帧+偏移量获得地址，否则在页表中查询，若页表中查询发现该帧不在内存中，则发生缺页中断，从虚存中读取数据。</p>
-<h1 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h1><h2 id="缓冲区"><a href="#缓冲区" class="headerlink" title="缓冲区"></a>缓冲区</h2><p>OS给一个I/O请求分配一个位于主存中系统部分的缓冲区<br>面向块<br>输入传送的数据被放到系统缓冲区中<br>传送完成时，进程把块移动到用户空间<br>进程请求另外一块<br>在下一块数据正在读取的时候，用户进程可以处理一块数据<br>可以换出进程<br>输入是发生在系统内存，而非用户内存</p>
-<p>![image-20210427221457881](file IO and virtual memory.assets/image-20210427221457881-1619574751108.png)</p>
-<p>读操作的过程：</p>
-<ol>
-<li>发出操作指令（操作方式，对象）</li>
-<li>权限判断（ACL)</li>
-<li>文件名-〉具体文件的映射</li>
-<li>读块 (A)从cache读出 (B)从磁盘读 Disk-〉Cache/Buffer-〉读出</li>
-<li>解块：块-〉记录</li>
-<li>返回给用户程序（Exception:无权限或读错误)</li>
-</ol>
-<p>写操作</p>
-<ol>
-<li>操作内容（数据）</li>
-<li>同上</li>
-<li>同上</li>
-<li>写入(A)缓写 暂时放到cache或buffer中，批量更新、写入(B)直接写入 修改方式(A)编辑写入（写入原来的块 直接覆盖定位写入）(B)新增写入（写入空闲块-&gt;空闲块管理方法，选择空闲块-&gt;直接定位写入）</li>
-<li>返回写入成功</li>
-</ol>
-<p>EX:无空闲空间 无权限等</p>
-<h2 id="C-写文件的过程"><a href="#C-写文件的过程" class="headerlink" title="C++ 写文件的过程"></a>C++ 写文件的过程</h2><p>5.缓存和同步(Buffers and Synchronization)</p>
-<p>当我们对文件流进行操作的时候，它们与一个streambuf 类型的缓存(buffer)联系在一起。这个缓存（buffer）实际是一块内存空间，作为流(stream)和物理文件的媒介。例如，对于一个输出流， 每次成员函数put (写一个单个字符)被调用，这个字符不是直接被写入该输出流所对应的物理文件中的，而是首先被插入到该流的缓存（buffer）中。</p>
-<p>当缓存被排放出来(flush)时，它里面的所有数据或者被写入物理媒质中（如果是一个输出流的话），或者简单的被抹掉(如果是一个输入流的话)。这个过程称为同步(synchronization)，它会在以下任一情况下发生：</p>
-<ul>
-<li><strong>当文件被关闭时:</strong> 在文件被关闭之前，所有还没有被完全写出或读取的缓存都将被同步。</li>
-<li>**当缓存buffer 满时:**缓存Buffers 有一定的空间限制。当缓存满时，它会被自动同步。</li>
-<li>**控制符明确指明:**当遇到流中某些特定的控制符时，同步会发生。这些控制符包括：flush 和endl。</li>
-<li><strong>明确调用函数sync():</strong> 调用成员函数sync() (无参数)可以引发立即同步。这个函数返回一个int 值，等于-1 表示流没有联系的缓存或操作失败。</li>
-</ul>
-<p>按照实现的不同 写入一个缓存的过程应该是加锁的，但写入多个缓存时可能会产生多个写入混合的问题。</p>
-<p>不确定write函数是线程安全的，但采用多个open打开一个文件不是线程安全的。</p>
-<p>多个流写入一个缓冲（并发不可控制的，出现输入交叉的情况）</p>
-<p>This code exhibits undefined behavior from multiple threads. See N3485 27.2.3 [iostreams.threadsafety]/1:</p>
-<blockquote>
-<p>Concurrent access to a stream object (27.8, 27.9), stream buffer object (27.6), or C Library stream (27.9.2) by multiple threads may result in a data race (1.10) unless otherwise specified (27.4). [ Note: Data races result in undefined behavior (1.10). —end note ]</p>
-</blockquote>
-<p>对流对象的多线程访问会导致数据竞争</p>
-<p>In the general case, streams are not safe to use across threads. You must protect the stream using a lock, such as <code>std::mutex</code>.</p>
-<p>Note that even if streams were safe to access across threads this code would probably not do what you want. Consider this line:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myfile &lt;&lt; matchSet.testCase &lt;&lt; <span class="string">&quot;,&quot;</span> &lt;&lt; corr.match &lt;&lt; corr.editDistance &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<p>which is the same as</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">myfile &lt;&lt; matchSet.testCase;</span><br><span class="line">myfile &lt;&lt; <span class="string">&quot;,&quot;</span>;</span><br><span class="line">myfile &lt;&lt; corr.match;</span><br><span class="line">myfile &lt;&lt; corr.editDistance;</span><br><span class="line">myfile &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<p>Note the race condition. Let’s say that your implementation’s <code>operator&lt;&lt;</code> for streams is synchronized for you by the implementation. You still have a potential race in this outer code. For instance, here is one possible execution of this across 2 threads:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">   Thread <span class="number">1</span>                              Thread <span class="number">2</span></span><br><span class="line">======================================================================</span><br><span class="line">myfile &lt;&lt; matchSet.testCase;</span><br><span class="line">                                         myfile &lt;&lt; matchSet.testCase;</span><br><span class="line">myfile &lt;&lt; <span class="string">&quot;,&quot;</span>;</span><br><span class="line">                                         myfile &lt;&lt; <span class="string">&quot;,&quot;</span>;</span><br><span class="line">myfile &lt;&lt; corr.match;</span><br><span class="line">myfile &lt;&lt; corr.editDistance;</span><br><span class="line">myfile &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">                                         myfile &lt;&lt; corr.match;</span><br><span class="line">                                         myfile &lt;&lt; corr.editDistance;</span><br><span class="line">                                         myfile &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<p>Instead of getting that to write as a single line, you’ll get output from each thread mixed up together, resulting in gibberish.</p>
-
             
         </article>
     </div>
@@ -257,28 +200,7 @@
 
         <article>
             
-                <h1 id="1-第一范式（1NF）"><a href="#1-第一范式（1NF）" class="headerlink" title="1. 第一范式（1NF）"></a>1. 第一范式（1NF）</h1><p>符合1NF的关系（你可以理解为数据表。“关系模式”和“关系”的区别，类似于面向对象程序设计中”类“与”对象“的区别。”关系“是”关系模式“的一个实例，你可以把”关系”理解为一张带数据的表，而“关系模式”是这张数据表的表结构。<strong>1NF的定义为：符合1NF的关系中的每个属性都不可再分</strong>。<code>表1</code>所示的情况，就不符合1NF的要求。<br><img data-fancybox="gallery" data-sizes="auto" data-src="/2021/04/27/NF/20190304103038296.png" alt="在这里插入图片描述" class="lazyload"></p>
-<h1 id="2-第二范式（2NF）"><a href="#2-第二范式（2NF）" class="headerlink" title="2. 第二范式（2NF）"></a>2. 第二范式（2NF）</h1><p>设 K 为某表中的一个属性或属性组，若除 K 之外的所有属性都完全函数依赖于 K（这个“完全”不要漏了），那么我们称 K 为候选码，简称为码。在实际中我们通常可以理解为：假如当 K 确定的情况下，该表除 K 之外的所有属性的值也就随之确定，那么 K 就是码。一张表中可以有超过一个码。（实际应用中为了方便，通常选择其中的一个码作为主码） 例如：对于表3，（学号、课名）这个属性组就是码。该表中有且仅有这一个码。（假设所有课没有重名的情况）</p>
-<h2 id="2-3-非主属性"><a href="#2-3-非主属性" class="headerlink" title="2.3 非主属性"></a>2.3 非主属性</h2><p>包含在任何一个码中的属性成为主属性。</p>
-<p>例如：<br>对于表3，主属性就有两个，学号 与 课名。</p>
-<p>终于可以回过来看2NF了。首先，我们需要判断，表3是否符合2NF的要求？根据2NF的定义，判断的依据实际上就是看数据表中是否存在非主属性对于码的部分函数依赖。若存在，则数据表最高只符合1NF的要求，若不存在，则符合2NF的要求。判断的方法是：</p>
-<p>第一步：找出数据表中所有的码。<br>第二步：根据第一步所得到的码，找出所有的主属性。<br>第三步：数据表中，除去所有的主属性，剩下的就都是非主属性了。<br>第四步：查看是否存在非主属性对码的部分函数依赖。</p>
-<p>对于表3，根据前面所说的四步，我们可以这么做：</p>
-<p>第一步：</p>
-<ol>
-<li>查看所有每一单个属性，当它的值确定了，是否剩下的所有属性值都能确定。</li>
-<li>查看所有包含有两个属性的属性组，当它的值确定了，是否剩下的所有属性值都能确定。</li>
-<li>……</li>
-<li>查看所有包含了六个属性，也就是所有属性的属性组，当它的值确定了，是否剩下的所有属性值都能确定。</li>
-</ol>
-<p>看起来很麻烦是吧，但是这里有一个诀窍，就是假如A是码，那么所有包含了A的属性组，如（A，B）、（A，C）、（A，B，C）等等，都不是码了（因为作为码的要求里有一个“完全函数依赖”）。<br>图4表示了表中所有的函数依赖关系：<br><img data-fancybox="gallery" data-sizes="auto" data-src="/2021/04/27/NF/20190304110201831.png" alt="在这里插入图片描述" class="lazyload"><br>图4<br>这一步完成以后，可以得到，表3的码只有一个，就是 <strong>（学号、课名）</strong> 。</p>
-<p>第二步：主属性有两个：<strong>学号</strong> 与 <strong>课名</strong></p>
-<p>第三步：非主属性有四个：<strong>姓名</strong>、<strong>系名</strong>、<strong>系主任</strong>、<strong>分数</strong></p>
-<p>第四步：<br>对于（学号，课名） → 姓名，有 学号 → 姓名，存在非主属性 姓名 对码（学号，课名）的部分函数依赖。<br>对于（学号，课名） → 系名，有 学号 → 系名，存在非主属性 系名 对码（学号，课名）的部分函数依赖。<br>对于（学号，课名） → 系主任，有 学号 → 系主任，存在非主属性 对码（学号，课名）的部分函数依赖。</p>
-<p>所以表3存在非主属性对于码的部分函数依赖，最高只符合1NF的要求，不符合2NF的要求。</p>
-<p>对于学生表，其码是学号，主属性是学号，非主属性是姓名、系名和系主任，因为码只有一个属性，所以不可能存在非主属性对于码 的部分函数依赖，所以此表符合2NF的要求。<br>图5表示了模式分解以后的新的函数依赖关系<br><img data-fancybox="gallery" data-sizes="auto" data-src="/2021/04/27/NF/20190304115007178.png" alt="img" class="lazyload"></p>
-<h1 id="3-第三范式（3NF）"><a href="#3-第三范式（3NF）" class="headerlink" title="3. 第三范式（3NF）"></a>3. 第三范式（3NF）</h1><p>3NF在2NF的基础之上，消除了非主属性对于码的传递函数依赖。也就是说， 如果存在非主属性对于码的传递函数依赖，则不符合3NF的要求。<br>接下来我们看看表4中的设计，是否符合3NF的要求。<br>对于选课表，主码为（学号，课名），主属性为学号和课名，非主属性只有一个，为分数，不可能存在传递函数依赖，所以选课表的设计，符合3NF的要求。<br>对于学生表，主码为学号，主属性为学号，非主属性为姓名、系名和系主任。因为 学号 → 系名，同时 系名 → 系主任，所以存在非主属性系主任对于码学号的传递函数依赖，所以学生表的设计，不符合3NF的要求。<br>为了让数据表设计达到3NF，我们必须进一步进行模式分解为以下形式：<br>选课（学号，课名，分数）<br>学生（学号，姓名，系名）<br>系（系名，系主任）<br>对于选课表，符合3NF的要求，之前已经分析过了。<br>对于学生表，码为学号，主属性为学号，非主属性为系名，不可能存在非主属性对于码的传递函数依赖，所以符合3NF的要求。<br>对于系表，码为系名，主属性为系名，非主属性为系主任，不可能存在非主属性对于码的传递函数依赖（至少要有三个属性才可能存在传递函数依赖关系），所以符合3NF的要求。。<br>新的函数依赖关系如图6<br><img data-fancybox="gallery" data-sizes="auto" data-src="/2021/04/27/NF/20190304112115875.png" alt="img" class="lazyload"></p>
-
+                <h1 id="1-第一范式（1NF）"><a href="#1-第一范式（1NF）" class="headerlink" title="1. 第一范式（1NF）"></a>1. 第一范式（1NF）</h1><p>符合1NF的关系（你可以理解为数据表。“关系模式”和“关系”的区别，类似于面向对象程序设计中”类“与”对象“的区别。”关系“是”关系模式“的一个实例，你可以把”关系”理解为一张带数据的表，而“关系模式”是这张数据表的表结构。<strong>1NF的定义为：符合1NF的关系中的每个属性都不可再分</strong>。<code>表1</code>所示的情况，就不符合1NF的要求。</p>
             
         </article>
     </div>
@@ -307,42 +229,6 @@
         </article>
     </div>
     
-    <div class="nexmoe-post">
-        <a href="/2021/04/26/hello-world/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 50%;"> 
-                    <img data-src="https://i.loli.net/2021/04/27/lVnTj5pPwD4GAyE.jpg" data-sizes="auto" alt="Hello World" class="lazyload">
-                    <h1>Hello World</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2021年04月26日</a>
-            <a><i class="nexmoefont icon-areachart"></i>75 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
-        </div>
-
-        <article>
-            
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-            
-        </article>
-    </div>
-    
 </section>
 
         <!--<div class="nexmoe-post-right">
@@ -366,7 +252,7 @@
 <script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
  
 
-<script src="/js/app.js?v=1619585477437"></script>
+<script src="/js/app.js?v=1619614094436"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>
