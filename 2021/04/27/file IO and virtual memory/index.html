@@ -15,7 +15,7 @@
   <meta name="description" content="虚拟缓存虚存的最大大小虚拟内存不受计算机中内存指针大小的限制，虚拟内存限制与寻址内存空间不同。可以解决的虚拟内存比使用分页的基于指针的地址空间中可用的虚拟内存更多 虚拟内存上限由操作系统设置：例如 32位Windows的限制为16TB，而在64位Windows上的限制为256TB。 虚存的目的1.在内存中保留多个进程 2.进程可以比内存的全部空间还大 windows 分页机制每日三问&#x2F;操作系统篇&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文件读写及虚存访问">
-<meta property="og:url" content="http://liangjisama.github.io/2021/04/27/file%20IO%20and%20virtual%20memory/index.html">
+<meta property="og:url" content="http://liangjisama.top/2021/04/27/file%20IO%20and%20virtual%20memory/index.html">
 <meta property="og:site_name" content="LiangJiSama Offical">
 <meta property="og:description" content="虚拟缓存虚存的最大大小虚拟内存不受计算机中内存指针大小的限制，虚拟内存限制与寻址内存空间不同。可以解决的虚拟内存比使用分页的基于指针的地址空间中可用的虚拟内存更多 虚拟内存上限由操作系统设置：例如 32位Windows的限制为16TB，而在64位Windows上的限制为256TB。 虚存的目的1.在内存中保留多个进程 2.进程可以比内存的全部空间还大 windows 分页机制每日三问&#x2F;操作系统篇&amp;">
 <meta property="og:locale" content="zh_CN">
@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
   
-  <link rel="stylesheet" href="/css/style.css?v=1619581386782">
+  <link rel="stylesheet" href="/css/style.css?v=1619585477430">
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="mdui-drawer-body-left">
@@ -223,7 +223,7 @@
     
   <div class="nexmoe-post-copyright">
     <strong>本文作者：</strong>Kagamine Len<br>
-    <strong>本文链接：</strong><a href="http://liangjisama.github.io/2021/04/27/file%20IO%20and%20virtual%20memory/" title="http:&#x2F;&#x2F;liangjisama.github.io&#x2F;2021&#x2F;04&#x2F;27&#x2F;file%20IO%20and%20virtual%20memory&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;liangjisama.github.io&#x2F;2021&#x2F;04&#x2F;27&#x2F;file%20IO%20and%20virtual%20memory&#x2F;</a><br>
+    <strong>本文链接：</strong><a href="http://liangjisama.top/2021/04/27/file%20IO%20and%20virtual%20memory/" title="http:&#x2F;&#x2F;liangjisama.top&#x2F;2021&#x2F;04&#x2F;27&#x2F;file%20IO%20and%20virtual%20memory&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;liangjisama.top&#x2F;2021&#x2F;04&#x2F;27&#x2F;file%20IO%20and%20virtual%20memory&#x2F;</a><br>
     
       <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
     
@@ -266,7 +266,7 @@
 <script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
  
 
-<script src="/js/app.js?v=1619581386783"></script>
+<script src="/js/app.js?v=1619585477431"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>
