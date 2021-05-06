@@ -4,7 +4,7 @@
 
 <head>
   
-  <title>文章归档：2021/5 - LiangJiSama Offical</title>
+  <title>标签：计算机网络 - LiangJiSama Offical</title>
   <meta charset="UTF-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
@@ -14,7 +14,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
   <meta property="og:type" content="website">
 <meta property="og:title" content="LiangJiSama Offical">
-<meta property="og:url" content="http://liangjisama.top/archives/2021/05/index.html">
+<meta property="og:url" content="http://liangjisama.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.html">
 <meta property="og:site_name" content="LiangJiSama Offical">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Kagamine Len">
@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
   
-  <link rel="stylesheet" href="/css/style.css?v=1620280333013">
+  <link rel="stylesheet" href="/css/style.css?v=1620280333023">
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="mdui-drawer-body-left">
@@ -214,221 +214,6 @@
         </article>
     </div>
     
-    <div class="nexmoe-post">
-        <a href="/2021/05/06/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 33.33333333333333%;"> 
-                    <img data-src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" data-sizes="auto" alt="进程与线程的内存空间" class="lazyload">
-                    <h1>进程与线程的内存空间</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2021年05月06日</a>
-            <a><i class="nexmoefont icon-areachart"></i>1.4k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
-        </div>
-
-        <article>
-            
-                <p>与进程（process）类似，线程（thread）是允许应用程序并发执行多个任务的一种机制。如图29-1所示，一个进程可以包含多个线程。同一程序中的所有线程均会独立执行相同程序，且共享同一份全局内存区域，其中包括初始化数据段（initialized data）、未初始化数据段（uninitialized data），以及堆内存段（heap segment）。（传统意义上的UNIX进程只是多线程程序的一个特例，该进程只包含一个线程。）</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://pic4.zhimg.com/50/v2-ef5a75637d648b91d168587d8f021d0f_hd.jpg?source=1940ef5c" alt="img" class="lazyload"><img data-fancybox="gallery" data-sizes="auto" data-src="https://pic4.zhimg.com/80/v2-ef5a75637d648b91d168587d8f021d0f_720w.jpg?source=1940ef5c" alt="img" class="lazyload"></p>
-<p>图29-1：同时执行4个线程的进程（Linux/x86-32）</p>
-<blockquote>
-<p>图29-1其实做了一些简化。特别是，线程栈（thread stack）的位置可能会与共享库和共享内存区域混杂在一起，这取决于创建线程、加载共享库，以及映射共享内存的具体顺序。而且，对于不同的Linux发行版，线程栈地址也会有所不同。</p>
-</blockquote>
-<p><strong>同一进程中的多个线程可以并发执行。在多处理器环境下，多个线程可以同时并行。</strong>如果一线程因等待I/O操作而遭阻塞，那么其他线程依然可以继续运行。（虽然有时单独创建一个专门执行I/O操作的线程颇为有用，但采用另一种I/O模型则更为可取，第63章会对此加以描述。）</p>
-<p>对于某些应用而言，线程要优于进程。传统UNIX通过创建多个进程来实现并行任务。以网络服务器的设计为例，服务器进程（父进程）在接受客户端的连接后，会调用 fork()来创建一个单独的子进程，以处理与客户端的通信（可参考 60.3 节）。采用这种设计，服务器就能同时为多个客户端提供服务。虽然这种方法在很多情境下都屡试不爽，但对于某些应用来说也确实存在如下一些限制。</p>
-<ul>
-<li>进程间的信息难以共享。由于除去只读代码段外，父子进程并未共享内存，因此必须采用一些进程间通信（inter-process communication，简称IPC）方式，在进程间进行信息交换。</li>
-<li>调用 fork()来创建进程的代价相对较高。即便利用 24.2.2 节所描述的写时复制（copy-on-write）技术，仍然需要复制诸如内存页表（page table）和文件描述符表（file descriptor table）之类的多种进程属性，这意味着fork()调用在时间上的开销依然不菲。</li>
-</ul>
-<p>线程解决了上述两个问题。</p>
-<ul>
-<li>线程之间能够方便、快速地共享信息。只需将数据复制到共享（全局或堆）变量中即可。不过，要避免出现多个线程试图同时修改同一份信息的情况，这需要使用第30章描述的同步技术。</li>
-<li>创建线程比创建进程通常要快10倍甚至更多。（在 Linux 中，是通过系统调用 clone()来实现线程的，表 28-3 展示了 fork()和 clone()在速度上的差异。）线程的创建之所以较快，是因为调用 fork()创建子进程时所需复制的诸多属性，在线程间本来就是共享的。特别是，既无需采用写时复制来复制内存页，也无需复制页表。</li>
-</ul>
-<p>除了全局内存之外，线程还共享了一干其他属性（这些属性对于进程而言是全局性的，而并非针对某个特定线程），包括以下内容。</p>
-<ul>
-<li>进程ID（process ID）和父进程ID。</li>
-<li>进程组ID与会话ID（session ID）。</li>
-<li>控制终端。</li>
-<li>进程凭证（process credential）（用户ID和组ID ）。</li>
-<li>打开的文件描述符。</li>
-<li>由fcntl()创建的记录锁（record lock）。</li>
-<li>信号（signal）处置。</li>
-<li>文件系统的相关信息：文件权限掩码（umask）、当前工作目录和根目录。</li>
-<li>间隔定时器（setitimer()）和POSIX定时器（timer_create()）。</li>
-<li>系统V（system V）信号量撤销（undo，semadj）值（47.8节）。</li>
-<li>资源限制（resource limit）。</li>
-<li>CPU时间消耗（由times()返回）。</li>
-<li>资源消耗（由getrusage()返回）。</li>
-<li>nice值（由setpriority()和nice()设置）。</li>
-</ul>
-<p>各线程所独有的属性，如下列出了其中一部分。</p>
-<ul>
-<li>线程ID（thread ID，29.5节）。</li>
-<li>信号掩码（signal mask）。</li>
-<li>线程特有数据（31.3节）。</li>
-<li>备选信号栈（sigaltstack()）。</li>
-<li>errno变量。</li>
-<li>浮点型（floating-point）环境（见fenv(3)）。</li>
-<li>实时调度策略（real-time scheduling policy）和优先级（35.2节和35.3节）。</li>
-<li>CPU亲和力（affinity，Linux所特有，35.4节将加以描述）。</li>
-<li>能力（capability，Linux所特有，第39章将加以描述）。</li>
-<li>栈，本地变量和函数的调用链接（linkage）信息。</li>
-</ul>
-<blockquote>
-<p>如图29-1 所示，所有的线程栈均驻留于同一虚拟地址空间。这也意味着，利用一个合适的指针，各线程可以在对方栈中相互共享数据。这种方法偶尔也能派上用场，但由于局部变量的状态有效与否依赖于其所驻留栈帧的生命周期，故而需要在编程中谨慎处理这一问题。（当函数返回时，该函数栈帧所占用的内存区域有可能为后续的函数调用所重新使用。如果线程终止，那么新线程有可能会对已终止线程的栈所占用的内存空间重新加以利用）。若无法正确处理这一依赖关系，由此而产生的程序bug将难以捕获。</p>
-</blockquote>
-
-            
-        </article>
-    </div>
-    
-    <div class="nexmoe-post">
-        <a href="/2021/05/05/%E5%A0%86%E6%8E%92%E5%BA%8F/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 33.33333333333333%;"> 
-                    <img data-src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" data-sizes="auto" alt="堆排序" class="lazyload">
-                    <h1>堆排序</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2021年05月05日</a>
-            <a><i class="nexmoefont icon-areachart"></i>546 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 2 分钟</a>
-        </div>
-
-        <article>
-            
-                <p>堆排序的过程为</p>
-<p>建堆 从最后一个非叶子节点（对于节点编号为0~n-1的树，最后一个非叶子节点为n/2-1)，按照堆的定义调整堆（即选择当前这个节点两个儿子节点(i*2+1,i*2+2)中的最大值，然后交换当前节点和该最大值节点）</p>
-            
-        </article>
-    </div>
-    
-    <div class="nexmoe-post">
-        <a href="/2021/05/05/C-%E4%B8%ADstatic%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E9%97%B4/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 33.33333333333333%;"> 
-                    <img data-src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" data-sizes="auto" alt="C++中static的初始化时间" class="lazyload">
-                    <h1>C++中static的初始化时间</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2021年05月05日</a>
-            <a><i class="nexmoefont icon-areachart"></i>667 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 2 分钟</a>
-        </div>
-
-        <article>
-            
-                <p>本次上传主要是关于静态局部变量的初始化问题。</p>
-<p>首先，静态局部变量和全局变量一样，数据都存放在全局区域，所以在主程序之前，编译器已经为其分配好了内存，但在C和C++中静态局部变量的初始化节点又有点不太一样。在C中，初始化发生在代码执行之前，编译阶段分配好内存之后，就会进行初始化，所以我们看到在C语言中无法使用变量对静态局部变量进行初始化，在程序运行结束，变量所处的全局内存会被全部回收。而在C++中，初始化时在执行相关代码时才会进行初始化，主要是由于C++引入对象后，要进行初始化必须执行相应构造函数和析构函数，在构造函数或析构函数中经常会需要进行某些程序中需要进行的特定操作，并非简单地分配内存。所以C++标准定为全局或静态对象是有首次用到时才会进行构造，并通过atexit()来管理。在程序结束，按照构造顺序反方向进行逐个析构。所以在C++中是可以使用变量对静态局部变量进行初始化的。</p>
-            
-        </article>
-    </div>
-    
-    <div class="nexmoe-post">
-        <a href="/2021/05/05/c-%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 33.33333333333333%;"> 
-                    <img data-src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" data-sizes="auto" alt="c++编译过程" class="lazyload">
-                    <h1>c++编译过程</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2021年05月05日</a>
-            <a><i class="nexmoefont icon-areachart"></i>2.4k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 10 分钟</a>
-        </div>
-
-        <article>
-            
-                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p> <strong>C和C++编译器是集成的，编译一般分为四个步骤：</strong></p>
-<ol>
-<li><strong>预处理(preprocessing)  —————– cpp/ gcc -E</strong> </li>
-<li><strong>编译(compilation) —————— cc1 / gcc -S</strong></li>
-<li><strong>汇编(assembly)  ——————– as</strong></li>
-<li><strong>连接(linking) ——————— ld</strong> </li>
-</ol>
-<ol start="2">
-<li>动态链接</li>
-</ol>
-<p>在此种方式下，函数的代码被放到称作是动态链接库或共享对象的某个目标文件中。链接程序此时所作的只是在最终的可执行程序中记录下共享对象的名字以及其它少量的登记信息。在此可执行文件被执行时，动态链接库的全部内容将被映射到运行时相应进程的虚地址空间。动态链接程序将根据可执行程序中记录的信息找到相应的函数代码。</p>
-<p>对于可执行文件中的函数调用，可分别采用动态链接或静态链接的方法。使用动态链接能够使最终的可执行文件比较短小，并且当共享对象被多个进程使用时能节约一些内存，因为在内存中只需要保存一份此共享对象的代码。但并不是使用动态链接就一定比使用静态链接要优越。在某些情况下动态链接可能带来一些性能上损害。</p>
-<p>ps:详见深入理解操作系统</p>
-            
-        </article>
-    </div>
-    
-    <div class="nexmoe-post">
-        <a href="/2021/05/05/%E9%9D%A2%E8%AF%95%E5%8F%91%E7%8E%B0%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9%E7%BC%BA%E5%A4%B1/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 33.33333333333333%;"> 
-                    <img data-src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" data-sizes="auto" alt="面试发现的知识点缺失" class="lazyload">
-                    <h1>面试发现的知识点缺失</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2021年05月05日</a>
-            <a><i class="nexmoefont icon-areachart"></i>105 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
-        </div>
-
-        <article>
-            
-                <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><p>TCP拥塞控制</p>
-<p>七层协议</p>
-<h1 id="计算机图形学"><a href="#计算机图形学" class="headerlink" title="计算机图形学"></a>计算机图形学</h1><p>光线追踪的朴素实现</p>
-<p>渲染管线（坐标变换的过程）</p>
-<h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><p>c++的编译过程：有待进一步研究</p>
-<p><del>static的初始化时间</del></p>
-<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><p>B+树</p>
-<p>红黑树</p>
-<p><del>大根堆的实现</del></p>
-<p>最小生成树</p>
-<h1 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h1><p>动作机中的Blend是什么？</p>
-<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>测试中的TPS和QPS分别指的是什么</p>
-
-            
-        </article>
-    </div>
-    
-    <div class="nexmoe-post">
-        <a href="/2021/05/05/const%E5%85%B3%E9%94%AE%E5%AD%97/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 33.33333333333333%;"> 
-                    <img data-src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" data-sizes="auto" alt="const关键字" class="lazyload">
-                    <h1>const关键字</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2021年05月05日</a>
-            <a><i class="nexmoefont icon-areachart"></i>420 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 2 分钟</a>
-        </div>
-
-        <article>
-            
-                <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://i.loli.net/2021/05/05/1bgfwK4k6L8NQih.png" alt="image-20210505101147641" class="lazyload"></p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://i.loli.net/2021/05/05/xDVqtyUKiZajMCs.png" alt="image-20210505101344643" class="lazyload"></p>
-            
-        </article>
-    </div>
-    
 </section>
 
         <!--<div class="nexmoe-post-right">
@@ -452,7 +237,7 @@
 <script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
  
 
-<script src="/js/app.js?v=1620280333014"></script>
+<script src="/js/app.js?v=1620280333023"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>
