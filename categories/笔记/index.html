@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
   
-  <link rel="stylesheet" href="/css/style.css?v=1620229122765">
+  <link rel="stylesheet" href="/css/style.css?v=1620803186974">
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="mdui-drawer-body-left">
@@ -46,8 +46,8 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>11</div>
-        <div><span>标签</span>7</div>
+        <div><span>文章</span>13</div>
+        <div><span>标签</span>8</div>
         <div><span>分类</span>1</div>
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
@@ -101,7 +101,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/笔记/">笔记</a>
-          <span class="category-list-count">11</span>
+          <span class="category-list-count">13</span>
         </li>
 
         
@@ -115,7 +115,7 @@
   
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/unity/" style="font-size: 10px;">unity</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 10px;">计算机组成原理</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a>
+      <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/unity/" style="font-size: 10px;">unity</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 15px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 10px;">计算机组成原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a>
     </div>
     
   </div>
@@ -133,6 +133,159 @@
   <div id="nexmoe-content">
     <div class="nexmoe-primary">
         <section class="nexmoe-posts">
+    
+    <div class="nexmoe-post">
+        <a href="/2021/05/06/tcp/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 33.33333333333333%;"> 
+                    <img data-src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" data-sizes="auto" alt="tcp" class="lazyload">
+                    <h1>tcp</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2021年05月06日</a>
+            <a><i class="nexmoefont icon-areachart"></i>3.4k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 14 分钟</a>
+        </div>
+
+        <article>
+            
+                <h3 id="停等式ARQ"><a href="#停等式ARQ" class="headerlink" title="停等式ARQ"></a>停等式ARQ</h3><p>在停等式ARQ中，数据<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%8A%A5%E6%96%87">报文</a>发送完成之后，发送方等待接收方的状态报告，如果状态报告报文发送成功，发送后续的数据报文，否则重传该报文。</p>
+<p>停等式ARQ，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8F%91%E9%80%81%E7%AA%97%E5%8F%A3">发送窗口</a>和接收窗口大小均为1，发送方每发送一帧之后就必须停下来等待接收方的确认返回，仅当接收方确认正确接收后再继续发送下一帧。该方法所需要的缓冲存储空间最小，缺点是信道效率很低。</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://i.loli.net/2021/05/06/1NAn5JfBg7aMH3t.png" alt="image-20210506084452593" class="lazyload"></p>
+<h3 id="回退n帧的ARQ"><a href="#回退n帧的ARQ" class="headerlink" title="回退n帧的ARQ"></a>回退n帧的ARQ</h3><p>发信侧不用等待收信侧的应答，持续的发送多个帧，假如发现已发送的帧中有错误发生，那么从那个发生错误的帧开始及其之后所有的帧全部再重新发送。</p>
+<p>特点：（GBN）复杂度低，但是不必要的帧会再重发，所以大幅度范围内使用的话效率是不高的</p>
+<p>例：如果序列号有K bits，那么这个ARQ的协议大小为：2^k-1。</p>
+<h3 id="选择性重传ARQ"><a href="#选择性重传ARQ" class="headerlink" title="选择性重传ARQ"></a>选择性重传ARQ</h3><p>发信侧不用等待收信侧的应答，持续的发送多个帧，假如发现已发送的帧中有错误发生，那么发信侧将只重新发送那个发生错误的帧。</p>
+<p>特点：相对于GBN 复杂度高，但是不需要发送没必要的帧，所以效率高。</p>
+<p>例：如果序列号有K bits，那么这个ARQ的协议大小为：2^(k-1)。</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://i.loli.net/2021/05/06/wrdtakJKjoMgTc6.png" alt="image-20210506084657008" class="lazyload"></p>
+<h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>滑动窗口实现了TCP流控制。首先明确滑动窗口的范畴：TCP是双工的协议，会话的双方都可以同时接收和发送数据。TCP会话的双方都各自维护一个发送窗口和一个接收窗口。各自的接收窗口大小取决于应用、系统、硬件的限制（TCP传输速率不能大于应用的数据处理速率）。各自的发送窗口则要求取决于对端通告的接收窗口，要求相同。</p>
+<p>滑动窗口解决的是流量控制的的问题，就是如果接收端和发送端对数据包的处理速度不同，如何让双方达成一致。接收端的缓存传输数据给应用层，但这个过程不一定是即时的，如果发送速度太快，会出现接收端数据overflow，流量控制解决的是这个问题。</p>
+<h2 id="窗口的概念"><a href="#窗口的概念" class="headerlink" title="窗口的概念"></a>窗口的概念</h2><p>发送方的发送缓存内的数据都可以被分为4类:</p>
+<ol>
+<li>已发送，已收到ACK</li>
+<li>已发送，未收到ACK</li>
+<li>未发送，但允许发送</li>
+<li>未发送，但不允许发送</li>
+</ol>
+<p>其中类型2和3都属于发送窗口。</p>
+<p>接收方的缓存数据分为3类：</p>
+<ol>
+<li>已接收</li>
+<li>未接收但准备接收</li>
+<li>未接收而且不准备接收</li>
+</ol>
+<p>其中类型2属于接收窗口。</p>
+<p>窗口大小代表了设备一次能从对端处理多少数据，之后再传给应用层。缓存传给应用层的数据不能是乱序的，窗口机制保证了这一点。现实中，应用层可能无法立刻从缓存中读取数据。</p>
+<h2 id="滑动窗口-1"><a href="#滑动窗口-1" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><p>发送窗口只有收到发送窗口内字节的ACK确认，才会移动发送窗口的左边界。</p>
+<p>接收窗口只有在前面所有的段都确认的情况下才会移动左边界。当在前面还有字节未接收但收到后面字节的情况下，窗口不会移动，并不对后续字节确认。以此确保对端会对这些数据重传。</p>
+<p>遵循快速重传、累计确认、选择确认等规则。</p>
+<p>发送方发的window size = 8192;就是接收端最多发送8192字节，这个8192一般就是发送方接收缓存的大小。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://i.loli.net/2021/05/06/BlqhantSDdiUAPI.png" alt="image-20210506091113054" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://i.loli.net/2021/05/06/i3f1nqlcQDUMgzS.png" alt="image-20210506091145561" class="lazyload"></p>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>• 发送缓存与接收缓存的作用<br>‒ 发送应用程序传送给发送方 TCP 准备发送的数据;<br>‒ TCP 已发送出但尚未收到确认的数据。<br>• 接收缓存用来暂时存放:<br>‒ 按序到达的、但尚未被接收应用程序读取的数据;<br>‒ 不按序到达的数据。</p>
+<h3 id="TCP机制-字节为单位的滑动窗口"><a href="#TCP机制-字节为单位的滑动窗口" class="headerlink" title="TCP机制:字节为单位的滑动窗口"></a>TCP机制:字节为单位的滑动窗口</h3><p>• A 的发送窗口并不总是和 B 的接收窗口一样大(因为有一定的时间滞后)。<br>• TCP 标准没有规定对不按序到达的数据应如何处理。<br>通常是先临时存放在接收窗口中,等到字节流中所缺少的字节收到后,再按序交付上层的应用进程。<br>• TCP 要求接收方必须有累积确认的功能,这样可以减小传输开销。</p>
+<h3 id="超时重传的时间选择"><a href="#超时重传的时间选择" class="headerlink" title="超时重传的时间选择"></a>超时重传的时间选择</h3><p>• TCP 每发送一个报文段,就对这个报文段设置一次计时器。只要计时器设置的重传时间到但还没有收到确认,就要重传这一报文段。<br>• 由于 TCP 的下层是一个互联网环境,IP 数据报所选择的路由变化很大。因而运输层的往返时间的方差也很大。<br>• TCP 保留了 RTT 的一个加权平均往返时间 RTT_s (这又称为平滑的往返时间)。<br>$$<br>RTT_s=(1-\alpha)<em>(oldRTT_s)+\alpha</em>(newRTT_s)\<br>where[\alpha=0.125]<br>$$</p>
+<p><strong>超时重传时间</strong>(Retransmission Time-Out,RTO)应略大于上面得出的加权平均往返时间 RTT_S 。</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://i.loli.net/2021/05/06/UkrZLvSqeJaYbRd.png" alt="2021-05-06_09-17" class="lazyload"></p>
+<h3 id="TCP零窗口的处理"><a href="#TCP零窗口的处理" class="headerlink" title="TCP零窗口的处理"></a>TCP零窗口的处理</h3><p>• TCP 为每一个连接设有一个持续计时器。‒ 只要一方收到对方的零窗口通知,就启动持续计时器。<br>• 若持续计时器设置的时间到期,就发送一个零窗口探测报文段(仅携带 1 字节的数据),而对方就在确认这个探测报文段时给出了现在的窗口值。<br>‒ 若窗口仍然是零,则收到这个报文段的一方就重新设置持续计时器。<br>‒ 若窗口不是零,则死锁的僵局就可以打破了。</p>
+<h3 id="传输效率"><a href="#传输效率" class="headerlink" title="传输效率"></a>传输效率</h3><p>用不同机制控制 TCP 报文段的发送时机<br>‒ 第一种机制是 TCP 维持一个变量,它等于最大报文段长度MSS。只要缓存中存放的数据达到 MSS 字节时,就组装成一个 TCP 报文段发送出去。<br>‒ 第二种机制是由发送方的应用进程指明要求发送报文段,即 TCP 支持的推送(push)操作。<br>‒ 第三种机制是发送方的一个计时器期限到了,就把当前已有缓存数据装入报文段(但长度不能超过 MSS)发送出去。</p>
+<p><strong>假设B窗口在接受时接收到的字节顺序分别为1、2、3、4、6、7，这途中5号消息可能丢失了，那么它给A窗口返回的确认报文仍然是5号消息而不是7号。</strong>因为B窗口(接受区窗口)只能对按序收到的最高序号给出确认。</p>
+<p>如果A窗口中的消息都发送完，B窗口也都接受完。但是此时的确认报文却丢失了，结果A在一定时间内没有收到B发送过来的确认报文，就会再次给B窗口发送一次数据，直到收到B的确认报文为止。</p>
+<p>注意点：<br>1.滑动窗口虽然可以根据接受区的缓存大小来调整。但是它们并不总是一样大的。因为网络传输需要经历一定的时间，还要考虑当前网络的拥堵状态。<br>2.对没有按序到达的数据，TCP并没有明确规定如何处理。一般情况下会把乱序的数据先保留等到所缺的字节到达后，在按序交给上层应用。<br>3.接受方必须要有累积确认的功能来减少传输开销。但是也不应过分推迟以免不必要的重传。</p>
+<p>超时重传时，如何确定接收方接收到的是先发送的数据还是后来重传的数据？<br>典型的做法：取新的重传时间为旧的重传时间的两倍。</p>
+<p>选择确认SACK<br>当接受区在接受数据时接收到的时乱序的数据，就会形成一个个的字节块。如果这些字节都在接受窗口之内，就会将这些数据保留下来，同时准确的告诉发送方使发送方不要再重复的发送这些数据。</p>
+<h2 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h2><h3 id="拥塞窗口-congestion-window"><a href="#拥塞窗口-congestion-window" class="headerlink" title="拥塞窗口(congestion window)"></a>拥塞窗口(congestion window)</h3><p>‒ 发送方维持的状态变量。<br>‒ 拥塞窗口的大小取决于网络的拥塞程度,并且动态地在变化。发送方让自己的发送窗口等于拥塞窗口。如再考虑到接收方的接收能力,则发送窗口还可能小于拥塞窗口。<br>• 发送方控制拥塞窗口的原则是<br>‒ 只要网络没有出现拥塞,拥塞窗口就再增大一些,以便把更多的分组发送出去。但只要网络出现拥塞,拥塞窗口就减小一些,以减少注入到网络中的分组数。</p>
+<p>  慢开始算法：当主机开始发送数据时，如果立即所大量数据字节注入到网络，那么就有可能引起网络拥塞，因为现在并不清楚网络的负荷情况。因此，较好的方法是先探测一下，即由小到大逐渐增大发送窗口，也就是说，由小到大逐渐增大拥塞窗口数值。通常在刚刚开始发送报文段时，先把拥塞窗口 cwnd <strong>设置为一个最大报文段MSS的数值（不同于之前，该部分不以字节而以报文段作为最小单位）</strong>。而在**每收到一个对新的报文段的确认后（即每ACK一段报文，拥塞窗口加一，这样子每次发送了k个报文后，若全部确认收到，cwnd变为2k)**，把拥塞窗口增加至多一个MSS的数值。用这样的方法逐步增大发送方的拥塞窗口 cwnd ，可以使分组注入到网络的速率更加合理。</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdn.net/20140509220932437?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWVjaGFvZGVjaHVudGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img" class="lazyload"></p>
+<p>• 加性增大<br>‒ TCP 初始化时,拥塞窗口置为 1,每收到确认增加1<br>‒ 到达门限值(初始为16)改用拥塞避免算法<br>• 乘性减小<br>‒ 一但拥塞,门限值改为窗口大小的一半<br>• “拥塞避免” 在拥塞避免阶段把拥塞窗口控制为按线性规律增长,使网络较不容易拥塞。(而非完全避免)</p>
+<h3 id="拥塞避免算法"><a href="#拥塞避免算法" class="headerlink" title="拥塞避免算法"></a>拥塞避免算法</h3><p>让拥塞窗口cwnd缓慢地增大，即每经过一个往返时间RTT就把发送方的拥塞窗口cwnd加1，而不是加倍。这样拥塞窗口cwnd按线性规律缓慢增长，比慢开始算法的拥塞窗口增长速率缓慢得多。</p>
+<p>  无论在慢开始阶段还是在拥塞避免阶段，只要发送方判断网络出现拥塞（其根据就是没有收到确认），就要把慢开始门限ssthresh设置为出现拥塞时的发送方窗口值的一半（但不能小于2）。然后把拥塞窗口cwnd重新设置为1，执行慢开始算法。</p>
+<h2 id="快重传和快恢复"><a href="#快重传和快恢复" class="headerlink" title="快重传和快恢复"></a>快重传和快恢复</h2><h3 id="快重传"><a href="#快重传" class="headerlink" title="快重传"></a>快重传</h3><p>如果发送方设置的超时计时器时限已到但还没有收到确认，那么很可能是网络出现了拥塞，致使报文段在网络中的某处被丢弃。这时，TCP马上把拥塞窗口 cwnd 减小到1，并执行慢开始算法，同时把慢开始门限值ssthresh减半。这是不使用快重传的情况。</p>
+<p>  快重传算法首先要求接收方<strong>每收到一个失序的报文段后就立即发出重复确认</strong>（为的是使发送方及早知道有报文段没有到达对方）而不要等到自己发送数据时才进行捎带确认。</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdn.net/20140509221032109?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWVjaGFvZGVjaHVudGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img" class="lazyload"></p>
+<p>接收方收到了M1和M2后都分别发出了确认。现在假定接收方没有收到M3但接着收到了M4。显然，接收方不能确认M4，因为M4是收到的失序报文段。根据可靠传输原理，接收方可以什么都不做，也可以在适当时机发送一次对M2的确认。但按照快重传算法的规定，接收方应及时发送对M2的重复确认，这样做可以让发送方及早知道报文段M3没有到达接收方。发送方接着发送了M5和M6。接收方收到这两个报文后，也还要再次发出对M2的重复确认。这样，发送方共收到了接收方的四个对M2的确认，其中后三个都是重复确认。快重传算法还规定，发送方只要一连收到三个重复确认就应当立即重传对方尚未收到的报文段M3，而不必继续等待M3设置的重传计时器到期。由于发送方尽早重传未被确认的报文段，因此采用快重传后可以使整个网络吞吐量提高约20%。</p>
+<p>在这种情况下，快重传并没有取消重传计时器，但在某些情况下可以更快的重传丢失的报文。</p>
+<h3 id="快恢复"><a href="#快恢复" class="headerlink" title="快恢复"></a>快恢复</h3><p>• 当发送端收到连续三个重复的确认时,就执行“乘法减小”算法,把慢开始门限 ssthresh 减半。但接下去不执行慢开始算法。<img data-fancybox="gallery" data-sizes="auto" data-src="https://i.loli.net/2021/05/06/2m1U7fitVXrPuRz.png" alt="2021-05-06_09-44" class="lazyload"></p>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2021/05/06/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 33.33333333333333%;"> 
+                    <img data-src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" data-sizes="auto" alt="进程与线程的内存空间" class="lazyload">
+                    <h1>进程与线程的内存空间</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2021年05月06日</a>
+            <a><i class="nexmoefont icon-areachart"></i>1.4k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
+        </div>
+
+        <article>
+            
+                <p>与进程（process）类似，线程（thread）是允许应用程序并发执行多个任务的一种机制。如图29-1所示，一个进程可以包含多个线程。同一程序中的所有线程均会独立执行相同程序，且共享同一份全局内存区域，其中包括初始化数据段（initialized data）、未初始化数据段（uninitialized data），以及堆内存段（heap segment）。（传统意义上的UNIX进程只是多线程程序的一个特例，该进程只包含一个线程。）</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://pic4.zhimg.com/50/v2-ef5a75637d648b91d168587d8f021d0f_hd.jpg?source=1940ef5c" alt="img" class="lazyload"><img data-fancybox="gallery" data-sizes="auto" data-src="https://pic4.zhimg.com/80/v2-ef5a75637d648b91d168587d8f021d0f_720w.jpg?source=1940ef5c" alt="img" class="lazyload"></p>
+<p>图29-1：同时执行4个线程的进程（Linux/x86-32）</p>
+<blockquote>
+<p>图29-1其实做了一些简化。特别是，线程栈（thread stack）的位置可能会与共享库和共享内存区域混杂在一起，这取决于创建线程、加载共享库，以及映射共享内存的具体顺序。而且，对于不同的Linux发行版，线程栈地址也会有所不同。</p>
+</blockquote>
+<p><strong>同一进程中的多个线程可以并发执行。在多处理器环境下，多个线程可以同时并行。</strong>如果一线程因等待I/O操作而遭阻塞，那么其他线程依然可以继续运行。（虽然有时单独创建一个专门执行I/O操作的线程颇为有用，但采用另一种I/O模型则更为可取，第63章会对此加以描述。）</p>
+<p>对于某些应用而言，线程要优于进程。传统UNIX通过创建多个进程来实现并行任务。以网络服务器的设计为例，服务器进程（父进程）在接受客户端的连接后，会调用 fork()来创建一个单独的子进程，以处理与客户端的通信（可参考 60.3 节）。采用这种设计，服务器就能同时为多个客户端提供服务。虽然这种方法在很多情境下都屡试不爽，但对于某些应用来说也确实存在如下一些限制。</p>
+<ul>
+<li>进程间的信息难以共享。由于除去只读代码段外，父子进程并未共享内存，因此必须采用一些进程间通信（inter-process communication，简称IPC）方式，在进程间进行信息交换。</li>
+<li>调用 fork()来创建进程的代价相对较高。即便利用 24.2.2 节所描述的写时复制（copy-on-write）技术，仍然需要复制诸如内存页表（page table）和文件描述符表（file descriptor table）之类的多种进程属性，这意味着fork()调用在时间上的开销依然不菲。</li>
+</ul>
+<p>线程解决了上述两个问题。</p>
+<ul>
+<li>线程之间能够方便、快速地共享信息。只需将数据复制到共享（全局或堆）变量中即可。不过，要避免出现多个线程试图同时修改同一份信息的情况，这需要使用第30章描述的同步技术。</li>
+<li>创建线程比创建进程通常要快10倍甚至更多。（在 Linux 中，是通过系统调用 clone()来实现线程的，表 28-3 展示了 fork()和 clone()在速度上的差异。）线程的创建之所以较快，是因为调用 fork()创建子进程时所需复制的诸多属性，在线程间本来就是共享的。特别是，既无需采用写时复制来复制内存页，也无需复制页表。</li>
+</ul>
+<p>除了全局内存之外，线程还共享了一干其他属性（这些属性对于进程而言是全局性的，而并非针对某个特定线程），包括以下内容。</p>
+<ul>
+<li>进程ID（process ID）和父进程ID。</li>
+<li>进程组ID与会话ID（session ID）。</li>
+<li>控制终端。</li>
+<li>进程凭证（process credential）（用户ID和组ID ）。</li>
+<li>打开的文件描述符。</li>
+<li>由fcntl()创建的记录锁（record lock）。</li>
+<li>信号（signal）处置。</li>
+<li>文件系统的相关信息：文件权限掩码（umask）、当前工作目录和根目录。</li>
+<li>间隔定时器（setitimer()）和POSIX定时器（timer_create()）。</li>
+<li>系统V（system V）信号量撤销（undo，semadj）值（47.8节）。</li>
+<li>资源限制（resource limit）。</li>
+<li>CPU时间消耗（由times()返回）。</li>
+<li>资源消耗（由getrusage()返回）。</li>
+<li>nice值（由setpriority()和nice()设置）。</li>
+</ul>
+<p>各线程所独有的属性，如下列出了其中一部分。</p>
+<ul>
+<li>线程ID（thread ID，29.5节）。</li>
+<li>信号掩码（signal mask）。</li>
+<li>线程特有数据（31.3节）。</li>
+<li>备选信号栈（sigaltstack()）。</li>
+<li>errno变量。</li>
+<li>浮点型（floating-point）环境（见fenv(3)）。</li>
+<li>实时调度策略（real-time scheduling policy）和优先级（35.2节和35.3节）。</li>
+<li>CPU亲和力（affinity，Linux所特有，35.4节将加以描述）。</li>
+<li>能力（capability，Linux所特有，第39章将加以描述）。</li>
+<li>栈，本地变量和函数的调用链接（linkage）信息。</li>
+</ul>
+<blockquote>
+<p>如图29-1 所示，所有的线程栈均驻留于同一虚拟地址空间。这也意味着，利用一个合适的指针，各线程可以在对方栈中相互共享数据。这种方法偶尔也能派上用场，但由于局部变量的状态有效与否依赖于其所驻留栈帧的生命周期，故而需要在编程中谨慎处理这一问题。（当函数返回时，该函数栈帧所占用的内存区域有可能为后续的函数调用所重新使用。如果线程终止，那么新线程有可能会对已终止线程的栈所占用的内存空间重新加以利用）。若无法正确处理这一依赖关系，由此而产生的程序bug将难以捕获。</p>
+</blockquote>
+
+            
+        </article>
+    </div>
     
     <div class="nexmoe-post">
         <a href="/2021/05/05/%E5%A0%86%E6%8E%92%E5%BA%8F/">
@@ -432,53 +585,6 @@ auto p2(std::make_shared&lt;Widget&gt;());
         </article>
     </div>
     
-    <div class="nexmoe-post">
-        <a href="/2021/04/27/file%20IO%20and%20virtual%20memory/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 33.33333333333333%;"> 
-                    <img data-src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" data-sizes="auto" alt="文件读写及虚存访问" class="lazyload">
-                    <h1>文件读写及虚存访问</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2021年04月27日</a>
-            <a><i class="nexmoefont icon-areachart"></i>1.7k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 7 分钟</a>
-        </div>
-
-        <article>
-            
-                <h1 id="虚拟缓存"><a href="#虚拟缓存" class="headerlink" title="虚拟缓存"></a>虚拟缓存</h1><h2 id="虚存的最大大小"><a href="#虚存的最大大小" class="headerlink" title="虚存的最大大小"></a>虚存的最大大小</h2><p>虚拟内存不受计算机中内存指针大小的限制，虚拟内存限制与寻址内存空间不同。可以解决的虚拟内存比使用分页的基于指针的地址空间中可用的虚拟内存更多</p>
-<p>虚拟内存上限由操作系统设置：例如 32位Windows的限制为16TB，而在64位Windows上的限制为256TB。</p>
-            
-        </article>
-    </div>
-    
-    <div class="nexmoe-post">
-        <a href="/2021/04/27/NF/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 33.33333333333333%;"> 
-                    <img data-src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" data-sizes="auto" alt="范式" class="lazyload">
-                    <h1>范式</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2021年04月27日</a>
-            <a><i class="nexmoefont icon-areachart"></i>1.5k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
-        </div>
-
-        <article>
-            
-                <h1 id="1-第一范式（1NF）"><a href="#1-第一范式（1NF）" class="headerlink" title="1. 第一范式（1NF）"></a>1. 第一范式（1NF）</h1><p>符合1NF的关系（你可以理解为数据表。“关系模式”和“关系”的区别，类似于面向对象程序设计中”类“与”对象“的区别。”关系“是”关系模式“的一个实例，你可以把”关系”理解为一张带数据的表，而“关系模式”是这张数据表的表结构。<strong>1NF的定义为：符合1NF的关系中的每个属性都不可再分</strong>。<code>表1</code>所示的情况，就不符合1NF的要求。</p>
-            
-        </article>
-    </div>
-    
 </section>
 
     <nav class="nexmoe-page-nav">
@@ -506,7 +612,7 @@ auto p2(std::make_shared&lt;Widget&gt;());
 <script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
  
 
-<script src="/js/app.js?v=1620229122765"></script>
+<script src="/js/app.js?v=1620803186974"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>
