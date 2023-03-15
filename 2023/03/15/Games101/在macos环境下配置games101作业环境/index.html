@@ -4,17 +4,21 @@
 
 <head>
     
-    <title>标签：数据库 - LiangJiSama Offical</title>
+    <title>在macos 环境下配置games101 作业环境 - LiangJiSama Offical</title>
     <meta charset="UTF-8">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     <link href="https://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="LiangJiSama Offical">
-<meta property="og:url" content="http://liangjisama.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
+    <meta name="description" content="在macos 环境下配置games101 作业环境。 按照下文的方法配置即可。 https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;371245964 有两个需要注意的点，一是由于opencv2 已经从brew中停止维护，我们需要手动安装opencv2，只需从opencv官网下载opencv2.4包，并按照https:&#x2F;&#x2F;blog.csdn.net&#x2F;NeoZng&#x2F;article&#x2F;detail">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在macos 环境下配置games101 作业环境">
+<meta property="og:url" content="http://liangjisama.top/2023/03/15/Games101/%E5%9C%A8macos%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%85%8D%E7%BD%AEgames101%E4%BD%9C%E4%B8%9A%E7%8E%AF%E5%A2%83/index.html">
 <meta property="og:site_name" content="LiangJiSama Offical">
+<meta property="og:description" content="在macos 环境下配置games101 作业环境。 按照下文的方法配置即可。 https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;371245964 有两个需要注意的点，一是由于opencv2 已经从brew中停止维护，我们需要手动安装opencv2，只需从opencv官网下载opencv2.4包，并按照https:&#x2F;&#x2F;blog.csdn.net&#x2F;NeoZng&#x2F;article&#x2F;detail">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-15T12:31:01.000Z">
+<meta property="article:modified_time" content="2023-03-15T12:32:20.838Z">
 <meta property="article:author" content="Kagamine Len">
 <meta name="twitter:card" content="summary">
     
@@ -22,9 +26,9 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678883651424">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678883651404">
     
-    <link rel="stylesheet" href="/css/style.css?v=1678883651424">
+    <link rel="stylesheet" href="/css/style.css?v=1678883651404">
 
     
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -225,27 +229,25 @@
     </div>
     <div id="nexmoe-content">
         <div class="nexmoe-primary">
-            <section class="nexmoe-posts">
-    
-    <div class="nexmoe-post">
-        <a href="/2021/04/27/NF/">
-            
-                <div class="nexmoe-post-cover mdui-ripple"> 
-                    <img src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" alt="范式" loading="lazy">
-                    <h1>范式</h1>
-                </div>
-            
-        </a>
+            <div class="nexmoe-post">
 
-        <div class="nexmoe-post-meta">
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" alt="在macos 环境下配置games101 作业环境" loading="lazy">
+            <h1>在macos 环境下配置games101 作业环境</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
-        <a class="nexmoefont icon-calendar-fill">2021年04月27日</a>
+        <a class="nexmoefont icon-calendar-fill">2023年03月15日</a>
         
-            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/GAMES101/">GAMES101</a>
         
         
-    <a><i class="nexmoefont icon-areachart"></i>约1.5k字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要5分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>约150字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要1分钟</a>
 
     </div>
     
@@ -255,13 +257,34 @@
     
 </div>
 
-        <article>
-            <h1 id="1-第一范式（1NF）"><a href="#1-第一范式（1NF）" class="headerlink" title="1. 第一范式（1NF）"></a>1. 第一范式（1NF）</h1><p>符合1NF的关系（你可以理解为数据表。“关系模式”和“关系”的区别，类似于面向对象程序设计中”类“与”对象“的区别。”关系“是”关系模式“的一个实例，你可以把”关系”理解为一张带数据的表，而“关系模式”是这张数据表的表结构。<strong>1NF的定义为：符合1NF的关系中的每个属性都不可再分</strong>。<code>表1</code>所示的情况，就不符合1NF的要求。</p>
-        </article>
-    </div>
-    
-</section>
+    <p>在macos 环境下配置games101 作业环境。</p>
+<p>按照下文的方法配置即可。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/371245964">https://zhuanlan.zhihu.com/p/371245964</a></p>
+<p>有两个需要注意的点，一是由于opencv2 已经从brew中停止维护，我们需要手动安装opencv2，只需从opencv官网下载opencv2.4包，并按照<a target="_blank" rel="noopener" href="https://blog.csdn.net/NeoZng/article/details/123085674%E6%89%80%E7%A4%BA%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E5%8D%B3%E5%8F%AF%E3%80%82">https://blog.csdn.net/NeoZng/article/details/123085674所示方法进行编译安装即可。</a></p>
+<span id="more"></span>
+<p>二是由于权限原因，我们没法使用 <code>brew link</code>指令自动链接，因此我们需要手动链接eigen3库，具体命令如下：</p>
+<pre><code class="highlight sh">sudo <span class="built_in">ln</span> -s  /opt/homebrew/Cellar/eigen/3.4.0_1/include/eigen3 /usr/local/include/eigen3</code></pre>
 
+
+    
+  </article>
+
+  
+      
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          
+      </div>
+  
+</div>
             <div class="nexmoe-post-right">
               <div class="nexmoe-fixed">
                   <div class="nexmoe-tool"> 
@@ -303,7 +326,7 @@
 
  
 
-<script async src="/js/app.js?v=1678883651424"></script>
+<script async src="/js/app.js?v=1678883651404"></script>
 
 <script src="https://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script> <script> hljs.initHighlightingOnLoad(); </script>
 

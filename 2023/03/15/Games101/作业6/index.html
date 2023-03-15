@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>作业6 - LiangJiSama Offical</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <link href="https://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+    <meta name="description" content="这一次作业比较简单，我们主要是需要对新的框架调整我们对应代码的格式。 &#x2F;&#x2F;Render() framebuffer[m++] &#x3D; scene.castRay(ray,0); &#x2F;&#x2F; castRay(ray, current_depth);  inline Intersection Triangle::getIntersection(Ray ray) &amp;#123;     Intersection i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="作业6">
+<meta property="og:url" content="http://liangjisama.top/2023/03/15/Games101/%E4%BD%9C%E4%B8%9A6/index.html">
+<meta property="og:site_name" content="LiangJiSama Offical">
+<meta property="og:description" content="这一次作业比较简单，我们主要是需要对新的框架调整我们对应代码的格式。 &#x2F;&#x2F;Render() framebuffer[m++] &#x3D; scene.castRay(ray,0); &#x2F;&#x2F; castRay(ray, current_depth);  inline Intersection Triangle::getIntersection(Ray ray) &amp;#123;     Intersection i">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/03/15_15_57_18_v2-ec7203046a234db31d321031dfe0baa8_1440w.jpeg">
+<meta property="og:image" content="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/03/15_16_0_32_image-20230315160032522.png">
+<meta property="article:published_time" content="2023-03-15T12:31:01.000Z">
+<meta property="article:modified_time" content="2023-03-15T12:33:40.399Z">
+<meta property="article:author" content="Kagamine Len">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/03/15_15_57_18_v2-ec7203046a234db31d321031dfe0baa8_1440w.jpeg">
+    
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678883651401">
+    
+    <link rel="stylesheet" href="/css/style.css?v=1678883651401">
+
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="mdui-drawer-body-left">
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Kagamine Len" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Kagamine Len">
+            <img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len" alt="Kagamine Len">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>17</div>
+        <div><span>标签</span>8</div>
+        <div><span>分类</span>2</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://github.com/LiangJiSama"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/GAMES101/">GAMES101</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/笔记/">笔记</a>
+          <span class="category-list-count">13</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/unity/" style="font-size: 10px;">unity</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 15px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 10px;">计算机组成原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(8);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">13</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/03/15/Games101/%E4%BD%9C%E4%B8%9A5/">作业5</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/15/Games101/%E4%BD%9C%E4%B8%9A3%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">作业3的相关问题</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/15/Games101/%E4%BD%9C%E4%B8%9A6/">作业6</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/15/Games101/%E5%9C%A8macos%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%85%8D%E7%BD%AEgames101%E4%BD%9C%E4%B8%9A%E7%8E%AF%E5%A2%83/">在macos 环境下配置games101 作业环境</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/06/tcp/">tcp</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2023 Kagamine Len
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" alt="作业6" loading="lazy">
+            <h1>作业6</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2023年03月15日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/GAMES101/">GAMES101</a>
+        
+        
+    <a><i class="nexmoefont icon-areachart"></i>约1.8k字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要8分钟</a>
+
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <p>这一次作业比较简单，我们主要是需要对新的框架调整我们对应代码的格式。</p>
+<pre><code class="highlight c++"><span class="comment">//Render()</span>
+framebuffer[m++] = scene.<span class="built_in">castRay</span>(ray,<span class="number">0</span>); <span class="comment">// castRay(ray, current_depth);</span></code></pre>
+
+<pre><code class="highlight c++"><span class="function"><span class="keyword">inline</span> Intersection <span class="title">Triangle::getIntersection</span><span class="params">(Ray ray)</span></span>
+<span class="function"></span>&#123;
+    Intersection inter;
+
+    <span class="keyword">if</span> (<span class="built_in">dotProduct</span>(ray.direction, normal) &gt; <span class="number">0</span>)  <span class="comment">//判断是否能打在正面</span>
+        <span class="keyword">return</span> inter;
+    <span class="type">double</span> u, v, t_tmp = <span class="number">0</span>;
+    Vector3f pvec = <span class="built_in">crossProduct</span>(ray.direction, e2);
+    <span class="type">double</span> det = <span class="built_in">dotProduct</span>(e1, pvec); <span class="comment">//Moller trumbore算法中分母接近于0 即入射光线和平面平行</span>
+    <span class="keyword">if</span> (<span class="built_in">fabs</span>(det) &lt; EPSILON)
+        <span class="keyword">return</span> inter;
+<span class="comment">//......</span>
+&#125;
+<span class="built_in">Intersection</span>()&#123;
+        happened=<span class="literal">false</span>;  <span class="comment">//是否碰撞</span>
+        coords=<span class="built_in">Vector3f</span>(); <span class="comment">//碰撞坐标</span>
+        normal=<span class="built_in">Vector3f</span>(); <span class="comment">//平面法向</span>
+        distance= std::numeric_limits&lt;<span class="type">double</span>&gt;::<span class="built_in">max</span>(); <span class="comment">//射线长度/距离(t)</span>
+        obj =<span class="literal">nullptr</span>; <span class="comment">//相交的物体，对于这个三角形，其继承于object类，因此即为this</span>
+        m=<span class="literal">nullptr</span>; <span class="comment">//material </span>
+    &#125;</code></pre>
+<span id="more"></span>
+<p><code>Bounds3</code>类中，存储了左下角及右上角两个点对来表示bounding box的边界。</p>
+<p>附加部分实现SAH部分：</p>
+<p>这一部分参考了：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/50720158">https://zhuanlan.zhihu.com/p/50720158</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Q_pril/article/details/124054123">https://blog.csdn.net/Q_pril/article/details/124054123</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/605710928">https://zhuanlan.zhihu.com/p/605710928</a></p>
+<p>原slide：<a target="_blank" rel="noopener" href="http://15462.courses.cs.cmu.edu/fall2015/lecture/acceleration/slide_026">http://15462.courses.cs.cmu.edu/fall2015/lecture/acceleration/slide_026</a></p>
+<p>[还有一篇参考？]</p>
+<p>第一篇知乎专栏里介绍的比较清楚，其思想比较简单。</p>
+<p>我们需要注意的是，在这里SAH作为一种启发式算法，只是选取了当前局部最优的情况，其贪心步骤仅考虑了当前情况的最优性，因此我们对每个object直接取了在当前节点进行相交的开销。</p>
+<p>具体的，我们考虑一个根节点N，假设将其划分为两个子节点A和B，我们考虑两个开销，即和object直接判断相交的开销t，和遍历当前节点的开销$t_{trav}$，我们假设无论是什么形状，其判断相交开销为1，$t_{trav}$有经验值0.125。</p>
+<p>最后我们有两个假设：</p>
+<p>1.光线是完全随机分布的</p>
+<p>2.光线不会和其他物体发生碰撞</p>
+<p>此时我们有概率上的一个假设，即对于在凸包N中的凸包A，一条光线打到B的情况下，其同时打到A的概率为$P(hitA|hitN) &#x3D; \frac{S(A)}{S(N)}$，其中S为该包围盒的表面积，设打到A的概率为P(A)，打到B的概率为P(B)，由于采用启发式算法，我们采用一个估值函数:</p>
+<p>$c(A,B) &#x3D; t_{trav} + P(A) * N_A + P(B) * N_B$</p>
+<p>采用这个方法我们即考虑了空间中包围体的分布，也考虑了当前的块内所含的object数，可以达到较好的效果。</p>
+<p>在实践中，我们可以选择对每个物体的最左端和最右端构建划分，并计算上面的值，当然这种方法的速度是较慢的。</p>
+<p>我们可以采用桶的方式，对整个图形进行等距划分。</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/03/15_15_57_18_v2-ec7203046a234db31d321031dfe0baa8_1440w.jpeg" alt="img" data-caption="img" loading="lazy"></p>
+<p>我们有具体算法如下，实践中，我们采用bucket_size &lt; 32为佳：</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/03/15_16_0_32_image-20230315160032522.png" alt="image-20230315160032522" data-caption="image-20230315160032522" loading="lazy"></p>
+<p>这一部分的算法理论上来说实现是较为简单的，在实现过程中，我们考虑某个图元，其质心位置为t，则其属于第$B &#x3D; Clamp(\frac{(t - t_{min})}{t_{max}-t_{min}}*n,0,n-1)$，我们需要这个clamp，主要是因为浮点数精度的问题，在后续我们也确实遇到了浮点数精度的问题。</p>
+<p>我们对思路进行优化，即排序后我们正向和反向遍历整个列表，并计算第1~i个桶中所有物体的表面积、个数（反向则是最后一个到第i个），由于父亲节点的包围盒大小并不变，遍历复杂度为常数，我们仅需考虑表面积*个数的值即可。</p>
+<p>计算完之后我们仅需遍历以i为分界的左边的桶和右边的桶的值的和取最小值即可。</p>
+<p>其代码具体如下：</p>
+<pre><code class="highlight c++"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</span>
+<span class="function"><span class="type">void</span> <span class="title">BVHAccel::getBucketCost</span><span class="params">(std::vector&lt;<span class="type">float</span>&gt; &amp;bucket_cost, std::vector&lt;<span class="type">int</span>&gt; &amp;bucket_last_obj, T begin, T end,</span></span>
+<span class="params"><span class="function">                             <span class="type">const</span> <span class="type">int</span> &amp;axis, <span class="type">const</span> <span class="type">float</span> &amp;minn, <span class="type">const</span> <span class="type">float</span> &amp;maxx)</span> </span>&#123;
+
+    <span class="keyword">auto</span> getBucket = [minn,maxx](<span class="type">float</span> a) &#123;
+        <span class="keyword">return</span>  std::<span class="built_in">clamp</span>((<span class="type">int</span>)((a - minn) / (maxx - minn) * (bucket_size)),<span class="number">0</span>,bucket_size<span class="number">-1</span>);
+    &#125;;
+    Bounds3 bound;
+    <span class="type">int</span> cur_bucket = <span class="number">0</span>;
+    <span class="keyword">for</span>(<span class="keyword">auto</span> i = begin; i &lt; end; i++)&#123;
+        <span class="type">int</span> bucket_i;
+        <span class="keyword">switch</span>(axis)&#123;
+            <span class="keyword">case</span> <span class="number">0</span>:
+                bucket_i = <span class="built_in">getBucket</span>((*i)-&gt;<span class="built_in">getBounds</span>().<span class="built_in">Centroid</span>().x);
+                <span class="keyword">break</span>;
+            <span class="keyword">case</span> <span class="number">1</span>:
+                bucket_i = <span class="built_in">getBucket</span>((*i)-&gt;<span class="built_in">getBounds</span>().<span class="built_in">Centroid</span>().y);
+                <span class="keyword">break</span>;
+            <span class="keyword">case</span> <span class="number">2</span>:
+                bucket_i = <span class="built_in">getBucket</span>((*i)-&gt;<span class="built_in">getBounds</span>().<span class="built_in">Centroid</span>().z);
+                <span class="keyword">break</span>;
+        &#125;
+
+        <span class="keyword">if</span>(bucket_i != cur_bucket)&#123;
+            <span class="keyword">for</span>(<span class="type">int</span> x = cur_bucket; x &lt; bucket_i; x++)&#123;
+                bucket_last_obj[x] = i - begin;
+                bucket_cost[x] = bound.<span class="built_in">SurfaceArea</span>();
+            &#125;
+            cur_bucket = bucket_i;
+        &#125;
+        bound = <span class="built_in">Union</span>(bound,(*i)-&gt;<span class="built_in">getBounds</span>());
+    &#125;
+&#125;
+<span class="function">BVHBuildNode* <span class="title">BVHAccel::recursiveBuildSAH</span><span class="params">(std::vector&lt;Object*&gt; objects)</span></span>
+<span class="function"></span>&#123;
+    BVHBuildNode* node = <span class="keyword">new</span> <span class="built_in">BVHBuildNode</span>();
+
+    <span class="comment">// Compute bounds of all primitives in BVH node</span>
+    Bounds3 bounds;
+    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; objects.<span class="built_in">size</span>(); ++i)
+        bounds = <span class="built_in">Union</span>(bounds, objects[i]-&gt;<span class="built_in">getBounds</span>());
+    <span class="keyword">if</span> (objects.<span class="built_in">size</span>() == <span class="number">1</span>) &#123;
+        <span class="comment">// Create leaf _BVHBuildNode_</span>
+        node-&gt;bounds = objects[<span class="number">0</span>]-&gt;<span class="built_in">getBounds</span>();
+        node-&gt;object = objects[<span class="number">0</span>];
+        node-&gt;left = <span class="literal">nullptr</span>;
+        node-&gt;right = <span class="literal">nullptr</span>;
+        <span class="keyword">return</span> node;
+    &#125;
+    <span class="keyword">else</span> <span class="keyword">if</span> (objects.<span class="built_in">size</span>() == <span class="number">2</span>) &#123;
+        node-&gt;left = <span class="built_in">recursiveBuildSAH</span>(std::vector&#123;objects[<span class="number">0</span>]&#125;);
+        node-&gt;right = <span class="built_in">recursiveBuildSAH</span>(std::vector&#123;objects[<span class="number">1</span>]&#125;);
+
+        node-&gt;bounds = <span class="built_in">Union</span>(node-&gt;left-&gt;bounds, node-&gt;right-&gt;bounds);
+        <span class="keyword">return</span> node;
+    &#125;
+    <span class="keyword">else</span> &#123;
+        Bounds3 centroidBounds;
+        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; objects.<span class="built_in">size</span>(); ++i)
+            centroidBounds =
+                    <span class="built_in">Union</span>(centroidBounds, objects[i]-&gt;<span class="built_in">getBounds</span>().<span class="built_in">Centroid</span>());
+        <span class="type">float</span> best_cost = kInfinity;
+        std::vector&lt;Object*&gt; leftshapes,rightshapes;
+        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">3</span>; i++)&#123;
+            <span class="function">std::vector&lt;<span class="type">float</span>&gt; <span class="title">bucket_cost_l</span><span class="params">(bucket_size)</span></span>;
+            <span class="function">std::vector&lt;<span class="type">float</span>&gt; <span class="title">bucket_cost_r</span><span class="params">(bucket_size)</span></span>;
+            <span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">bucket_last_obj_l</span><span class="params">(bucket_size)</span></span>;
+            <span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">bucket_last_obj_r</span><span class="params">(bucket_size)</span></span>;
+            <span class="type">float</span> minn,maxx;
+            <span class="keyword">switch</span> (i) &#123;
+                <span class="keyword">case</span> <span class="number">0</span>:
+                    std::<span class="built_in">sort</span>(objects.<span class="built_in">begin</span>(), objects.<span class="built_in">end</span>(), [](<span class="keyword">auto</span> f1, <span class="keyword">auto</span> f2) &#123;
+                        <span class="keyword">return</span> f1-&gt;<span class="built_in">getBounds</span>().<span class="built_in">Centroid</span>().x &lt;
+                               f2-&gt;<span class="built_in">getBounds</span>().<span class="built_in">Centroid</span>().x;
+                    &#125;);
+                    minn = centroidBounds.pMin.x;
+                    maxx = centroidBounds.pMax.x;
+                    <span class="keyword">break</span>;
+                <span class="keyword">case</span> <span class="number">1</span>:
+                    std::<span class="built_in">sort</span>(objects.<span class="built_in">begin</span>(), objects.<span class="built_in">end</span>(), [](<span class="keyword">auto</span> f1, <span class="keyword">auto</span> f2) &#123;
+                        <span class="keyword">return</span> f1-&gt;<span class="built_in">getBounds</span>().<span class="built_in">Centroid</span>().y &lt;
+                               f2-&gt;<span class="built_in">getBounds</span>().<span class="built_in">Centroid</span>().y;
+                    &#125;);
+                    minn = centroidBounds.pMin.y;
+                    maxx = centroidBounds.pMax.y;
+                    <span class="keyword">break</span>;
+                <span class="keyword">case</span> <span class="number">2</span>:
+                    std::<span class="built_in">sort</span>(objects.<span class="built_in">begin</span>(), objects.<span class="built_in">end</span>(), [](<span class="keyword">auto</span> f1, <span class="keyword">auto</span> f2) &#123;
+                        <span class="keyword">return</span> f1-&gt;<span class="built_in">getBounds</span>().<span class="built_in">Centroid</span>().z &lt;
+                               f2-&gt;<span class="built_in">getBounds</span>().<span class="built_in">Centroid</span>().z;
+                    &#125;);
+                    minn = centroidBounds.pMin.z;
+                    maxx = centroidBounds.pMax.z;
+                    <span class="keyword">break</span>;
+            &#125;
+
+<span class="comment">//            std::sort(objects.begin(), objects.end(), [i](auto f1, auto f2) &#123;</span>
+<span class="comment">//                return f1-&gt;getBounds().Centroid()[i] &lt;</span>
+<span class="comment">//                       f2-&gt;getBounds().Centroid()[i];</span>
+<span class="comment">//            &#125;);</span>
+            <span class="built_in">getBucketCost</span>(bucket_cost_r, bucket_last_obj_r, objects.<span class="built_in">rbegin</span>(), objects.<span class="built_in">rend</span>(), i, maxx, minn);
+            <span class="built_in">getBucketCost</span>(bucket_cost_l, bucket_last_obj_l, objects.<span class="built_in">begin</span>(), objects.<span class="built_in">end</span>(), i, minn, maxx);
+            <span class="type">float</span> min_cost = kInfinity;
+            <span class="type">int</span> best_div = <span class="number">0</span>;
+            <span class="keyword">for</span>(<span class="type">int</span> l=<span class="number">0</span>;l&lt;bucket_size - <span class="number">1</span>;l++)&#123;
+                <span class="type">int</span> r = bucket_size - (l + <span class="number">2</span>);
+                <span class="type">float</span> cost = bucket_cost_l[l] * bucket_last_obj_l[l] + bucket_cost_r[r] * (objects.<span class="built_in">size</span>() - bucket_last_obj_l[l]);
+                <span class="comment">// a float accuracy error will occur here, seems have little affect on whole algorithm;</span>
+                <span class="comment">// assert(bucket_last_obj_l[l] + bucket_last_obj_r[r] == objects.size());</span>
+                <span class="keyword">if</span>(cost &lt; min_cost)&#123;
+                    min_cost = cost;
+                    best_div = bucket_last_obj_l[l];
+                &#125;
+            &#125;
+            <span class="keyword">if</span>(min_cost &lt; best_cost)&#123;
+                leftshapes = std::<span class="built_in">vector</span>&lt;Object*&gt;(objects.<span class="built_in">begin</span>(),objects.<span class="built_in">begin</span>() + best_div);
+                rightshapes = std::<span class="built_in">vector</span>&lt;Object*&gt;(objects.<span class="built_in">begin</span>() + best_div,objects.<span class="built_in">end</span>());
+                <span class="comment">//forget this sentence! fuck!</span>
+                best_cost = min_cost;
+            &#125;
+        &#125;
+        <span class="comment">//std::cout&lt;&lt;&quot;Current objects.size() = &quot;&lt;&lt;objects.size()&lt;&lt;std::endl;</span>
+
+        <span class="built_in">assert</span>(objects.<span class="built_in">size</span>() == (leftshapes.<span class="built_in">size</span>() + rightshapes.<span class="built_in">size</span>()));
+
+        <span class="built_in">assert</span>(leftshapes.<span class="built_in">size</span>() != <span class="number">0</span>);
+        <span class="built_in">assert</span>(rightshapes.<span class="built_in">size</span>() != <span class="number">0</span>);
+
+        node-&gt;left = <span class="built_in">recursiveBuildSAH</span>(leftshapes);
+        node-&gt;right = <span class="built_in">recursiveBuildSAH</span>(rightshapes);
+
+        node-&gt;bounds = <span class="built_in">Union</span>(node-&gt;left-&gt;bounds, node-&gt;right-&gt;bounds);
+    &#125;
+
+    <span class="keyword">return</span> node;
+&#125;</code></pre>
+
+<p>首先我们需要注意，尽管代码在类<code>Vector3f</code>中实现了对操作符<code>[]</code>的重载，但是我们在这里使用这个操作符会出现连接错误，代码中采用了switch-case的方法对轴进行枚举，这里的报错原因还不是很清楚。</p>
+<p>其次我们需要注意代码中的<code>bucket_last_obj_l</code>、<code>bucket_last_obj_r</code>，这两个分别指明了从头开始及从尾开始遍历时第i个桶的下一个obj的下表，我们可以看到注释下的assert有时是不成立的，这就是浮点数精度的问题导致的，他会使我们的cost值出现一定的不正确，但对我们整个算法的性能影响不大。</p>
+<p>最后是<code>getBucketCost</code>函数，在这个函数中，我们使用了模板对正向迭代器和逆向迭代器进行代表，我认为这种方法有一定的危险性，C++可能会提供更specified的方法。</p>
+
+    
+  </article>
+
+  
+      
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-search-space">
+	<div class="search-container">
+		<div class="search-header">
+			<div class="search-input-container">
+				<input
+					class="search-input"
+					type="text"
+					placeholder="搜索"
+					oninput="sinput();"
+				/>
+			</div>
+			<a class="search-close" onclick="sclose();">×</a>
+		</div>
+		<div class="search-body"></div>
+	</div>
+</div>
+
+    
+<script src="/lib/mdui_043tiny/mdui.js"></script>
+<script src="/lib/fancybox/fancybox.umd.js"></script>
+
+
+ 
+
+<script async src="/js/app.js?v=1678883651403"></script>
+
+<script src="https://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script> <script> hljs.initHighlightingOnLoad(); </script>
+
+</body>
+
+</html>

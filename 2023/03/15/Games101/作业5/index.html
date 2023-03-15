@@ -4,17 +4,21 @@
 
 <head>
     
-    <title>标签：数据库 - LiangJiSama Offical</title>
+    <title>作业5 - LiangJiSama Offical</title>
     <meta charset="UTF-8">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     <link href="https://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="LiangJiSama Offical">
-<meta property="og:url" content="http://liangjisama.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
+    <meta name="description" content="作业5我们需要翻找代码找到u,v的含义，因为这个代码实际上并没有贴图，代码中有这样一行注释： uv stores the u and v barycentric coordinates of the intersected point  因此，我们返回求得的重心坐标u，v即可。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="作业5">
+<meta property="og:url" content="http://liangjisama.top/2023/03/15/Games101/%E4%BD%9C%E4%B8%9A5/index.html">
 <meta property="og:site_name" content="LiangJiSama Offical">
+<meta property="og:description" content="作业5我们需要翻找代码找到u,v的含义，因为这个代码实际上并没有贴图，代码中有这样一行注释： uv stores the u and v barycentric coordinates of the intersected point  因此，我们返回求得的重心坐标u，v即可。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-15T12:33:01.000Z">
+<meta property="article:modified_time" content="2023-03-15T12:33:15.465Z">
 <meta property="article:author" content="Kagamine Len">
 <meta name="twitter:card" content="summary">
     
@@ -22,9 +26,9 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678883651424">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678883651400">
     
-    <link rel="stylesheet" href="/css/style.css?v=1678883651424">
+    <link rel="stylesheet" href="/css/style.css?v=1678883651400">
 
     
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -225,27 +229,25 @@
     </div>
     <div id="nexmoe-content">
         <div class="nexmoe-primary">
-            <section class="nexmoe-posts">
-    
-    <div class="nexmoe-post">
-        <a href="/2021/04/27/NF/">
-            
-                <div class="nexmoe-post-cover mdui-ripple"> 
-                    <img src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" alt="范式" loading="lazy">
-                    <h1>范式</h1>
-                </div>
-            
-        </a>
+            <div class="nexmoe-post">
 
-        <div class="nexmoe-post-meta">
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" alt="作业5" loading="lazy">
+            <h1>作业5</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
-        <a class="nexmoefont icon-calendar-fill">2021年04月27日</a>
+        <a class="nexmoefont icon-calendar-fill">2023年03月15日</a>
         
-            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/GAMES101/">GAMES101</a>
         
         
-    <a><i class="nexmoefont icon-areachart"></i>约1.5k字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要5分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>约226字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要1分钟</a>
 
     </div>
     
@@ -255,13 +257,38 @@
     
 </div>
 
-        <article>
-            <h1 id="1-第一范式（1NF）"><a href="#1-第一范式（1NF）" class="headerlink" title="1. 第一范式（1NF）"></a>1. 第一范式（1NF）</h1><p>符合1NF的关系（你可以理解为数据表。“关系模式”和“关系”的区别，类似于面向对象程序设计中”类“与”对象“的区别。”关系“是”关系模式“的一个实例，你可以把”关系”理解为一张带数据的表，而“关系模式”是这张数据表的表结构。<strong>1NF的定义为：符合1NF的关系中的每个属性都不可再分</strong>。<code>表1</code>所示的情况，就不符合1NF的要求。</p>
-        </article>
-    </div>
-    
-</section>
+    <p>作业5我们需要翻找代码找到u,v的含义，因为这个代码实际上并没有贴图，代码中有这样一行注释：</p>
+<pre><code class="highlight livecodeserver">uv stores <span class="keyword">the</span> u <span class="keyword">and</span> v barycentric coordinates <span class="keyword">of</span> <span class="keyword">the</span> intersected point</code></pre>
 
+<p>因此，我们返回求得的重心坐标u，v即可。</p>
+<span id="more"></span>
+
+<p>有一个奇怪的现象，在判断条件是否合法时，我们使用下面意义完全相同的两行，第一行会在图像中出现一个穿透底下平面的蓝点，而第二行则完全正常。</p>
+<pre><code class="highlight C++"><span class="comment">//if(tnear &gt;= 0 &amp;&amp; u&gt;=0 &amp;&amp; v&gt;=0 &amp;&amp; (1-u-v)&gt;=0)return true;</span>
+<span class="keyword">if</span>(tnear &gt;= <span class="number">0</span> &amp;&amp; u&gt;=<span class="number">0</span> &amp;&amp; v&gt;=<span class="number">0</span> &amp;&amp; u+v &lt;= <span class="number">1</span>)<span class="keyword">return</span> <span class="literal">true</span>;</code></pre>
+
+<p>这次作业的更多详解：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ycrsw/article/details/124199544">https://blog.csdn.net/ycrsw/article/details/124199544</a></p>
+<p>注意！ 由于此处的三角形只有面向相机的一面，所以并没有判断正面和反面。</p>
+
+    
+  </article>
+
+  
+      
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          
+      </div>
+  
+</div>
             <div class="nexmoe-post-right">
               <div class="nexmoe-fixed">
                   <div class="nexmoe-tool"> 
@@ -303,7 +330,7 @@
 
  
 
-<script async src="/js/app.js?v=1678883651424"></script>
+<script async src="/js/app.js?v=1678883651400"></script>
 
 <script src="https://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script> <script> hljs.initHighlightingOnLoad(); </script>
 
