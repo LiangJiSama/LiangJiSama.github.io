@@ -35,9 +35,9 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678878556341">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678879304888">
     
-    <link rel="stylesheet" href="/css/style.css?v=1678878556341">
+    <link rel="stylesheet" href="/css/style.css?v=1678879304888">
 
     
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -248,7 +248,7 @@
             <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
         
         
-    <a><i class="nexmoefont icon-areachart"></i>约423字</a>
+    <a><i class="nexmoefont icon-areachart"></i>约421字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要1分钟</a>
 
     </div>
@@ -272,11 +272,58 @@
 <p>如果允许改变对象的值，则该const是个底层const，否则是个顶层const</p>
 <h2 id="const成员函数"><a href="#const成员函数" class="headerlink" title="const成员函数"></a>const成员函数</h2><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/05/1FNhZaxAsvM7D6Q.png" alt="image-20210505113957418" data-caption="image-20210505113957418" loading="lazy"></p>
 <p>即以下两种情况</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">const</span> Sales_data *p=<span class="hljs-keyword">this</span>;<span class="hljs-comment">//this指向的内容是可以改变的，因此不能赋给一个常量指针</span><br><span class="hljs-keyword">const</span> Sales_data ap;<br>ap.normalFuction(); <span class="hljs-comment">//由于是const对象而该方法有可能改变对象的值，因此该调用是不允许的</span><br></code></pre></td></tr></table></figure>
+<pre><code class="highlight kotlin"><span class="keyword">const</span> Sales_data *p=<span class="keyword">this</span>;<span class="comment">//this指向的内容是可以改变的，因此不能赋给一个常量指针</span>
+<span class="keyword">const</span> Sales_data ap;
+ap.normalFuction(); <span class="comment">//由于是const对象而该方法有可能改变对象的值，因此该调用是不允许的</span></code></pre>
 
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;memory&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">A</span>()&#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;constructor A is called&quot;</span>&lt;&lt;endl;<br>    &#125;<br>    <span class="hljs-built_in">A</span>()<span class="hljs-type">const</span>&#123;<br>    <span class="hljs-comment">//不能声明构造函数的const 函数</span><br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">boo</span><span class="hljs-params">()</span></span>&#123; <span class="hljs-comment">//由于const函数只能被const对象调用，因此可以重载const函数</span><br>        cout&lt;&lt;<span class="hljs-string">&quot;boo is called&quot;</span>&lt;&lt;endl;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">boo</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>&#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;boo const is called&quot;</span>&lt;&lt;endl;<br>    &#125;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">const</span> A a;<br>    A b;<br>    a.<span class="hljs-built_in">boo</span>();<br>    b.<span class="hljs-built_in">boo</span>();<br>    <span class="hljs-type">const</span> A* c=&amp;b;<br>    c-&gt;<span class="hljs-built_in">boo</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre><code class="highlight c++"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span>
+<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span>
+<span class="keyword">using</span> <span class="keyword">namespace</span> std;
+<span class="keyword">class</span> <span class="title class_">A</span>&#123;
+<span class="keyword">public</span>:
+    <span class="built_in">A</span>()&#123;
+        cout&lt;&lt;<span class="string">&quot;constructor A is called&quot;</span>&lt;&lt;endl;
+    &#125;
+    <span class="built_in">A</span>()<span class="type">const</span>&#123;
+    <span class="comment">//不能声明构造函数的const 函数</span>
+    &#125;
+    <span class="function"><span class="type">void</span> <span class="title">boo</span><span class="params">()</span></span>&#123; <span class="comment">//由于const函数只能被const对象调用，因此可以重载const函数</span>
+        cout&lt;&lt;<span class="string">&quot;boo is called&quot;</span>&lt;&lt;endl;
+    &#125;
+    <span class="function"><span class="type">void</span> <span class="title">boo</span><span class="params">()</span> <span class="type">const</span></span>&#123;
+        cout&lt;&lt;<span class="string">&quot;boo const is called&quot;</span>&lt;&lt;endl;
+    &#125;
+&#125;;
+<span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;
+    <span class="type">const</span> A a;
+    A b;
+    a.<span class="built_in">boo</span>();
+    b.<span class="built_in">boo</span>();
+    <span class="type">const</span> A* c=&amp;b;
+    c-&gt;<span class="built_in">boo</span>();
+&#125;</code></pre>
 
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;memory&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">A</span>()&#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;constructor A is called&quot;</span>&lt;&lt;endl;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">boo</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>&#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;boo const is called&quot;</span>&lt;&lt;endl;<br>    &#125;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">const</span> A a;<br>    A b;<br>    a.<span class="hljs-built_in">boo</span>();<span class="hljs-comment">//此时会把this指针提升为一个常量指针常量</span><br>    b.<span class="hljs-built_in">boo</span>();<br>    <span class="hljs-type">const</span> A* c=&amp;b; <br>    c-&gt;<span class="hljs-built_in">boo</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre><code class="highlight c++"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span>
+<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span>
+<span class="keyword">using</span> <span class="keyword">namespace</span> std;
+<span class="keyword">class</span> <span class="title class_">A</span>&#123;
+<span class="keyword">public</span>:
+    <span class="built_in">A</span>()&#123;
+        cout&lt;&lt;<span class="string">&quot;constructor A is called&quot;</span>&lt;&lt;endl;
+    &#125;
+    
+    <span class="function"><span class="type">void</span> <span class="title">boo</span><span class="params">()</span> <span class="type">const</span></span>&#123;
+        cout&lt;&lt;<span class="string">&quot;boo const is called&quot;</span>&lt;&lt;endl;
+    &#125;
+&#125;;
+<span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;
+    <span class="type">const</span> A a;
+    A b;
+    a.<span class="built_in">boo</span>();<span class="comment">//此时会把this指针提升为一个常量指针常量</span>
+    b.<span class="built_in">boo</span>();
+    <span class="type">const</span> A* c=&amp;b; 
+    c-&gt;<span class="built_in">boo</span>();
+&#125;</code></pre>
 
 <p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/05/RMy9v1u2sPSK7jJ.png" alt="image-20210505143142055" data-caption="image-20210505143142055" loading="lazy"></p>
 
@@ -349,7 +396,7 @@
 
  
 
-<script async src="/js/app.js?v=1678878556343"></script>
+<script async src="/js/app.js?v=1678879304890"></script>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
 

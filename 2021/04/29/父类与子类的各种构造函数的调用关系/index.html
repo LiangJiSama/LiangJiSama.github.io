@@ -27,9 +27,9 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678878556344">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678879304891">
     
-    <link rel="stylesheet" href="/css/style.css?v=1678878556344">
+    <link rel="stylesheet" href="/css/style.css?v=1678879304891">
 
     
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -240,7 +240,7 @@
             <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
         
         
-    <a><i class="nexmoefont icon-areachart"></i>约258字</a>
+    <a><i class="nexmoefont icon-areachart"></i>约257字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要1分钟</a>
 
     </div>
@@ -256,7 +256,36 @@
 <p>对于移动构造函数的情况间下列代码：</p>
 <span id="more"></span>
 
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">A</span>()&#123; <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;a&quot;</span>); &#125;<br>    <span class="hljs-built_in">A</span>(<span class="hljs-type">const</span> A&amp;)&#123; <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;b&quot;</span>); &#125;<br>    <span class="hljs-built_in">A</span>(A&amp;&amp; a) &#123; <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;c&quot;</span>); &#125;<br>    A <span class="hljs-keyword">operator</span> = (<span class="hljs-type">const</span> A&amp;)&#123; <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;d&quot;</span>); &#125;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span>:<span class="hljs-keyword">public</span> A<br>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">B</span>():<span class="hljs-built_in">A</span>()&#123; <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;1&quot;</span>); &#125;<br>    <span class="hljs-built_in">B</span>(<span class="hljs-type">const</span> B&amp; b):<span class="hljs-built_in">A</span>(b) &#123; <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;2&quot;</span>); &#125;<br>    <span class="hljs-built_in">B</span>(B&amp;&amp; b):<span class="hljs-built_in">A</span>(b) &#123; <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;3&quot;</span>); &#125;<br>    B <span class="hljs-keyword">operator</span> = (<span class="hljs-type">const</span> B&amp;)&#123; <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;4&quot;</span>); &#125;<br>&#125;;<br><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    B b=<span class="hljs-built_in">B</span>();<br>    <span class="hljs-function">B <span class="hljs-title">m</span><span class="hljs-params">(b)</span></span>;<br>    B n = b; <span class="hljs-comment">//此处是初始化 应该采用拷贝构造的方式初始化</span><br>    n=b;<br>    <span class="hljs-function">B <span class="hljs-title">q</span><span class="hljs-params">(std::move(b))</span></span>; <span class="hljs-comment">//进入移动构造函数后 b被拷贝为一个左值，然后会调用A的拷贝构造函数</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre><code class="highlight c++"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span>
+<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span>
+<span class="keyword">class</span> <span class="title class_">A</span>
+&#123;
+<span class="keyword">public</span>:
+    <span class="built_in">A</span>()&#123; <span class="built_in">printf</span>(<span class="string">&quot;a&quot;</span>); &#125;
+    <span class="built_in">A</span>(<span class="type">const</span> A&amp;)&#123; <span class="built_in">printf</span>(<span class="string">&quot;b&quot;</span>); &#125;
+    <span class="built_in">A</span>(A&amp;&amp; a) &#123; <span class="built_in">printf</span>(<span class="string">&quot;c&quot;</span>); &#125;
+    A <span class="keyword">operator</span> = (<span class="type">const</span> A&amp;)&#123; <span class="built_in">printf</span>(<span class="string">&quot;d&quot;</span>); &#125;
+&#125;;
+
+<span class="keyword">class</span> <span class="title class_">B</span>:<span class="keyword">public</span> A
+&#123;
+<span class="keyword">public</span>:
+    <span class="built_in">B</span>():<span class="built_in">A</span>()&#123; <span class="built_in">printf</span>(<span class="string">&quot;1&quot;</span>); &#125;
+    <span class="built_in">B</span>(<span class="type">const</span> B&amp; b):<span class="built_in">A</span>(b) &#123; <span class="built_in">printf</span>(<span class="string">&quot;2&quot;</span>); &#125;
+    <span class="built_in">B</span>(B&amp;&amp; b):<span class="built_in">A</span>(b) &#123; <span class="built_in">printf</span>(<span class="string">&quot;3&quot;</span>); &#125;
+    B <span class="keyword">operator</span> = (<span class="type">const</span> B&amp;)&#123; <span class="built_in">printf</span>(<span class="string">&quot;4&quot;</span>); &#125;
+&#125;;
+
+
+<span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>
+<span class="function"></span>&#123;
+    B b=<span class="built_in">B</span>();
+    <span class="function">B <span class="title">m</span><span class="params">(b)</span></span>;
+    B n = b; <span class="comment">//此处是初始化 应该采用拷贝构造的方式初始化</span>
+    n=b;
+    <span class="function">B <span class="title">q</span><span class="params">(std::move(b))</span></span>; <span class="comment">//进入移动构造函数后 b被拷贝为一个左值，然后会调用A的拷贝构造函数</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+&#125;</code></pre>
 
 <p>最后的输出结果:a1b2b24b3</p>
 
@@ -322,7 +351,7 @@
 
  
 
-<script async src="/js/app.js?v=1678878556346"></script>
+<script async src="/js/app.js?v=1678879304892"></script>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
 
