@@ -30,9 +30,9 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678879304894">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678882177422">
     
-    <link rel="stylesheet" href="/css/style.css?v=1678879304894">
+    <link rel="stylesheet" href="/css/style.css?v=1678882177422">
 
     
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -306,28 +306,13 @@
 <p>对流对象的多线程访问会导致数据竞争</p>
 <p>In the general case, streams are not safe to use across threads. You must protect the stream using a lock, such as <code>std::mutex</code>.</p>
 <p>Note that even if streams were safe to access across threads this code would probably not do what you want. Consider this line:</p>
-<pre><code class="highlight cpp">myfile &lt;&lt; matchSet.testCase &lt;&lt; <span class="string">&quot;,&quot;</span> &lt;&lt; corr.match &lt;&lt; corr.editDistance &lt;&lt; <span class="string">&quot;\n&quot;</span>;</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">myfile &lt;&lt; matchSet.testCase &lt;&lt; <span class="hljs-string">&quot;,&quot;</span> &lt;&lt; corr.match &lt;&lt; corr.editDistance &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br></code></pre></td></tr></table></figure>
 
 <p>which is the same as</p>
-<pre><code class="highlight cpp">myfile &lt;&lt; matchSet.testCase;
-myfile &lt;&lt; <span class="string">&quot;,&quot;</span>;
-myfile &lt;&lt; corr.match;
-myfile &lt;&lt; corr.editDistance;
-myfile &lt;&lt; <span class="string">&quot;\n&quot;</span>;</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp">myfile &lt;&lt; matchSet.testCase;<br>myfile &lt;&lt; <span class="hljs-string">&quot;,&quot;</span>;<br>myfile &lt;&lt; corr.match;<br>myfile &lt;&lt; corr.editDistance;<br>myfile &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br></code></pre></td></tr></table></figure>
 
 <p>Note the race condition. Let’s say that your implementation’s <code>operator&lt;&lt;</code> for streams is synchronized for you by the implementation. You still have a potential race in this outer code. For instance, here is one possible execution of this across 2 threads:</p>
-<pre><code class="highlight cpp">   Thread <span class="number">1</span>                              Thread <span class="number">2</span>
-======================================================================
-myfile &lt;&lt; matchSet.testCase;
-                                         myfile &lt;&lt; matchSet.testCase;
-myfile &lt;&lt; <span class="string">&quot;,&quot;</span>;
-                                         myfile &lt;&lt; <span class="string">&quot;,&quot;</span>;
-myfile &lt;&lt; corr.match;
-myfile &lt;&lt; corr.editDistance;
-myfile &lt;&lt; <span class="string">&quot;\n&quot;</span>;
-                                         myfile &lt;&lt; corr.match;
-                                         myfile &lt;&lt; corr.editDistance;
-                                         myfile &lt;&lt; <span class="string">&quot;\n&quot;</span>;</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp">   Thread <span class="hljs-number">1</span>                              Thread <span class="hljs-number">2</span><br>======================================================================<br>myfile &lt;&lt; matchSet.testCase;<br>                                         myfile &lt;&lt; matchSet.testCase;<br>myfile &lt;&lt; <span class="hljs-string">&quot;,&quot;</span>;<br>                                         myfile &lt;&lt; <span class="hljs-string">&quot;,&quot;</span>;<br>myfile &lt;&lt; corr.match;<br>myfile &lt;&lt; corr.editDistance;<br>myfile &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>                                         myfile &lt;&lt; corr.match;<br>                                         myfile &lt;&lt; corr.editDistance;<br>                                         myfile &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br></code></pre></td></tr></table></figure>
 
 <p>Instead of getting that to write as a single line, you’ll get output from each thread mixed up together, resulting in gibberish.</p>
 
@@ -400,9 +385,9 @@ myfile &lt;&lt; <span class="string">&quot;\n&quot;</span>;
 
  
 
-<script async src="/js/app.js?v=1678879304895"></script>
+<script async src="/js/app.js?v=1678882177423"></script>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>\n<script>\nhljs.initHighlightingOnLoad();\n</script>
 
 </body>
 
