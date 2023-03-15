@@ -35,9 +35,9 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678872007453">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678878556341">
     
-    <link rel="stylesheet" href="/css/style.css?v=1678872007453">
+    <link rel="stylesheet" href="/css/style.css?v=1678878556341">
 
     
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -86,9 +86,140 @@
     <aside id="nexmoe-sidebar">
     
         
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://github.com/LiangJiSama"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/笔记/">笔记</a>
+          <span class="category-list-count">13</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/unity/" style="font-size: 10px;">unity</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 15px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 10px;">计算机组成原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(8);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
         
         
         
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">13</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/05/06/tcp/">tcp</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/06/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4/">进程与线程的内存空间</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/05/%E5%A0%86%E6%8E%92%E5%BA%8F/">堆排序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/05/C-%E4%B8%ADstatic%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E9%97%B4/">C++中static的初始化时间</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/05/c-%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">c++编译过程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
 </aside>
     <div class="nexmoe-copyright">
         &copy; 2023 Kagamine Len
@@ -117,6 +248,9 @@
             <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
         
         
+    <a><i class="nexmoefont icon-areachart"></i>约423字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要1分钟</a>
+
     </div>
     
     
@@ -138,59 +272,12 @@
 <p>如果允许改变对象的值，则该const是个底层const，否则是个顶层const</p>
 <h2 id="const成员函数"><a href="#const成员函数" class="headerlink" title="const成员函数"></a>const成员函数</h2><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/05/1FNhZaxAsvM7D6Q.png" alt="image-20210505113957418" data-caption="image-20210505113957418" loading="lazy"></p>
 <p>即以下两种情况</p>
-<pre><code>const Sales_data *p=this;//this指向的内容是可以改变的，因此不能赋给一个常量指针
-const Sales_data ap;
-ap.normalFuction(); //由于是const对象而该方法有可能改变对象的值，因此该调用是不允许的
-</code></pre>
-<pre><code class="c++">#include &lt;iostream&gt;
-#include &lt;memory&gt;
-using namespace std;
-class A&#123;
-public:
-    A()&#123;
-        cout&lt;&lt;&quot;constructor A is called&quot;&lt;&lt;endl;
-    &#125;
-    A()const&#123;
-        //不能声明构造函数的const 函数
-    &#125;
-    void boo()&#123; //由于const函数只能被const对象调用，因此可以重载const函数
-        cout&lt;&lt;&quot;boo is called&quot;&lt;&lt;endl;
-    &#125;
-    void boo() const&#123;
-        cout&lt;&lt;&quot;boo const is called&quot;&lt;&lt;endl;
-    &#125;
-&#125;;
-int main()&#123;
-    const A a;
-    A b;
-    a.boo();
-    b.boo();
-    const A* c=&amp;b;
-    c-&gt;boo();
-&#125;
-</code></pre>
-<pre><code class="c++">#include &lt;iostream&gt;
-#include &lt;memory&gt;
-using namespace std;
-class A&#123;
-public:
-    A()&#123;
-        cout&lt;&lt;&quot;constructor A is called&quot;&lt;&lt;endl;
-    &#125;
-    
-    void boo() const&#123;
-        cout&lt;&lt;&quot;boo const is called&quot;&lt;&lt;endl;
-    &#125;
-&#125;;
-int main()&#123;
-    const A a;
-    A b;
-    a.boo();//此时会把this指针提升为一个常量指针常量
-    b.boo();
-    const A* c=&amp;b; 
-    c-&gt;boo();
-&#125;
-</code></pre>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">const</span> Sales_data *p=<span class="hljs-keyword">this</span>;<span class="hljs-comment">//this指向的内容是可以改变的，因此不能赋给一个常量指针</span><br><span class="hljs-keyword">const</span> Sales_data ap;<br>ap.normalFuction(); <span class="hljs-comment">//由于是const对象而该方法有可能改变对象的值，因此该调用是不允许的</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;memory&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">A</span>()&#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;constructor A is called&quot;</span>&lt;&lt;endl;<br>    &#125;<br>    <span class="hljs-built_in">A</span>()<span class="hljs-type">const</span>&#123;<br>    <span class="hljs-comment">//不能声明构造函数的const 函数</span><br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">boo</span><span class="hljs-params">()</span></span>&#123; <span class="hljs-comment">//由于const函数只能被const对象调用，因此可以重载const函数</span><br>        cout&lt;&lt;<span class="hljs-string">&quot;boo is called&quot;</span>&lt;&lt;endl;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">boo</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>&#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;boo const is called&quot;</span>&lt;&lt;endl;<br>    &#125;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">const</span> A a;<br>    A b;<br>    a.<span class="hljs-built_in">boo</span>();<br>    b.<span class="hljs-built_in">boo</span>();<br>    <span class="hljs-type">const</span> A* c=&amp;b;<br>    c-&gt;<span class="hljs-built_in">boo</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;memory&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">A</span>()&#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;constructor A is called&quot;</span>&lt;&lt;endl;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">boo</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>&#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;boo const is called&quot;</span>&lt;&lt;endl;<br>    &#125;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">const</span> A a;<br>    A b;<br>    a.<span class="hljs-built_in">boo</span>();<span class="hljs-comment">//此时会把this指针提升为一个常量指针常量</span><br>    b.<span class="hljs-built_in">boo</span>();<br>    <span class="hljs-type">const</span> A* c=&amp;b; <br>    c-&gt;<span class="hljs-built_in">boo</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/05/RMy9v1u2sPSK7jJ.png" alt="image-20210505143142055" data-caption="image-20210505143142055" loading="lazy"></p>
 
     
@@ -218,6 +305,18 @@ int main()&#123;
               <div class="nexmoe-fixed">
                   <div class="nexmoe-tool"> 
                     
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E9%92%88"><span class="toc-number">2.</span> <span class="toc-text">指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B6%E5%B1%82const"><span class="toc-number">3.</span> <span class="toc-text">顶层const</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#const%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">const成员函数</span></a></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
                       
                     
                       <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
@@ -250,9 +349,9 @@ int main()&#123;
 
  
 
-<script async src="/js/app.js?v=1678872007453"></script>
+<script async src="/js/app.js?v=1678878556343"></script>
 
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
 
 </body>
 

@@ -32,9 +32,9 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678872007452">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678878556336">
     
-    <link rel="stylesheet" href="/css/style.css?v=1678872007452">
+    <link rel="stylesheet" href="/css/style.css?v=1678878556336">
 
     
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -83,9 +83,140 @@
     <aside id="nexmoe-sidebar">
     
         
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://github.com/LiangJiSama"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/笔记/">笔记</a>
+          <span class="category-list-count">13</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/unity/" style="font-size: 10px;">unity</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 15px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 10px;">计算机组成原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(8);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
         
         
         
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">13</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/05/06/tcp/">tcp</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/06/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4/">进程与线程的内存空间</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/05/%E5%A0%86%E6%8E%92%E5%BA%8F/">堆排序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/05/C-%E4%B8%ADstatic%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E9%97%B4/">C++中static的初始化时间</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/05/c-%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">c++编译过程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
 </aside>
     <div class="nexmoe-copyright">
         &copy; 2023 Kagamine Len
@@ -114,6 +245,9 @@
             <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
         
         
+    <a><i class="nexmoefont icon-areachart"></i>约548字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要2分钟</a>
+
     </div>
     
     
@@ -138,46 +272,8 @@
 <p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/05/FKs7U9VbnIEql1T.png" alt="image-20210505231006004" data-caption="image-20210505231006004" loading="lazy"></p>
 <p><img onerror="imgOnError(this);" data-fancybox="gallery" src="/home/yuki/.config/Typora/typora-user-images/image-20210505231025809.png" alt="image-20210505231025809" data-caption="image-20210505231025809" loading="lazy"></p>
 <p>代码(leetcode912):</p>
-<pre><code class="c++">#include &lt;iostream&gt;
-#include &lt;cstdio&gt;
-#include &lt;vector&gt;
-using namespace std;
-class Solution &#123;
-public:
-    void buildHeap(vector&lt;int&gt;&amp; a)&#123;
-        int len=a.size();
-        for(int i=len/2-1;i&gt;=0;i--)&#123;
-            adjustHeap(a,i,len);
-        &#125;
-    &#125;
-    void adjustHeap(vector&lt;int&gt;&amp; a,int fa,int size)&#123;
-        int tmp=a[fa];
-        for(int i=(fa&lt;&lt;1)+1;i&lt;size;i=i*2+1)&#123;
-            if(i+1&lt;size&amp;&amp;a[i+1]&gt;a[i])i++;
-            if(a[i]&gt;tmp)&#123;
-                a[fa]=a[i];
-                fa=i;
-            &#125;
-            else break;
-        &#125;
-        a[fa]=tmp;
-    &#125;
-    vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) &#123;
-        buildHeap(nums);
-        int len=nums.size();
-        for(int i=len-1;i&gt;=1;i--)&#123;
-            swap(nums[i],nums[0]);
-            adjustHeap(nums,0,i);
-        &#125;
-        return nums;
-    &#125;
-&#125;;
-int main()&#123;
-    Solution s;
-    vector&lt;int&gt; a=&#123;-4,0,7,4,9,-5,-1,0,-7,-1&#125;;
-    s.sortArray(a);
-&#125;
-</code></pre>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">buildHeap</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; a)</span></span>&#123;<br>        <span class="hljs-type">int</span> len=a.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=len/<span class="hljs-number">2</span><span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;<br>            <span class="hljs-built_in">adjustHeap</span>(a,i,len);<br>        &#125;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">adjustHeap</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; a,<span class="hljs-type">int</span> fa,<span class="hljs-type">int</span> size)</span></span>&#123;<br>        <span class="hljs-type">int</span> tmp=a[fa];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=(fa&lt;&lt;<span class="hljs-number">1</span>)+<span class="hljs-number">1</span>;i&lt;size;i=i*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>)&#123;<br>            <span class="hljs-keyword">if</span>(i+<span class="hljs-number">1</span>&lt;size&amp;&amp;a[i+<span class="hljs-number">1</span>]&gt;a[i])i++;<br>            <span class="hljs-keyword">if</span>(a[i]&gt;tmp)&#123;<br>                a[fa]=a[i];<br>                fa=i;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">break</span>;<br>        &#125;<br>        a[fa]=tmp;<br>    &#125;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-built_in">buildHeap</span>(nums);<br>        <span class="hljs-type">int</span> len=nums.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=len<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">1</span>;i--)&#123;<br>            <span class="hljs-built_in">swap</span>(nums[i],nums[<span class="hljs-number">0</span>]);<br>            <span class="hljs-built_in">adjustHeap</span>(nums,<span class="hljs-number">0</span>,i);<br>        &#125;<br>        <span class="hljs-keyword">return</span> nums;<br>    &#125;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    Solution s;<br>    vector&lt;<span class="hljs-type">int</span>&gt; a=&#123;<span class="hljs-number">-4</span>,<span class="hljs-number">0</span>,<span class="hljs-number">7</span>,<span class="hljs-number">4</span>,<span class="hljs-number">9</span>,<span class="hljs-number">-5</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">-7</span>,<span class="hljs-number">-1</span>&#125;;<br>    s.<span class="hljs-built_in">sortArray</span>(a);<br>&#125;<br></code></pre></td></tr></table></figure>
+
 
     
   </article>
@@ -204,6 +300,11 @@ int main()&#123;
               <div class="nexmoe-fixed">
                   <div class="nexmoe-tool"> 
                     
+                      
+                        
+                          
+                          
+                          
                       
                     
                       <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
@@ -236,9 +337,9 @@ int main()&#123;
 
  
 
-<script async src="/js/app.js?v=1678872007452"></script>
+<script async src="/js/app.js?v=1678878556338"></script>
 
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
 
 </body>
 
