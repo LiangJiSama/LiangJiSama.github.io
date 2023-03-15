@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>shareptr - LiangJiSama Offical</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+    <meta name="description" content="为什么使用std::make_sharedstd::shared_ptr是常用的智能指针，建立一个shared_ptr对象有两种方式： &#x2F;&#x2F; (1) std::shared_ptr&lt;Widget&gt; p1(new Widget); &#x2F;&#x2F; (2) std::shared_ptr&lt;Widget&gt; p2(std::make_shared&lt;Widget&gt;());  通常">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shareptr">
+<meta property="og:url" content="http://liangjisama.top/2021/04/28/shareptr/index.html">
+<meta property="og:site_name" content="LiangJiSama Offical">
+<meta property="og:description" content="为什么使用std::make_sharedstd::shared_ptr是常用的智能指针，建立一个shared_ptr对象有两种方式： &#x2F;&#x2F; (1) std::shared_ptr&lt;Widget&gt; p1(new Widget); &#x2F;&#x2F; (2) std::shared_ptr&lt;Widget&gt; p2(std::make_shared&lt;Widget&gt;());  通常">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/04/29/416mdcYxwj2KuvB.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/29/5OjNR8Wa2lGHxXK.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/29/FzufkYTaVjehvCp.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/29/BS9JzYjKe5OPbHl.png">
+<meta property="article:published_time" content="2021-04-28T03:01:58.000Z">
+<meta property="article:modified_time" content="2023-03-15T09:01:07.079Z">
+<meta property="article:author" content="Kagamine Len">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/04/29/416mdcYxwj2KuvB.png">
+    
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678872007454">
+    
+    <link rel="stylesheet" href="/css/style.css?v=1678872007454">
+
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="mdui-drawer-body-left">
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Kagamine Len" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Kagamine Len">
+            <img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len" alt="Kagamine Len">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>13</div>
+        <div><span>标签</span>8</div>
+        <div><span>分类</span>1</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+        
+        
+        
+        
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2023 Kagamine Len
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" alt="shareptr" loading="lazy">
+            <h1>shareptr</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2021年04月28日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/04/29/416mdcYxwj2KuvB.png" alt="image-20210429220617927" data-caption="image-20210429220617927" loading="lazy"></p>
+<h2 id="为什么使用std-make-shared"><a href="#为什么使用std-make-shared" class="headerlink" title="为什么使用std::make_shared"></a>为什么使用std::make_shared</h2><p>std::shared_ptr是常用的智能指针，建立一个shared_ptr对象有两种方式：</p>
+<pre><code class="c++">// (1)
+std::shared_ptr&lt;Widget&gt; p1(new Widget);
+// (2)
+std::shared_ptr&lt;Widget&gt; p2(std::make_shared&lt;Widget&gt;());
+</code></pre>
+<p>通常方法（2）使用make_shared是更受推荐的做法。原因是</p>
+<h2 id="减少重复代码"><a href="#减少重复代码" class="headerlink" title="减少重复代码"></a>减少重复代码</h2><p>对于</p>
+<pre><code class="c++">// (2)
+std::shared_ptr&lt;Widget&gt; p2(std::make_shared&lt;Widget&gt;());
+</code></pre>
+<p>它可以简化为</p>
+<pre><code class="c++">// (2)
+auto p2(std::make_shared&lt;Widget&gt;());
+</code></pre>
+<p>对比(1)少书写了一次Widget，在代码中减少重复总是一件好事，对吧:)</p>
+<h2 id="效率更高"><a href="#效率更高" class="headerlink" title="效率更高"></a>效率更高</h2><p>对于</p>
+<pre><code class="c++">// (1)
+std::shared_ptr&lt;Widget&gt; p1(new Widget);
+</code></pre>
+<p>存在两次内存分配操作：<br> 1.new Widget<br> 2.为p1分配控制块（control block），控制块用于存放引用计数等信息<br> 而对于</p>
+<pre><code class="c++">// (2)
+auto p2(std::make_shared&lt;Widget&gt;());
+</code></pre>
+<p>只有一次内存内配操作，make_shared会一次性申请足够大的空间用于存放Widget对象和智能指针的控制块。<br> 在MSVC版本的STL中，make_shared的实现是</p>
+<pre><code class="c++">template&lt;class _Ty,
+    class... _Types&gt; inline
+        shared_ptr&lt;_Ty&gt; make_shared(_Types&amp;&amp;... _Args)
+    &#123;	// make a shared_ptr
+    _Ref_count_obj&lt;_Ty&gt; *_Rx =
+        new _Ref_count_obj&lt;_Ty&gt;(_STD forward&lt;_Types&gt;(_Args)...);
+
+    shared_ptr&lt;_Ty&gt; _Ret;
+    _Ret._Resetp0(_Rx-&gt;_Getptr(), _Rx);
+    return (_Ret);
+    &#125;
+</code></pre>
+<p>这里的_Ref_count_obj类包含成员变量：<br> 1.控制块<br> 2.一个内存块，用于存放智能指针管理的资源对象<br> 所以new _Ref_count_obj能一次性为控制块和资源对象申请内存。<br> 感兴趣的读者可以再看看_Ref_count_obj的构造函数：</p>
+<pre><code class="c++">template&lt;class... _Types&gt;
+    _Ref_count_obj(_Types&amp;&amp;... _Args)
+    : _Ref_count_base()
+    &#123;	// construct from argument list
+    ::new ((void *)&amp;_Storage) _Ty(_STD forward&lt;_Types&gt;(_Args)...);
+    &#125;
+</code></pre>
+<p>此处其实也有一个new操作，但是是placement new，不涉及内存分配。所以内存分配操作还是只有一次。<br> 引用计数在_Ref_count_obj的父类_Ref_count_base中。而_Storage就是存放资源对象的内存块。_</p>
+<p><em>placement new 会在已经开辟的空间中存放这个sotrage对象，即把对象放在指定的空间位置</em><br> 那_Storage是怎么来的？它其实是一个联合体，编译器在编译时能获取到资源对象的大小，然后利用模板实例化出具有相等大小的联合体或结构体，这个联合体或结构体的对象就可以用于存放资源对象。</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/04/29/5OjNR8Wa2lGHxXK.png" alt="image-20210429222958679" data-caption="image-20210429222958679" loading="lazy"></p>
+<h1 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr</h1><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/04/29/FzufkYTaVjehvCp.png" alt="image-20210429223330843" data-caption="image-20210429223330843" loading="lazy"></p>
+<p>此处，unique_ptr采用了移动拷贝构造，虽然其普通拷贝构造是允许的，但是右值拷贝构造是允许的，因为编译器知道当前拷贝的这个对象将会被销毁，因此其仍然会调用该拷贝函数</p>
+<h3 id="左值和右值"><a href="#左值和右值" class="headerlink" title="左值和右值"></a>左值和右值</h3><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/04/29/BS9JzYjKe5OPbHl.png" alt="image-20210429223525254" data-caption="image-20210429223525254" loading="lazy"></p>
+<p>如 函数返回的值为右值，nullptr为字面量为右值</p>
+<p>函数返回引用时返回的为左值</p>
+<p>[参考文章]: <a target="_blank" rel="noopener" href="https://nettee.github.io/posts/2018/Understanding-lvalues-and-rvalues-in-C-and-C/">https://nettee.github.io/posts/2018/Understanding-lvalues-and-rvalues-in-C-and-C/</a>	“关于右值和左值”</p>
+<h1 id="weak-ptr"><a href="#weak-ptr" class="headerlink" title="weak_ptr"></a>weak_ptr</h1><pre><code class="c++">      _Atomic_word  _M_use_count;     // #shared
+      _Atomic_word  _M_weak_count;    // #weak + (#shared != 0)
+</code></pre>
+<p>由上述代码可见，实际上share_ptr和weak_ptr上都有指向一个计数类，包括对share_ptr的计数和对weak_ptr+(#shared!&#x3D;0)的计数</p>
+<p>即对于weak的计数来说，就算没有任何weak_ptr，其初始化值仍为1</p>
+<p>那么weak_ptr什么时候判断share&#x3D;&#x3D;0了呢？</p>
+<pre><code class="c++">if (__gnu_cxx::__exchange_and_add_dispatch(&amp;_M_use_count, -1) == 1)
+      &#123;
+            _GLIBCXX_SYNCHRONIZATION_HAPPENS_AFTER(&amp;_M_use_count);
+        _M_dispose();
+        // There must be a memory barrier between dispose() and destroy()
+        // to ensure that the effects of dispose() are observed in the
+        // thread that runs destroy().
+        // See http://gcc.gnu.org/ml/libstdc++/2005-11/msg00136.html
+        if (_Mutex_base&lt;_Lp&gt;::_S_need_barriers)
+          &#123;
+        __atomic_thread_fence (__ATOMIC_ACQ_REL);
+          &#125;
+
+            // Be race-detector-friendly.  For more info see bits/c++config.
+            _GLIBCXX_SYNCHRONIZATION_HAPPENS_BEFORE(&amp;_M_weak_count);
+        if (__gnu_cxx::__exchange_and_add_dispatch(&amp;_M_weak_count,
+                               -1) == 1)//此处 当share_ptr被释放时，会检测有无weak_ptr对象仍然引用了该计数，如果没有了，才会释放该计数器
+              &#123;
+                _GLIBCXX_SYNCHRONIZATION_HAPPENS_AFTER(&amp;_M_weak_count);
+            _M_destroy();
+              &#125;
+      &#125;
+      &#125;
+</code></pre>
+
+    
+  </article>
+
+  
+      
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/C/" rel="tag">C++</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-search-space">
+	<div class="search-container">
+		<div class="search-header">
+			<div class="search-input-container">
+				<input
+					class="search-input"
+					type="text"
+					placeholder="搜索"
+					oninput="sinput();"
+				/>
+			</div>
+			<a class="search-close" onclick="sclose();">×</a>
+		</div>
+		<div class="search-body"></div>
+	</div>
+</div>
+
+    
+<script src="/lib/mdui_043tiny/mdui.js"></script>
+<script src="/lib/fancybox/fancybox.umd.js"></script>
+
+
+ 
+
+<script async src="/js/app.js?v=1678872007454"></script>
+
+
+
+</body>
+
+</html>

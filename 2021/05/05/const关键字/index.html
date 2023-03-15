@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>const关键字 - LiangJiSama Offical</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+    <meta name="description" content="引用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="const关键字">
+<meta property="og:url" content="http://liangjisama.top/2021/05/05/const%E5%85%B3%E9%94%AE%E5%AD%97/index.html">
+<meta property="og:site_name" content="LiangJiSama Offical">
+<meta property="og:description" content="引用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/05/05/1bgfwK4k6L8NQih.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/05/xDVqtyUKiZajMCs.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/05/WbVH7PBkUTln1ws.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/05/dZA9xYgNJ6QH1za.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/05/2FtEngaHUkrQOPz.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/05/1FNhZaxAsvM7D6Q.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/05/RMy9v1u2sPSK7jJ.png">
+<meta property="article:published_time" content="2021-05-05T02:11:01.000Z">
+<meta property="article:modified_time" content="2023-03-15T09:01:07.079Z">
+<meta property="article:author" content="Kagamine Len">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/05/05/1bgfwK4k6L8NQih.png">
+    
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678872007453">
+    
+    <link rel="stylesheet" href="/css/style.css?v=1678872007453">
+
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="mdui-drawer-body-left">
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Kagamine Len" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Kagamine Len">
+            <img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len" alt="Kagamine Len">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>13</div>
+        <div><span>标签</span>8</div>
+        <div><span>分类</span>1</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+        
+        
+        
+        
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2023 Kagamine Len
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" alt="const关键字" loading="lazy">
+            <h1>const关键字</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2021年05月05日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/05/1bgfwK4k6L8NQih.png" alt="image-20210505101147641" data-caption="image-20210505101147641" loading="lazy"></p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/05/xDVqtyUKiZajMCs.png" alt="image-20210505101344643" data-caption="image-20210505101344643" loading="lazy"></p>
+<span id="more"></span>
+
+<p>也就是说 对于前一个式子，实际上时生成了一个临时常量temp&#x3D;i，此时用r1引用了i</p>
+<p>如果ri为非常量的话，显然程序员是为了将引用指向dval而非这个临时常量，因此这种操作是非法的</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/05/WbVH7PBkUTln1ws.png" alt="image-20210505101822852" data-caption="image-20210505101822852" loading="lazy"></p>
+<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/05/dZA9xYgNJ6QH1za.png" alt="image-20210505102052572" data-caption="image-20210505102052572" loading="lazy"></p>
+<p>只是不能通过cptr更改dval的值，但是可以通过其他方法（如直接更改dval）来更改dval的值</p>
+<h2 id="顶层const"><a href="#顶层const" class="headerlink" title="顶层const"></a>顶层const</h2><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/05/2FtEngaHUkrQOPz.png" alt="image-20210505110850735" data-caption="image-20210505110850735" loading="lazy"></p>
+<p>如果允许改变对象的值，则该const是个底层const，否则是个顶层const</p>
+<h2 id="const成员函数"><a href="#const成员函数" class="headerlink" title="const成员函数"></a>const成员函数</h2><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/05/1FNhZaxAsvM7D6Q.png" alt="image-20210505113957418" data-caption="image-20210505113957418" loading="lazy"></p>
+<p>即以下两种情况</p>
+<pre><code>const Sales_data *p=this;//this指向的内容是可以改变的，因此不能赋给一个常量指针
+const Sales_data ap;
+ap.normalFuction(); //由于是const对象而该方法有可能改变对象的值，因此该调用是不允许的
+</code></pre>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+using namespace std;
+class A&#123;
+public:
+    A()&#123;
+        cout&lt;&lt;&quot;constructor A is called&quot;&lt;&lt;endl;
+    &#125;
+    A()const&#123;
+        //不能声明构造函数的const 函数
+    &#125;
+    void boo()&#123; //由于const函数只能被const对象调用，因此可以重载const函数
+        cout&lt;&lt;&quot;boo is called&quot;&lt;&lt;endl;
+    &#125;
+    void boo() const&#123;
+        cout&lt;&lt;&quot;boo const is called&quot;&lt;&lt;endl;
+    &#125;
+&#125;;
+int main()&#123;
+    const A a;
+    A b;
+    a.boo();
+    b.boo();
+    const A* c=&amp;b;
+    c-&gt;boo();
+&#125;
+</code></pre>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+using namespace std;
+class A&#123;
+public:
+    A()&#123;
+        cout&lt;&lt;&quot;constructor A is called&quot;&lt;&lt;endl;
+    &#125;
+    
+    void boo() const&#123;
+        cout&lt;&lt;&quot;boo const is called&quot;&lt;&lt;endl;
+    &#125;
+&#125;;
+int main()&#123;
+    const A a;
+    A b;
+    a.boo();//此时会把this指针提升为一个常量指针常量
+    b.boo();
+    const A* c=&amp;b; 
+    c-&gt;boo();
+&#125;
+</code></pre>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/05/RMy9v1u2sPSK7jJ.png" alt="image-20210505143142055" data-caption="image-20210505143142055" loading="lazy"></p>
+
+    
+  </article>
+
+  
+      
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/C/" rel="tag">C++</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-search-space">
+	<div class="search-container">
+		<div class="search-header">
+			<div class="search-input-container">
+				<input
+					class="search-input"
+					type="text"
+					placeholder="搜索"
+					oninput="sinput();"
+				/>
+			</div>
+			<a class="search-close" onclick="sclose();">×</a>
+		</div>
+		<div class="search-body"></div>
+	</div>
+</div>
+
+    
+<script src="/lib/mdui_043tiny/mdui.js"></script>
+<script src="/lib/fancybox/fancybox.umd.js"></script>
+
+
+ 
+
+<script async src="/js/app.js?v=1678872007453"></script>
+
+
+
+</body>
+
+</html>

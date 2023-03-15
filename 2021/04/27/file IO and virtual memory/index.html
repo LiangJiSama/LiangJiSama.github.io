@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>文件读写及虚存访问 - LiangJiSama Offical</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+    <meta name="description" content="虚拟缓存虚存的最大大小虚拟内存不受计算机中内存指针大小的限制，虚拟内存限制与寻址内存空间不同。可以解决的虚拟内存比使用分页的基于指针的地址空间中可用的虚拟内存更多 虚拟内存上限由操作系统设置：例如 32位Windows的限制为16TB，而在64位Windows上的限制为256TB。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件读写及虚存访问">
+<meta property="og:url" content="http://liangjisama.top/2021/04/27/file%20IO%20and%20virtual%20memory/index.html">
+<meta property="og:site_name" content="LiangJiSama Offical">
+<meta property="og:description" content="虚拟缓存虚存的最大大小虚拟内存不受计算机中内存指针大小的限制，虚拟内存限制与寻址内存空间不同。可以解决的虚拟内存比使用分页的基于指针的地址空间中可用的虚拟内存更多 虚拟内存上限由操作系统设置：例如 32位Windows的限制为16TB，而在64位Windows上的限制为256TB。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/04/28/WE3aO7xHLChsuDn.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/28/ytUY3DKEjuPMIb9.png">
+<meta property="article:published_time" content="2021-04-27T13:46:14.000Z">
+<meta property="article:modified_time" content="2023-03-15T09:01:07.079Z">
+<meta property="article:author" content="Kagamine Len">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/04/28/WE3aO7xHLChsuDn.png">
+    
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678872007454">
+    
+    <link rel="stylesheet" href="/css/style.css?v=1678872007454">
+
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="mdui-drawer-body-left">
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Kagamine Len" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Kagamine Len">
+            <img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len" alt="Kagamine Len">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>13</div>
+        <div><span>标签</span>8</div>
+        <div><span>分类</span>1</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+        
+        
+        
+        
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2023 Kagamine Len
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" alt="文件读写及虚存访问" loading="lazy">
+            <h1>文件读写及虚存访问</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2021年04月27日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <h1 id="虚拟缓存"><a href="#虚拟缓存" class="headerlink" title="虚拟缓存"></a>虚拟缓存</h1><h2 id="虚存的最大大小"><a href="#虚存的最大大小" class="headerlink" title="虚存的最大大小"></a>虚存的最大大小</h2><p>虚拟内存不受计算机中内存指针大小的限制，虚拟内存限制与寻址内存空间不同。可以解决的虚拟内存比使用分页的基于指针的地址空间中可用的虚拟内存更多</p>
+<p>虚拟内存上限由操作系统设置：例如 32位Windows的限制为16TB，而在64位Windows上的限制为256TB。</p>
+<span id="more"></span>
+
+<h2 id="虚存的目的"><a href="#虚存的目的" class="headerlink" title="虚存的目的"></a>虚存的目的</h2><p>1.在内存中保留多个进程</p>
+<p>2.进程可以比内存的全部空间还大</p>
+<h2 id="windows-分页机制"><a href="#windows-分页机制" class="headerlink" title="windows 分页机制"></a>windows 分页机制</h2><p>每日三问&#x2F;操作系统篇&lt;3&gt;： 讲讲Windows&#x2F;Linux内存管理？</p>
+<p>Windows</p>
+<p>Windows的内存体系结构基于虚拟的线性的地址和分页机制。对于线性地址的分配也是以页为单位进行的，物理地址的管理更是以页为单位。</p>
+<p>当我们在Windows中双击一个应用程序图标后，系统为该应用程序创建一个进程，Windows使得每个进程都拥有2GB的地址空间，这2GB地址空间用于程序存放代码，数据，堆栈，自由存储区（堆），另外2GB用于共享系统使用前面的这些地址并不是物理内存中的地址。</p>
+<p>Windows是多任务的系统，在每个进程创建时，系统为每个进程也创建了一个页表，用于虚拟地址到物理地址的转换。比如现在程序在执行进程A，用户切换到了另外一个进程B，则系统会将进程A在内存中的数据存放到页文件中，并更新进程A的页表（使虚拟地址和页文件形成映射）。然后读取进程B的页表，根据页表判断进程B的数据是在内存中还是在页文件中（通过页文件的类型来判断），如果在内存中就直接读取，如果在页面文件中，就将页面文件内容读入物理内存，然后更新页表（使虚拟地址和物理内存形成映射）。</p>
+<h2 id="TLB-转换检测缓冲区"><a href="#TLB-转换检测缓冲区" class="headerlink" title="TLB 转换检测缓冲区"></a>TLB 转换检测缓冲区</h2><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/04/28/WE3aO7xHLChsuDn.png" alt="image-20210427220346267" data-caption="image-20210427220346267" loading="lazy"></p>
+<p>为了减少访存读取页表，TLB中包含最近使用的页表项（每个进程都只有一张页表）进程id+PM位（有效、修改位），先检查是否在TLB表中命中，若命中则直接读取对应的帧+偏移量获得地址，否则在页表中查询，若页表中查询发现该帧不在内存中，则发生缺页中断，从虚存中读取数据。</p>
+<h1 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h1><h2 id="缓冲区"><a href="#缓冲区" class="headerlink" title="缓冲区"></a>缓冲区</h2><p>OS给一个I&#x2F;O请求分配一个位于主存中系统部分的缓冲区<br>面向块<br>输入传送的数据被放到系统缓冲区中<br>传送完成时，进程把块移动到用户空间<br>进程请求另外一块<br>在下一块数据正在读取的时候，用户进程可以处理一块数据<br>可以换出进程<br>输入是发生在系统内存，而非用户内存</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/04/28/ytUY3DKEjuPMIb9.png" alt="image-20210427221457881" data-caption="image-20210427221457881" loading="lazy"></p>
+<p>读操作的过程：</p>
+<ol>
+<li>发出操作指令（操作方式，对象）</li>
+<li>权限判断（ACL)</li>
+<li>文件名-〉具体文件的映射</li>
+<li>读块 (A)从cache读出 (B)从磁盘读 Disk-〉Cache&#x2F;Buffer-〉读出</li>
+<li>解块：块-〉记录</li>
+<li>返回给用户程序（Exception:无权限或读错误)</li>
+</ol>
+<p>写操作</p>
+<ol>
+<li>操作内容（数据）</li>
+<li>同上</li>
+<li>同上</li>
+<li>写入(A)缓写 暂时放到cache或buffer中，批量更新、写入(B)直接写入 修改方式(A)编辑写入（写入原来的块 直接覆盖定位写入）(B)新增写入（写入空闲块-&gt;空闲块管理方法，选择空闲块-&gt;直接定位写入）</li>
+<li>返回写入成功</li>
+</ol>
+<p>EX:无空闲空间 无权限等</p>
+<h2 id="C-写文件的过程"><a href="#C-写文件的过程" class="headerlink" title="C++ 写文件的过程"></a>C++ 写文件的过程</h2><p>5.缓存和同步(Buffers and Synchronization)</p>
+<p>当我们对文件流进行操作的时候，它们与一个streambuf 类型的缓存(buffer)联系在一起。这个缓存（buffer）实际是一块内存空间，作为流(stream)和物理文件的媒介。例如，对于一个输出流， 每次成员函数put (写一个单个字符)被调用，这个字符不是直接被写入该输出流所对应的物理文件中的，而是首先被插入到该流的缓存（buffer）中。</p>
+<p>当缓存被排放出来(flush)时，它里面的所有数据或者被写入物理媒质中（如果是一个输出流的话），或者简单的被抹掉(如果是一个输入流的话)。这个过程称为同步(synchronization)，它会在以下任一情况下发生：</p>
+<ul>
+<li><strong>当文件被关闭时:</strong> 在文件被关闭之前，所有还没有被完全写出或读取的缓存都将被同步。</li>
+<li>**当缓存buffer 满时:**缓存Buffers 有一定的空间限制。当缓存满时，它会被自动同步。</li>
+<li>**控制符明确指明:**当遇到流中某些特定的控制符时，同步会发生。这些控制符包括：flush 和endl。</li>
+<li><strong>明确调用函数sync():</strong> 调用成员函数sync() (无参数)可以引发立即同步。这个函数返回一个int 值，等于-1 表示流没有联系的缓存或操作失败。</li>
+</ul>
+<p>按照实现的不同 写入一个缓存的过程应该是加锁的，但写入多个缓存时可能会产生多个写入混合的问题。</p>
+<p>不确定write函数是线程安全的，但采用多个open打开一个文件不是线程安全的。</p>
+<p>多个流写入一个缓冲（并发不可控制的，出现输入交叉的情况）</p>
+<p>This code exhibits undefined behavior from multiple threads. See N3485 27.2.3 [iostreams.threadsafety]&#x2F;1:</p>
+<blockquote>
+<p>Concurrent access to a stream object (27.8, 27.9), stream buffer object (27.6), or C Library stream (27.9.2) by multiple threads may result in a data race (1.10) unless otherwise specified (27.4). [ Note: Data races result in undefined behavior (1.10). —end note ]</p>
+</blockquote>
+<p>对流对象的多线程访问会导致数据竞争</p>
+<p>In the general case, streams are not safe to use across threads. You must protect the stream using a lock, such as <code>std::mutex</code>.</p>
+<p>Note that even if streams were safe to access across threads this code would probably not do what you want. Consider this line:</p>
+<pre><code class="cpp">myfile &lt;&lt; matchSet.testCase &lt;&lt; &quot;,&quot; &lt;&lt; corr.match &lt;&lt; corr.editDistance &lt;&lt; &quot;\n&quot;;
+</code></pre>
+<p>which is the same as</p>
+<pre><code class="cpp">myfile &lt;&lt; matchSet.testCase;
+myfile &lt;&lt; &quot;,&quot;;
+myfile &lt;&lt; corr.match;
+myfile &lt;&lt; corr.editDistance;
+myfile &lt;&lt; &quot;\n&quot;;
+</code></pre>
+<p>Note the race condition. Let’s say that your implementation’s <code>operator&lt;&lt;</code> for streams is synchronized for you by the implementation. You still have a potential race in this outer code. For instance, here is one possible execution of this across 2 threads:</p>
+<pre><code class="cpp">   Thread 1                              Thread 2
+======================================================================
+myfile &lt;&lt; matchSet.testCase;
+                                         myfile &lt;&lt; matchSet.testCase;
+myfile &lt;&lt; &quot;,&quot;;
+                                         myfile &lt;&lt; &quot;,&quot;;
+myfile &lt;&lt; corr.match;
+myfile &lt;&lt; corr.editDistance;
+myfile &lt;&lt; &quot;\n&quot;;
+                                         myfile &lt;&lt; corr.match;
+                                         myfile &lt;&lt; corr.editDistance;
+                                         myfile &lt;&lt; &quot;\n&quot;;
+</code></pre>
+<p>Instead of getting that to write as a single line, you’ll get output from each thread mixed up together, resulting in gibberish.</p>
+
+    
+  </article>
+
+  
+      
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-search-space">
+	<div class="search-container">
+		<div class="search-header">
+			<div class="search-input-container">
+				<input
+					class="search-input"
+					type="text"
+					placeholder="搜索"
+					oninput="sinput();"
+				/>
+			</div>
+			<a class="search-close" onclick="sclose();">×</a>
+		</div>
+		<div class="search-body"></div>
+	</div>
+</div>
+
+    
+<script src="/lib/mdui_043tiny/mdui.js"></script>
+<script src="/lib/fancybox/fancybox.umd.js"></script>
+
+
+ 
+
+<script async src="/js/app.js?v=1678872007454"></script>
+
+
+
+</body>
+
+</html>

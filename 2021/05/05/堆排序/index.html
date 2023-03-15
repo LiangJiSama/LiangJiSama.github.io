@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>堆排序 - LiangJiSama Offical</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+    <meta name="description" content="堆排序的过程为 建堆 从最后一个非叶子节点（对于节点编号为0~n-1的树，最后一个非叶子节点为n&#x2F;2-1)，按照堆的定义调整堆（即选择当前这个节点两个儿子节点(i*2+1,i*2+2)中的最大值，然后交换当前节点和该最大值节点）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="堆排序">
+<meta property="og:url" content="http://liangjisama.top/2021/05/05/%E5%A0%86%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:site_name" content="LiangJiSama Offical">
+<meta property="og:description" content="堆排序的过程为 建堆 从最后一个非叶子节点（对于节点编号为0~n-1的树，最后一个非叶子节点为n&#x2F;2-1)，按照堆的定义调整堆（即选择当前这个节点两个儿子节点(i*2+1,i*2+2)中的最大值，然后交换当前节点和该最大值节点）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/05/05/G8FAMLRf2WSvlZd.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/05/fQjkvP9coL21UGK.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/05/FKs7U9VbnIEql1T.png">
+<meta property="og:image" content="http://liangjisama.top/home/yuki/.config/Typora/typora-user-images/image-20210505231025809.png">
+<meta property="article:published_time" content="2021-05-05T14:51:01.000Z">
+<meta property="article:modified_time" content="2023-03-15T09:01:07.080Z">
+<meta property="article:author" content="Kagamine Len">
+<meta property="article:tag" content="数据结构与算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/05/05/G8FAMLRf2WSvlZd.png">
+    
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678872007452">
+    
+    <link rel="stylesheet" href="/css/style.css?v=1678872007452">
+
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="mdui-drawer-body-left">
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Kagamine Len" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Kagamine Len">
+            <img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len" alt="Kagamine Len">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>13</div>
+        <div><span>标签</span>8</div>
+        <div><span>分类</span>1</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+        
+        
+        
+        
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2023 Kagamine Len
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" alt="堆排序" loading="lazy">
+            <h1>堆排序</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2021年05月05日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <p>堆排序的过程为</p>
+<p>建堆 从最后一个非叶子节点（对于节点编号为0~n-1的树，最后一个非叶子节点为n&#x2F;2-1)，按照堆的定义调整堆（即选择当前这个节点两个儿子节点(i*2+1,i*2+2)中的最大值，然后交换当前节点和该最大值节点）</p>
+<span id="more"></span>
+
+<p>倒着做可以保证当前处理节点的子树都是符合堆的特性的</p>
+<p>这样子可以保证只有当前处理的这个节点不符合堆的特性</p>
+<p>如</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/05/G8FAMLRf2WSvlZd.png" alt="image-20210505230449349" data-caption="image-20210505230449349" loading="lazy"></p>
+<p>显然除了根节点以外都已调整好，每次调整时，由于选择的是最大的节点，显然，换上去的节点大于左右两棵子树中的所有节点，这样子唯一不符合堆结构的节点就被交换到某棵子树中。</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/05/fQjkvP9coL21UGK.png" alt="image-20210505230618204" data-caption="image-20210505230618204" loading="lazy"></p>
+<p>如此调整，可以保证只需要调整一条从该节点出发到叶节点的路径</p>
+<p>若只调节当前三个节点的位置，在上图这种情况显然是无法恢复成堆的</p>
+<p>当建堆完成后，每次将根节点和最后一个节点交换，此时最后一个节点就是最大的节点（已经完成排序），将树的最大节点-1，后重新按上述方式从根开始调整这颗树，最后得到的序列就是排好序的</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/05/FKs7U9VbnIEql1T.png" alt="image-20210505231006004" data-caption="image-20210505231006004" loading="lazy"></p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="/home/yuki/.config/Typora/typora-user-images/image-20210505231025809.png" alt="image-20210505231025809" data-caption="image-20210505231025809" loading="lazy"></p>
+<p>代码(leetcode912):</p>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;vector&gt;
+using namespace std;
+class Solution &#123;
+public:
+    void buildHeap(vector&lt;int&gt;&amp; a)&#123;
+        int len=a.size();
+        for(int i=len/2-1;i&gt;=0;i--)&#123;
+            adjustHeap(a,i,len);
+        &#125;
+    &#125;
+    void adjustHeap(vector&lt;int&gt;&amp; a,int fa,int size)&#123;
+        int tmp=a[fa];
+        for(int i=(fa&lt;&lt;1)+1;i&lt;size;i=i*2+1)&#123;
+            if(i+1&lt;size&amp;&amp;a[i+1]&gt;a[i])i++;
+            if(a[i]&gt;tmp)&#123;
+                a[fa]=a[i];
+                fa=i;
+            &#125;
+            else break;
+        &#125;
+        a[fa]=tmp;
+    &#125;
+    vector&lt;int&gt; sortArray(vector&lt;int&gt;&amp; nums) &#123;
+        buildHeap(nums);
+        int len=nums.size();
+        for(int i=len-1;i&gt;=1;i--)&#123;
+            swap(nums[i],nums[0]);
+            adjustHeap(nums,0,i);
+        &#125;
+        return nums;
+    &#125;
+&#125;;
+int main()&#123;
+    Solution s;
+    vector&lt;int&gt; a=&#123;-4,0,7,4,9,-5,-1,0,-7,-1&#125;;
+    s.sortArray(a);
+&#125;
+</code></pre>
+
+    
+  </article>
+
+  
+      
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-search-space">
+	<div class="search-container">
+		<div class="search-header">
+			<div class="search-input-container">
+				<input
+					class="search-input"
+					type="text"
+					placeholder="搜索"
+					oninput="sinput();"
+				/>
+			</div>
+			<a class="search-close" onclick="sclose();">×</a>
+		</div>
+		<div class="search-body"></div>
+	</div>
+</div>
+
+    
+<script src="/lib/mdui_043tiny/mdui.js"></script>
+<script src="/lib/fancybox/fancybox.umd.js"></script>
+
+
+ 
+
+<script async src="/js/app.js?v=1678872007452"></script>
+
+
+
+</body>
+
+</html>

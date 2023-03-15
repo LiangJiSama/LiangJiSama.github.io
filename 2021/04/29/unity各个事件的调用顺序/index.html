@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>unity各个事件的调用顺序 - LiangJiSama Offical</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+    <meta name="description" content="由图可见，unity为了保证fixedupdate的可靠性，就算在update中一次更新是十分缓慢的，但在fixedupdate中会循环执行直到当前fixedupdate能够执行到的时间与当前的时间相吻合。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="unity各个事件的调用顺序">
+<meta property="og:url" content="http://liangjisama.top/2021/04/29/unity%E5%90%84%E4%B8%AA%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%B0%83%E7%94%A8%E9%A1%BA%E5%BA%8F/index.html">
+<meta property="og:site_name" content="LiangJiSama Offical">
+<meta property="og:description" content="由图可见，unity为了保证fixedupdate的可靠性，就算在update中一次更新是十分缓慢的，但在fixedupdate中会循环执行直到当前fixedupdate能够执行到的时间与当前的时间相吻合。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://docs.unity3d.com/cn/2019.4/uploads/Main/monobehaviour_flowchart.svg">
+<meta property="article:published_time" content="2021-04-29T13:56:19.000Z">
+<meta property="article:modified_time" content="2023-03-15T09:01:07.080Z">
+<meta property="article:author" content="Kagamine Len">
+<meta property="article:tag" content="unity">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://docs.unity3d.com/cn/2019.4/uploads/Main/monobehaviour_flowchart.svg">
+    
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678872007453">
+    
+    <link rel="stylesheet" href="/css/style.css?v=1678872007453">
+
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="mdui-drawer-body-left">
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Kagamine Len" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Kagamine Len">
+            <img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len" alt="Kagamine Len">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>13</div>
+        <div><span>标签</span>8</div>
+        <div><span>分类</span>1</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+        
+        
+        
+        
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2023 Kagamine Len
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" alt="unity各个事件的调用顺序" loading="lazy">
+            <h1>unity各个事件的调用顺序</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2021年04月29日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://docs.unity3d.com/cn/2019.4/uploads/Main/monobehaviour_flowchart.svg" alt="img" data-caption="img" loading="lazy"></p>
+<p>由图可见，unity为了保证fixedupdate的可靠性，就算在update中一次更新是十分缓慢的，但在fixedupdate中会循环执行直到当前fixedupdate能够执行到的时间与当前的时间相吻合。</p>
+<span id="more"></span>
+
+<h2 id="加载第一个场景"><a href="#加载第一个场景" class="headerlink" title="加载第一个场景"></a>加载第一个场景</h2><p>场景开始时将调用以下函数（为场景中的每个对象调用一次）。</p>
+<ul>
+<li><strong>Awake：</strong>始终在任何 Start 函数之前并在实例化预制件之后调用此函数。（如果游戏对象在启动期间处于非活动状态，则在激活之后才会调用 Awake。）</li>
+<li><strong>OnEnable：</strong>（仅在对象处于激活状态时调用）在启用对象后立即调用此函数。在创建 MonoBehaviour 实例时（例如加载关卡或实例化具有脚本组件的游戏对象时）会执行此调用。</li>
+<li><strong>OnLevelWasLoaded：</strong>执行此函数可告知游戏已加载新关卡。</li>
+</ul>
+<p>请注意，对于添加到场景中的对象，在为任何对象调用 Start 和 Update 等函数之前，会为_所有_脚本调用 Awake 和 OnEnable 函数。当然，在游戏运行过程中实例化对象时，不能强制执行此调用。</p>
+<h2 id="在第一次帧更新之前"><a href="#在第一次帧更新之前" class="headerlink" title="在第一次帧更新之前"></a>在第一次帧更新之前</h2><ul>
+<li><strong>Start：</strong>仅当启用脚本实例后，才会在第一次帧更新之前调用 Start。</li>
+</ul>
+<p>对于添加到场景中的对象，在为任何脚本调用 Update 等函数之前，将在所有脚本上调用 Start 函数。当然，在游戏运行过程中实例化对象时，不能强制执行此调用。</p>
+<h2 id="更新顺序"><a href="#更新顺序" class="headerlink" title="更新顺序"></a>更新顺序</h2><p>跟踪游戏逻辑和交互、动画、摄像机位置等的时候，可以使用一些不同事件。常见方案是在 <strong>Update</strong> 函数中执行大多数任务，但是也可以使用其他函数。</p>
+<ul>
+<li><strong>FixedUpdate：</strong>调用 <strong>FixedUpdate</strong> 的频度常常超过 <strong>Update</strong>。如果帧率很低，可以每帧调用该函数多次；如果帧率很高，可能在帧之间完全不调用该函数。在 <strong>FixedUpdate</strong> 之后将立即进行所有物理计算和更新。在 <strong>FixedUpdate</strong> 内应用运动计算时，无需将值乘以 <strong>Time.deltaTime</strong>。这是因为 <strong>FixedUpdate</strong> 的调用基于可靠的计时器（独立于帧率）。</li>
+<li><strong>Update：</strong>每帧调用一次 <strong>Update</strong>。这是用于帧更新的主要函数。</li>
+<li><strong>LateUpdate：</strong>每帧调用一次 <strong>LateUpdate__（在</strong> Update__ 完成后）。<strong>LateUpdate</strong> 开始时，在 <strong>Update</strong> 中执行的所有计算便已完成。<strong>LateUpdate</strong> 的常见用途是跟随第三人称摄像机。如果在 <strong>Update</strong> 内让角色移动和转向，可以在 <strong>LateUpdate</strong> 中执行所有摄像机移动和旋转计算。这样可以确保角色在摄像机跟踪其位置之前已完全移动。</li>
+</ul>
+
+    
+  </article>
+
+  
+      
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/unity/" rel="tag">unity</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-search-space">
+	<div class="search-container">
+		<div class="search-header">
+			<div class="search-input-container">
+				<input
+					class="search-input"
+					type="text"
+					placeholder="搜索"
+					oninput="sinput();"
+				/>
+			</div>
+			<a class="search-close" onclick="sclose();">×</a>
+		</div>
+		<div class="search-body"></div>
+	</div>
+</div>
+
+    
+<script src="/lib/mdui_043tiny/mdui.js"></script>
+<script src="/lib/fancybox/fancybox.umd.js"></script>
+
+
+ 
+
+<script async src="/js/app.js?v=1678872007453"></script>
+
+
+
+</body>
+
+</html>

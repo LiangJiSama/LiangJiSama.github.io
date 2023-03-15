@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>tcp - LiangJiSama Offical</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+    <meta name="description" content="停等式ARQ在停等式ARQ中，数据报文发送完成之后，发送方等待接收方的状态报告，如果状态报告报文发送成功，发送后续的数据报文，否则重传该报文。 停等式ARQ，发送窗口和接收窗口大小均为1，发送方每发送一帧之后就必须停下来等待接收方的确认返回，仅当接收方确认正确接收后再继续发送下一帧。该方法所需要的缓冲存储空间最小，缺点是信道效率很低。  回退n帧的ARQ发信侧不用等待收信侧的应答，持续的发送多个帧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tcp">
+<meta property="og:url" content="http://liangjisama.top/2021/05/06/tcp/index.html">
+<meta property="og:site_name" content="LiangJiSama Offical">
+<meta property="og:description" content="停等式ARQ在停等式ARQ中，数据报文发送完成之后，发送方等待接收方的状态报告，如果状态报告报文发送成功，发送后续的数据报文，否则重传该报文。 停等式ARQ，发送窗口和接收窗口大小均为1，发送方每发送一帧之后就必须停下来等待接收方的确认返回，仅当接收方确认正确接收后再继续发送下一帧。该方法所需要的缓冲存储空间最小，缺点是信道效率很低。  回退n帧的ARQ发信侧不用等待收信侧的应答，持续的发送多个帧">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/05/06/1NAn5JfBg7aMH3t.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/06/wrdtakJKjoMgTc6.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/06/BlqhantSDdiUAPI.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/06/i3f1nqlcQDUMgzS.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/06/UkrZLvSqeJaYbRd.png">
+<meta property="og:image" content="https://img-blog.csdn.net/20140509220932437?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWVjaGFvZGVjaHVudGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="https://img-blog.csdn.net/20140509221032109?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWVjaGFvZGVjaHVudGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="https://i.loli.net/2021/05/06/2m1U7fitVXrPuRz.png">
+<meta property="article:published_time" content="2021-05-06T00:36:31.000Z">
+<meta property="article:modified_time" content="2023-03-15T09:01:07.080Z">
+<meta property="article:author" content="Kagamine Len">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/05/06/1NAn5JfBg7aMH3t.png">
+    
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678872007451">
+    
+    <link rel="stylesheet" href="/css/style.css?v=1678872007451">
+
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="mdui-drawer-body-left">
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Kagamine Len" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Kagamine Len">
+            <img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len" alt="Kagamine Len">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>13</div>
+        <div><span>标签</span>8</div>
+        <div><span>分类</span>1</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+        
+        
+        
+        
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2023 Kagamine Len
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" alt="tcp" loading="lazy">
+            <h1>tcp</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2021年05月06日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <h3 id="停等式ARQ"><a href="#停等式ARQ" class="headerlink" title="停等式ARQ"></a>停等式ARQ</h3><p>在停等式ARQ中，数据<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%8A%A5%E6%96%87">报文</a>发送完成之后，发送方等待接收方的状态报告，如果状态报告报文发送成功，发送后续的数据报文，否则重传该报文。</p>
+<p>停等式ARQ，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8F%91%E9%80%81%E7%AA%97%E5%8F%A3">发送窗口</a>和接收窗口大小均为1，发送方每发送一帧之后就必须停下来等待接收方的确认返回，仅当接收方确认正确接收后再继续发送下一帧。该方法所需要的缓冲存储空间最小，缺点是信道效率很低。</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/06/1NAn5JfBg7aMH3t.png" alt="image-20210506084452593" data-caption="image-20210506084452593" loading="lazy"></p>
+<h3 id="回退n帧的ARQ"><a href="#回退n帧的ARQ" class="headerlink" title="回退n帧的ARQ"></a>回退n帧的ARQ</h3><p>发信侧不用等待收信侧的应答，持续的发送多个帧，假如发现已发送的帧中有错误发生，那么从那个发生错误的帧开始及其之后所有的帧全部再重新发送。</p>
+<p>特点：（GBN）复杂度低，但是不必要的帧会再重发，所以大幅度范围内使用的话效率是不高的</p>
+<p>例：如果序列号有K bits，那么这个ARQ的协议大小为：2^k-1。</p>
+<h3 id="选择性重传ARQ"><a href="#选择性重传ARQ" class="headerlink" title="选择性重传ARQ"></a>选择性重传ARQ</h3><p>发信侧不用等待收信侧的应答，持续的发送多个帧，假如发现已发送的帧中有错误发生，那么发信侧将只重新发送那个发生错误的帧。</p>
+<p>特点：相对于GBN 复杂度高，但是不需要发送没必要的帧，所以效率高。</p>
+<p>例：如果序列号有K bits，那么这个ARQ的协议大小为：2^(k-1)。</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/06/wrdtakJKjoMgTc6.png" alt="image-20210506084657008" data-caption="image-20210506084657008" loading="lazy"></p>
+<h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>滑动窗口实现了TCP流控制。首先明确滑动窗口的范畴：TCP是双工的协议，会话的双方都可以同时接收和发送数据。TCP会话的双方都各自维护一个发送窗口和一个接收窗口。各自的接收窗口大小取决于应用、系统、硬件的限制（TCP传输速率不能大于应用的数据处理速率）。各自的发送窗口则要求取决于对端通告的接收窗口，要求相同。</p>
+<p>滑动窗口解决的是流量控制的的问题，就是如果接收端和发送端对数据包的处理速度不同，如何让双方达成一致。接收端的缓存传输数据给应用层，但这个过程不一定是即时的，如果发送速度太快，会出现接收端数据overflow，流量控制解决的是这个问题。</p>
+<h2 id="窗口的概念"><a href="#窗口的概念" class="headerlink" title="窗口的概念"></a>窗口的概念</h2><p>发送方的发送缓存内的数据都可以被分为4类:</p>
+<ol>
+<li>已发送，已收到ACK</li>
+<li>已发送，未收到ACK</li>
+<li>未发送，但允许发送</li>
+<li>未发送，但不允许发送</li>
+</ol>
+<p>其中类型2和3都属于发送窗口。</p>
+<p>接收方的缓存数据分为3类：</p>
+<ol>
+<li>已接收</li>
+<li>未接收但准备接收</li>
+<li>未接收而且不准备接收</li>
+</ol>
+<p>其中类型2属于接收窗口。</p>
+<p>窗口大小代表了设备一次能从对端处理多少数据，之后再传给应用层。缓存传给应用层的数据不能是乱序的，窗口机制保证了这一点。现实中，应用层可能无法立刻从缓存中读取数据。</p>
+<h2 id="滑动窗口-1"><a href="#滑动窗口-1" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><p>发送窗口只有收到发送窗口内字节的ACK确认，才会移动发送窗口的左边界。</p>
+<p>接收窗口只有在前面所有的段都确认的情况下才会移动左边界。当在前面还有字节未接收但收到后面字节的情况下，窗口不会移动，并不对后续字节确认。以此确保对端会对这些数据重传。</p>
+<p>遵循快速重传、累计确认、选择确认等规则。</p>
+<p>发送方发的window size &#x3D; 8192;就是接收端最多发送8192字节，这个8192一般就是发送方接收缓存的大小。<br><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/06/BlqhantSDdiUAPI.png" alt="image-20210506091113054" data-caption="image-20210506091113054" loading="lazy"></p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/06/i3f1nqlcQDUMgzS.png" alt="image-20210506091145561" data-caption="image-20210506091145561" loading="lazy"></p>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>• 发送缓存与接收缓存的作用<br>‒ 发送应用程序传送给发送方 TCP 准备发送的数据;<br>‒ TCP 已发送出但尚未收到确认的数据。<br>• 接收缓存用来暂时存放:<br>‒ 按序到达的、但尚未被接收应用程序读取的数据;<br>‒ 不按序到达的数据。</p>
+<h3 id="TCP机制-字节为单位的滑动窗口"><a href="#TCP机制-字节为单位的滑动窗口" class="headerlink" title="TCP机制:字节为单位的滑动窗口"></a>TCP机制:字节为单位的滑动窗口</h3><p>• A 的发送窗口并不总是和 B 的接收窗口一样大(因为有一定的时间滞后)。<br>• TCP 标准没有规定对不按序到达的数据应如何处理。<br>通常是先临时存放在接收窗口中,等到字节流中所缺少的字节收到后,再按序交付上层的应用进程。<br>• TCP 要求接收方必须有累积确认的功能,这样可以减小传输开销。</p>
+<h3 id="超时重传的时间选择"><a href="#超时重传的时间选择" class="headerlink" title="超时重传的时间选择"></a>超时重传的时间选择</h3><p>• TCP 每发送一个报文段,就对这个报文段设置一次计时器。只要计时器设置的重传时间到但还没有收到确认,就要重传这一报文段。<br>• 由于 TCP 的下层是一个互联网环境,IP 数据报所选择的路由变化很大。因而运输层的往返时间的方差也很大。<br>• TCP 保留了 RTT 的一个加权平均往返时间 RTT_s (这又称为平滑的往返时间)。<br>$$<br>RTT_s&#x3D;(1-\alpha)<em>(oldRTT_s)+\alpha</em>(newRTT_s)\<br>where[\alpha&#x3D;0.125]<br>$$</p>
+<p><strong>超时重传时间</strong>(Retransmission Time-Out,RTO)应略大于上面得出的加权平均往返时间 RTT_S 。</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/06/UkrZLvSqeJaYbRd.png" alt="2021-05-06_09-17" data-caption="2021-05-06_09-17" loading="lazy"></p>
+<h3 id="TCP零窗口的处理"><a href="#TCP零窗口的处理" class="headerlink" title="TCP零窗口的处理"></a>TCP零窗口的处理</h3><p>• TCP 为每一个连接设有一个持续计时器。‒ 只要一方收到对方的零窗口通知,就启动持续计时器。<br>• 若持续计时器设置的时间到期,就发送一个零窗口探测报文段(仅携带 1 字节的数据),而对方就在确认这个探测报文段时给出了现在的窗口值。<br>‒ 若窗口仍然是零,则收到这个报文段的一方就重新设置持续计时器。<br>‒ 若窗口不是零,则死锁的僵局就可以打破了。</p>
+<h3 id="传输效率"><a href="#传输效率" class="headerlink" title="传输效率"></a>传输效率</h3><p>用不同机制控制 TCP 报文段的发送时机<br>‒ 第一种机制是 TCP 维持一个变量,它等于最大报文段长度MSS。只要缓存中存放的数据达到 MSS 字节时,就组装成一个 TCP 报文段发送出去。<br>‒ 第二种机制是由发送方的应用进程指明要求发送报文段,即 TCP 支持的推送(push)操作。<br>‒ 第三种机制是发送方的一个计时器期限到了,就把当前已有缓存数据装入报文段(但长度不能超过 MSS)发送出去。</p>
+<p><strong>假设B窗口在接受时接收到的字节顺序分别为1、2、3、4、6、7，这途中5号消息可能丢失了，那么它给A窗口返回的确认报文仍然是5号消息而不是7号。</strong>因为B窗口(接受区窗口)只能对按序收到的最高序号给出确认。</p>
+<p>如果A窗口中的消息都发送完，B窗口也都接受完。但是此时的确认报文却丢失了，结果A在一定时间内没有收到B发送过来的确认报文，就会再次给B窗口发送一次数据，直到收到B的确认报文为止。</p>
+<p>注意点：<br>1.滑动窗口虽然可以根据接受区的缓存大小来调整。但是它们并不总是一样大的。因为网络传输需要经历一定的时间，还要考虑当前网络的拥堵状态。<br>2.对没有按序到达的数据，TCP并没有明确规定如何处理。一般情况下会把乱序的数据先保留等到所缺的字节到达后，在按序交给上层应用。<br>3.接受方必须要有累积确认的功能来减少传输开销。但是也不应过分推迟以免不必要的重传。</p>
+<p>超时重传时，如何确定接收方接收到的是先发送的数据还是后来重传的数据？<br>典型的做法：取新的重传时间为旧的重传时间的两倍。</p>
+<p>选择确认SACK<br>当接受区在接受数据时接收到的时乱序的数据，就会形成一个个的字节块。如果这些字节都在接受窗口之内，就会将这些数据保留下来，同时准确的告诉发送方使发送方不要再重复的发送这些数据。</p>
+<h2 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h2><h3 id="拥塞窗口-congestion-window"><a href="#拥塞窗口-congestion-window" class="headerlink" title="拥塞窗口(congestion window)"></a>拥塞窗口(congestion window)</h3><p>‒ 发送方维持的状态变量。<br>‒ 拥塞窗口的大小取决于网络的拥塞程度,并且动态地在变化。发送方让自己的发送窗口等于拥塞窗口。如再考虑到接收方的接收能力,则发送窗口还可能小于拥塞窗口。<br>• 发送方控制拥塞窗口的原则是<br>‒ 只要网络没有出现拥塞,拥塞窗口就再增大一些,以便把更多的分组发送出去。但只要网络出现拥塞,拥塞窗口就减小一些,以减少注入到网络中的分组数。</p>
+<p>  慢开始算法：当主机开始发送数据时，如果立即所大量数据字节注入到网络，那么就有可能引起网络拥塞，因为现在并不清楚网络的负荷情况。因此，较好的方法是先探测一下，即由小到大逐渐增大发送窗口，也就是说，由小到大逐渐增大拥塞窗口数值。通常在刚刚开始发送报文段时，先把拥塞窗口 cwnd <strong>设置为一个最大报文段MSS的数值（不同于之前，该部分不以字节而以报文段作为最小单位）</strong>。而在**每收到一个对新的报文段的确认后（即每ACK一段报文，拥塞窗口加一，这样子每次发送了k个报文后，若全部确认收到，cwnd变为2k)**，把拥塞窗口增加至多一个MSS的数值。用这样的方法逐步增大发送方的拥塞窗口 cwnd ，可以使分组注入到网络的速率更加合理。</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://img-blog.csdn.net/20140509220932437?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWVjaGFvZGVjaHVudGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img" data-caption="img" loading="lazy"></p>
+<p>• 加性增大<br>‒ TCP 初始化时,拥塞窗口置为 1,每收到确认增加1<br>‒ 到达门限值(初始为16)改用拥塞避免算法<br>• 乘性减小<br>‒ 一但拥塞,门限值改为窗口大小的一半<br>• “拥塞避免” 在拥塞避免阶段把拥塞窗口控制为按线性规律增长,使网络较不容易拥塞。(而非完全避免)</p>
+<h3 id="拥塞避免算法"><a href="#拥塞避免算法" class="headerlink" title="拥塞避免算法"></a>拥塞避免算法</h3><p>让拥塞窗口cwnd缓慢地增大，即每经过一个往返时间RTT就把发送方的拥塞窗口cwnd加1，而不是加倍。这样拥塞窗口cwnd按线性规律缓慢增长，比慢开始算法的拥塞窗口增长速率缓慢得多。</p>
+<p>  无论在慢开始阶段还是在拥塞避免阶段，只要发送方判断网络出现拥塞（其根据就是没有收到确认），就要把慢开始门限ssthresh设置为出现拥塞时的发送方窗口值的一半（但不能小于2）。然后把拥塞窗口cwnd重新设置为1，执行慢开始算法。</p>
+<h2 id="快重传和快恢复"><a href="#快重传和快恢复" class="headerlink" title="快重传和快恢复"></a>快重传和快恢复</h2><h3 id="快重传"><a href="#快重传" class="headerlink" title="快重传"></a>快重传</h3><p>如果发送方设置的超时计时器时限已到但还没有收到确认，那么很可能是网络出现了拥塞，致使报文段在网络中的某处被丢弃。这时，TCP马上把拥塞窗口 cwnd 减小到1，并执行慢开始算法，同时把慢开始门限值ssthresh减半。这是不使用快重传的情况。</p>
+<p>  快重传算法首先要求接收方<strong>每收到一个失序的报文段后就立即发出重复确认</strong>（为的是使发送方及早知道有报文段没有到达对方）而不要等到自己发送数据时才进行捎带确认。</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://img-blog.csdn.net/20140509221032109?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWVjaGFvZGVjaHVudGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img" data-caption="img" loading="lazy"></p>
+<p>接收方收到了M1和M2后都分别发出了确认。现在假定接收方没有收到M3但接着收到了M4。显然，接收方不能确认M4，因为M4是收到的失序报文段。根据可靠传输原理，接收方可以什么都不做，也可以在适当时机发送一次对M2的确认。但按照快重传算法的规定，接收方应及时发送对M2的重复确认，这样做可以让发送方及早知道报文段M3没有到达接收方。发送方接着发送了M5和M6。接收方收到这两个报文后，也还要再次发出对M2的重复确认。这样，发送方共收到了接收方的四个对M2的确认，其中后三个都是重复确认。快重传算法还规定，发送方只要一连收到三个重复确认就应当立即重传对方尚未收到的报文段M3，而不必继续等待M3设置的重传计时器到期。由于发送方尽早重传未被确认的报文段，因此采用快重传后可以使整个网络吞吐量提高约20%。</p>
+<p>在这种情况下，快重传并没有取消重传计时器，但在某些情况下可以更快的重传丢失的报文。</p>
+<h3 id="快恢复"><a href="#快恢复" class="headerlink" title="快恢复"></a>快恢复</h3><p>• 当发送端收到连续三个重复的确认时,就执行“乘法减小”算法,把慢开始门限 ssthresh 减半。但接下去不执行慢开始算法。<img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/05/06/2m1U7fitVXrPuRz.png" alt="2021-05-06_09-44" data-caption="2021-05-06_09-44" loading="lazy"></p>
+
+    
+  </article>
+
+  
+      
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-search-space">
+	<div class="search-container">
+		<div class="search-header">
+			<div class="search-input-container">
+				<input
+					class="search-input"
+					type="text"
+					placeholder="搜索"
+					oninput="sinput();"
+				/>
+			</div>
+			<a class="search-close" onclick="sclose();">×</a>
+		</div>
+		<div class="search-body"></div>
+	</div>
+</div>
+
+    
+<script src="/lib/mdui_043tiny/mdui.js"></script>
+<script src="/lib/fancybox/fancybox.umd.js"></script>
+
+
+ 
+
+<script async src="/js/app.js?v=1678872007451"></script>
+
+
+
+</body>
+
+</html>
