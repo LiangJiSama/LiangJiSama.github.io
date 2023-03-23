@@ -22,9 +22,9 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678883651418">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1679553233386">
     
-    <link rel="stylesheet" href="/css/style.css?v=1678883651418">
+    <link rel="stylesheet" href="/css/style.css?v=1679553233386">
 
     
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -49,7 +49,7 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>17</div>
+        <div><span>文章</span>18</div>
         <div><span>标签</span>8</div>
         <div><span>分类</span>2</div>
     </div>
@@ -125,7 +125,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/GAMES101/">GAMES101</a>
-          <span class="category-list-count">4</span>
+          <span class="category-list-count">5</span>
         </li>
 
         
@@ -175,7 +175,7 @@
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">文章归档</h3>
     <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">13</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -188,6 +188,10 @@
     <h3 class="nexmoe-widget-title">最新文章</h3>
     <div class="nexmoe-widget">
       <ul>
+        
+          <li>
+            <a href="/2023/03/23/Games101/%E4%BD%9C%E4%B8%9A7%E5%85%B3%E4%BA%8Epdf%E5%92%8C%E9%87%87%E6%A0%B7%E7%9A%84%E7%90%86%E8%A7%A3/">作业7关于pdf和采样的理解</a>
+          </li>
         
           <li>
             <a href="/2023/03/15/Games101/%E4%BD%9C%E4%B8%9A5/">作业5</a>
@@ -203,10 +207,6 @@
         
           <li>
             <a href="/2023/03/15/Games101/%E5%9C%A8macos%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%85%8D%E7%BD%AEgames101%E4%BD%9C%E4%B8%9A%E7%8E%AF%E5%A2%83/">在macos 环境下配置games101 作业环境</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/06/tcp/">tcp</a>
           </li>
         
       </ul>
@@ -226,6 +226,44 @@
     <div id="nexmoe-content">
         <div class="nexmoe-primary">
             <section class="nexmoe-posts">
+    
+    <div class="nexmoe-post">
+        <a href="/2023/03/23/Games101/%E4%BD%9C%E4%B8%9A7%E5%85%B3%E4%BA%8Epdf%E5%92%8C%E9%87%87%E6%A0%B7%E7%9A%84%E7%90%86%E8%A7%A3/">
+            
+                <div class="nexmoe-post-cover mdui-ripple"> 
+                    <img src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" alt="作业7关于pdf和采样的理解" loading="lazy">
+                    <h1>作业7关于pdf和采样的理解</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2023年03月23日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/GAMES101/">GAMES101</a>
+        
+        
+    <a><i class="nexmoefont icon-areachart"></i>约600字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要2分钟</a>
+
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+        <article>
+            <p>对蒙特卡洛采样有一定的疑惑，下面将介绍一些蒙特卡洛采样的概念。</p>
+<p>对于随机变量X，我们有函数f(x)和其概率密度函数p(x)，我们想要估计函数f(x)<strong>积分的值</strong>,通常来说我们想要知道蒙特卡洛采样结果$g(x)=\frac{1}{n}*\sum_{1}^{n}{\frac{f(x)}{p(x)}}$。</p>
+<p>需要注意的是，蒙特卡洛方法要求对于任何f(x)存在的地方p(x)&gt;0。</p>
+<p>我们简单证明其期望相等</p>
+<script type="math/tex; mode=display">E[g(x)]=\frac{1}{n}*\sum_{1}^{n}{E[\frac{f(x)}{p(x)}]}</script><p>其中$E[\frac{f(x)}{p(x)}]=\int{\frac{f(x)}{p(x)}*p(x)}=\int{f(x)}$</p>
+<p>我们通过上述方法就可以简单求到该函数的积分的期望。</p>
+        </article>
+    </div>
     
     <div class="nexmoe-post">
         <a href="/2023/03/15/Games101/%E4%BD%9C%E4%B8%9A5/">
@@ -258,7 +296,6 @@
         <article>
             <p>作业5我们需要翻找代码找到u,v的含义，因为这个代码实际上并没有贴图，代码中有这样一行注释：</p>
 <pre><code class="highlight livecodeserver">uv stores <span class="keyword">the</span> u <span class="keyword">and</span> v barycentric coordinates <span class="keyword">of</span> <span class="keyword">the</span> intersected point</code></pre>
-
 <p>因此，我们返回求得的重心坐标u，v即可。</p>
         </article>
     </div>
@@ -280,7 +317,7 @@
             <a class="nexmoefont icon-appstore-fill -link" href="/categories/GAMES101/">GAMES101</a>
         
         
-    <a><i class="nexmoefont icon-areachart"></i>约526字</a>
+    <a><i class="nexmoefont icon-areachart"></i>约525字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要2分钟</a>
 
     </div>
@@ -330,7 +367,6 @@
             <p>这一次作业比较简单，我们主要是需要对新的框架调整我们对应代码的格式。</p>
 <pre><code class="highlight c++"><span class="comment">//Render()</span>
 framebuffer[m++] = scene.<span class="built_in">castRay</span>(ray,<span class="number">0</span>); <span class="comment">// castRay(ray, current_depth);</span></code></pre>
-
 <pre><code class="highlight c++"><span class="function"><span class="keyword">inline</span> Intersection <span class="title">Triangle::getIntersection</span><span class="params">(Ray ray)</span></span>
 <span class="function"></span>&#123;
     Intersection inter;
@@ -387,7 +423,7 @@ framebuffer[m++] = scene.<span class="built_in">castRay</span>(ray,<span class="
             <p>在macos 环境下配置games101 作业环境。</p>
 <p>按照下文的方法配置即可。</p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/371245964">https://zhuanlan.zhihu.com/p/371245964</a></p>
-<p>有两个需要注意的点，一是由于opencv2 已经从brew中停止维护，我们需要手动安装opencv2，只需从opencv官网下载opencv2.4包，并按照<a target="_blank" rel="noopener" href="https://blog.csdn.net/NeoZng/article/details/123085674%E6%89%80%E7%A4%BA%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E5%8D%B3%E5%8F%AF%E3%80%82">https://blog.csdn.net/NeoZng/article/details/123085674所示方法进行编译安装即可。</a></p>
+<p>有两个需要注意的点，一是由于opencv2 已经从brew中停止维护，我们需要手动安装opencv2，只需从opencv官网下载opencv2.4包，并按照<a target="_blank" rel="noopener" href="https://blog.csdn.net/NeoZng/article/details/123085674所示方法进行编译安装即可。">https://blog.csdn.net/NeoZng/article/details/123085674所示方法进行编译安装即可。</a><br>
         </article>
     </div>
     
@@ -474,7 +510,7 @@ framebuffer[m++] = scene.<span class="built_in">castRay</span>(ray,<span class="
             <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
         
         
-    <a><i class="nexmoefont icon-areachart"></i>约547字</a>
+    <a><i class="nexmoefont icon-areachart"></i>约546字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要2分钟</a>
 
     </div>
@@ -487,7 +523,7 @@ framebuffer[m++] = scene.<span class="built_in">castRay</span>(ray,<span class="
 
         <article>
             <p>堆排序的过程为</p>
-<p>建堆 从最后一个非叶子节点（对于节点编号为0~n-1的树，最后一个非叶子节点为n&#x2F;2-1)，按照堆的定义调整堆（即选择当前这个节点两个儿子节点(i*2+1,i*2+2)中的最大值，然后交换当前节点和该最大值节点）</p>
+<p>建堆 从最后一个非叶子节点（对于节点编号为0~n-1的树，最后一个非叶子节点为n/2-1)，按照堆的定义调整堆（即选择当前这个节点两个儿子节点(i*2+1,i*2+2)中的最大值，然后交换当前节点和该最大值节点）</p>
         </article>
     </div>
     
@@ -556,50 +592,15 @@ framebuffer[m++] = scene.<span class="built_in">castRay</span>(ray,<span class="
         <article>
             <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p> <strong>C和C++编译器是集成的，编译一般分为四个步骤：</strong></p>
 <ol>
-<li><strong>预处理(preprocessing)  —————– cpp&#x2F; gcc -E</strong> </li>
-<li><strong>编译(compilation) —————— cc1 &#x2F; gcc -S</strong></li>
-<li><strong>汇编(assembly)  ——————– as</strong></li>
-<li><strong>连接(linking) ——————— ld</strong></li>
+<li><strong>预处理(preprocessing)  ————————- cpp/ gcc -E</strong> </li>
+<li><strong>编译(compilation) ————————— cc1 / gcc -S</strong></li>
+<li><strong>汇编(assembly)  —————————— as</strong></li>
+<li><strong>连接(linking) ——————————- ld</strong> </li>
 </ol>
-<ol start="2">
-<li>动态链接</li>
-</ol>
+<p>2) 动态链接</p>
 <p>在此种方式下，函数的代码被放到称作是动态链接库或共享对象的某个目标文件中。链接程序此时所作的只是在最终的可执行程序中记录下共享对象的名字以及其它少量的登记信息。在此可执行文件被执行时，动态链接库的全部内容将被映射到运行时相应进程的虚地址空间。动态链接程序将根据可执行程序中记录的信息找到相应的函数代码。</p>
 <p>对于可执行文件中的函数调用，可分别采用动态链接或静态链接的方法。使用动态链接能够使最终的可执行文件比较短小，并且当共享对象被多个进程使用时能节约一些内存，因为在内存中只需要保存一份此共享对象的代码。但并不是使用动态链接就一定比使用静态链接要优越。在某些情况下动态链接可能带来一些性能上损害。</p>
 <p>ps:详见深入理解操作系统</p>
-        </article>
-    </div>
-    
-    <div class="nexmoe-post">
-        <a href="/2021/05/05/%E9%9D%A2%E8%AF%95%E5%8F%91%E7%8E%B0%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9%E7%BC%BA%E5%A4%B1/">
-            
-                <div class="nexmoe-post-cover mdui-ripple"> 
-                    <img src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" alt="面试发现的知识点缺失" loading="lazy">
-                    <h1>面试发现的知识点缺失</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta">
-    <div class="nexmoe-rainbow">
-        <a class="nexmoefont icon-calendar-fill">2021年05月05日</a>
-        
-            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-        
-        
-    <a><i class="nexmoefont icon-areachart"></i>约105字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要1分钟</a>
-
-    </div>
-    
-    
-    
-    
-    
-</div>
-
-        <article>
-            
         </article>
     </div>
     
@@ -650,7 +651,7 @@ framebuffer[m++] = scene.<span class="built_in">castRay</span>(ray,<span class="
 
  
 
-<script async src="/js/app.js?v=1678883651419"></script>
+<script async src="/js/app.js?v=1679553233386"></script>
 
 <script src="https://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script> <script> hljs.initHighlightingOnLoad(); </script>
 

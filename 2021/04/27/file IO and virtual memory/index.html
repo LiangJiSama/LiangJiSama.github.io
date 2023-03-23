@@ -30,9 +30,9 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678883651416">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1679553233384">
     
-    <link rel="stylesheet" href="/css/style.css?v=1678883651416">
+    <link rel="stylesheet" href="/css/style.css?v=1679553233384">
 
     
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -57,7 +57,7 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>17</div>
+        <div><span>文章</span>18</div>
         <div><span>标签</span>8</div>
         <div><span>分类</span>2</div>
     </div>
@@ -133,7 +133,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/GAMES101/">GAMES101</a>
-          <span class="category-list-count">4</span>
+          <span class="category-list-count">5</span>
         </li>
 
         
@@ -183,7 +183,7 @@
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">文章归档</h3>
     <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">13</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -196,6 +196,10 @@
     <h3 class="nexmoe-widget-title">最新文章</h3>
     <div class="nexmoe-widget">
       <ul>
+        
+          <li>
+            <a href="/2023/03/23/Games101/%E4%BD%9C%E4%B8%9A7%E5%85%B3%E4%BA%8Epdf%E5%92%8C%E9%87%87%E6%A0%B7%E7%9A%84%E7%90%86%E8%A7%A3/">作业7关于pdf和采样的理解</a>
+          </li>
         
           <li>
             <a href="/2023/03/15/Games101/%E4%BD%9C%E4%B8%9A5/">作业5</a>
@@ -211,10 +215,6 @@
         
           <li>
             <a href="/2023/03/15/Games101/%E5%9C%A8macos%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%85%8D%E7%BD%AEgames101%E4%BD%9C%E4%B8%9A%E7%8E%AF%E5%A2%83/">在macos 环境下配置games101 作业环境</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/06/tcp/">tcp</a>
           </li>
         
       </ul>
@@ -264,24 +264,23 @@
     <h1 id="虚拟缓存"><a href="#虚拟缓存" class="headerlink" title="虚拟缓存"></a>虚拟缓存</h1><h2 id="虚存的最大大小"><a href="#虚存的最大大小" class="headerlink" title="虚存的最大大小"></a>虚存的最大大小</h2><p>虚拟内存不受计算机中内存指针大小的限制，虚拟内存限制与寻址内存空间不同。可以解决的虚拟内存比使用分页的基于指针的地址空间中可用的虚拟内存更多</p>
 <p>虚拟内存上限由操作系统设置：例如 32位Windows的限制为16TB，而在64位Windows上的限制为256TB。</p>
 <span id="more"></span>
-
 <h2 id="虚存的目的"><a href="#虚存的目的" class="headerlink" title="虚存的目的"></a>虚存的目的</h2><p>1.在内存中保留多个进程</p>
 <p>2.进程可以比内存的全部空间还大</p>
-<h2 id="windows-分页机制"><a href="#windows-分页机制" class="headerlink" title="windows 分页机制"></a>windows 分页机制</h2><p>每日三问&#x2F;操作系统篇&lt;3&gt;： 讲讲Windows&#x2F;Linux内存管理？</p>
+<h2 id="windows-分页机制"><a href="#windows-分页机制" class="headerlink" title="windows 分页机制"></a>windows 分页机制</h2><p>每日三问/操作系统篇<3>： 讲讲Windows/Linux内存管理？</p>
 <p>Windows</p>
 <p>Windows的内存体系结构基于虚拟的线性的地址和分页机制。对于线性地址的分配也是以页为单位进行的，物理地址的管理更是以页为单位。</p>
 <p>当我们在Windows中双击一个应用程序图标后，系统为该应用程序创建一个进程，Windows使得每个进程都拥有2GB的地址空间，这2GB地址空间用于程序存放代码，数据，堆栈，自由存储区（堆），另外2GB用于共享系统使用前面的这些地址并不是物理内存中的地址。</p>
 <p>Windows是多任务的系统，在每个进程创建时，系统为每个进程也创建了一个页表，用于虚拟地址到物理地址的转换。比如现在程序在执行进程A，用户切换到了另外一个进程B，则系统会将进程A在内存中的数据存放到页文件中，并更新进程A的页表（使虚拟地址和页文件形成映射）。然后读取进程B的页表，根据页表判断进程B的数据是在内存中还是在页文件中（通过页文件的类型来判断），如果在内存中就直接读取，如果在页面文件中，就将页面文件内容读入物理内存，然后更新页表（使虚拟地址和物理内存形成映射）。</p>
 <h2 id="TLB-转换检测缓冲区"><a href="#TLB-转换检测缓冲区" class="headerlink" title="TLB 转换检测缓冲区"></a>TLB 转换检测缓冲区</h2><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/04/28/WE3aO7xHLChsuDn.png" alt="image-20210427220346267" data-caption="image-20210427220346267" loading="lazy"></p>
 <p>为了减少访存读取页表，TLB中包含最近使用的页表项（每个进程都只有一张页表）进程id+PM位（有效、修改位），先检查是否在TLB表中命中，若命中则直接读取对应的帧+偏移量获得地址，否则在页表中查询，若页表中查询发现该帧不在内存中，则发生缺页中断，从虚存中读取数据。</p>
-<h1 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h1><h2 id="缓冲区"><a href="#缓冲区" class="headerlink" title="缓冲区"></a>缓冲区</h2><p>OS给一个I&#x2F;O请求分配一个位于主存中系统部分的缓冲区<br>面向块<br>输入传送的数据被放到系统缓冲区中<br>传送完成时，进程把块移动到用户空间<br>进程请求另外一块<br>在下一块数据正在读取的时候，用户进程可以处理一块数据<br>可以换出进程<br>输入是发生在系统内存，而非用户内存</p>
+<h1 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h1><h2 id="缓冲区"><a href="#缓冲区" class="headerlink" title="缓冲区"></a>缓冲区</h2><p>OS给一个I/O请求分配一个位于主存中系统部分的缓冲区<br>面向块<br>输入传送的数据被放到系统缓冲区中<br>传送完成时，进程把块移动到用户空间<br>进程请求另外一块<br>在下一块数据正在读取的时候，用户进程可以处理一块数据<br>可以换出进程<br>输入是发生在系统内存，而非用户内存</p>
 <p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/04/28/ytUY3DKEjuPMIb9.png" alt="image-20210427221457881" data-caption="image-20210427221457881" loading="lazy"></p>
 <p>读操作的过程：</p>
 <ol>
 <li>发出操作指令（操作方式，对象）</li>
 <li>权限判断（ACL)</li>
 <li>文件名-〉具体文件的映射</li>
-<li>读块 (A)从cache读出 (B)从磁盘读 Disk-〉Cache&#x2F;Buffer-〉读出</li>
+<li>读块 (A)从cache读出 (B)从磁盘读 Disk-〉Cache/Buffer-〉读出</li>
 <li>解块：块-〉记录</li>
 <li>返回给用户程序（Exception:无权限或读错误)</li>
 </ol>
@@ -299,14 +298,14 @@
 <p>当缓存被排放出来(flush)时，它里面的所有数据或者被写入物理媒质中（如果是一个输出流的话），或者简单的被抹掉(如果是一个输入流的话)。这个过程称为同步(synchronization)，它会在以下任一情况下发生：</p>
 <ul>
 <li><strong>当文件被关闭时:</strong> 在文件被关闭之前，所有还没有被完全写出或读取的缓存都将被同步。</li>
-<li>**当缓存buffer 满时:**缓存Buffers 有一定的空间限制。当缓存满时，它会被自动同步。</li>
-<li>**控制符明确指明:**当遇到流中某些特定的控制符时，同步会发生。这些控制符包括：flush 和endl。</li>
+<li><strong>当缓存buffer 满时:</strong>缓存Buffers 有一定的空间限制。当缓存满时，它会被自动同步。</li>
+<li><strong>控制符明确指明:</strong>当遇到流中某些特定的控制符时，同步会发生。这些控制符包括：flush 和endl。</li>
 <li><strong>明确调用函数sync():</strong> 调用成员函数sync() (无参数)可以引发立即同步。这个函数返回一个int 值，等于-1 表示流没有联系的缓存或操作失败。</li>
 </ul>
 <p>按照实现的不同 写入一个缓存的过程应该是加锁的，但写入多个缓存时可能会产生多个写入混合的问题。</p>
 <p>不确定write函数是线程安全的，但采用多个open打开一个文件不是线程安全的。</p>
 <p>多个流写入一个缓冲（并发不可控制的，出现输入交叉的情况）</p>
-<p>This code exhibits undefined behavior from multiple threads. See N3485 27.2.3 [iostreams.threadsafety]&#x2F;1:</p>
+<p>This code exhibits undefined behavior from multiple threads. See N3485 27.2.3 [iostreams.threadsafety]/1:</p>
 <blockquote>
 <p>Concurrent access to a stream object (27.8, 27.9), stream buffer object (27.6), or C Library stream (27.9.2) by multiple threads may result in a data race (1.10) unless otherwise specified (27.4). [ Note: Data races result in undefined behavior (1.10). —end note ]</p>
 </blockquote>
@@ -314,14 +313,12 @@
 <p>In the general case, streams are not safe to use across threads. You must protect the stream using a lock, such as <code>std::mutex</code>.</p>
 <p>Note that even if streams were safe to access across threads this code would probably not do what you want. Consider this line:</p>
 <pre><code class="highlight cpp">myfile &lt;&lt; matchSet.testCase &lt;&lt; <span class="string">&quot;,&quot;</span> &lt;&lt; corr.match &lt;&lt; corr.editDistance &lt;&lt; <span class="string">&quot;\n&quot;</span>;</code></pre>
-
 <p>which is the same as</p>
 <pre><code class="highlight cpp">myfile &lt;&lt; matchSet.testCase;
 myfile &lt;&lt; <span class="string">&quot;,&quot;</span>;
 myfile &lt;&lt; corr.match;
 myfile &lt;&lt; corr.editDistance;
 myfile &lt;&lt; <span class="string">&quot;\n&quot;</span>;</code></pre>
-
 <p>Note the race condition. Let’s say that your implementation’s <code>operator&lt;&lt;</code> for streams is synchronized for you by the implementation. You still have a potential race in this outer code. For instance, here is one possible execution of this across 2 threads:</p>
 <pre><code class="highlight cpp">   Thread <span class="number">1</span>                              Thread <span class="number">2</span>
 ======================================================================
@@ -335,7 +332,6 @@ myfile &lt;&lt; <span class="string">&quot;\n&quot;</span>;
                                          myfile &lt;&lt; corr.match;
                                          myfile &lt;&lt; corr.editDistance;
                                          myfile &lt;&lt; <span class="string">&quot;\n&quot;</span>;</code></pre>
-
 <p>Instead of getting that to write as a single line, you’ll get output from each thread mixed up together, resulting in gibberish.</p>
 
     
@@ -407,7 +403,7 @@ myfile &lt;&lt; <span class="string">&quot;\n&quot;</span>;
 
  
 
-<script async src="/js/app.js?v=1678883651417"></script>
+<script async src="/js/app.js?v=1679553233385"></script>
 
 <script src="https://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script> <script> hljs.initHighlightingOnLoad(); </script>
 

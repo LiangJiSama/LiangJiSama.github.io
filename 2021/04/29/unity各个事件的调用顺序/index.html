@@ -29,9 +29,9 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678883651414">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1679553233382">
     
-    <link rel="stylesheet" href="/css/style.css?v=1678883651414">
+    <link rel="stylesheet" href="/css/style.css?v=1679553233382">
 
     
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -56,7 +56,7 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>17</div>
+        <div><span>文章</span>18</div>
         <div><span>标签</span>8</div>
         <div><span>分类</span>2</div>
     </div>
@@ -132,7 +132,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/GAMES101/">GAMES101</a>
-          <span class="category-list-count">4</span>
+          <span class="category-list-count">5</span>
         </li>
 
         
@@ -182,7 +182,7 @@
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">文章归档</h3>
     <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">13</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -195,6 +195,10 @@
     <h3 class="nexmoe-widget-title">最新文章</h3>
     <div class="nexmoe-widget">
       <ul>
+        
+          <li>
+            <a href="/2023/03/23/Games101/%E4%BD%9C%E4%B8%9A7%E5%85%B3%E4%BA%8Epdf%E5%92%8C%E9%87%87%E6%A0%B7%E7%9A%84%E7%90%86%E8%A7%A3/">作业7关于pdf和采样的理解</a>
+          </li>
         
           <li>
             <a href="/2023/03/15/Games101/%E4%BD%9C%E4%B8%9A5/">作业5</a>
@@ -210,10 +214,6 @@
         
           <li>
             <a href="/2023/03/15/Games101/%E5%9C%A8macos%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%85%8D%E7%BD%AEgames101%E4%BD%9C%E4%B8%9A%E7%8E%AF%E5%A2%83/">在macos 环境下配置games101 作业环境</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/06/tcp/">tcp</a>
           </li>
         
       </ul>
@@ -249,7 +249,7 @@
             <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
         
         
-    <a><i class="nexmoefont icon-areachart"></i>约679字</a>
+    <a><i class="nexmoefont icon-areachart"></i>约678字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要2分钟</a>
 
     </div>
@@ -263,14 +263,13 @@
     <p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://docs.unity3d.com/cn/2019.4/uploads/Main/monobehaviour_flowchart.svg" alt="img" data-caption="img" loading="lazy"></p>
 <p>由图可见，unity为了保证fixedupdate的可靠性，就算在update中一次更新是十分缓慢的，但在fixedupdate中会循环执行直到当前fixedupdate能够执行到的时间与当前的时间相吻合。</p>
 <span id="more"></span>
-
 <h2 id="加载第一个场景"><a href="#加载第一个场景" class="headerlink" title="加载第一个场景"></a>加载第一个场景</h2><p>场景开始时将调用以下函数（为场景中的每个对象调用一次）。</p>
 <ul>
 <li><strong>Awake：</strong>始终在任何 Start 函数之前并在实例化预制件之后调用此函数。（如果游戏对象在启动期间处于非活动状态，则在激活之后才会调用 Awake。）</li>
 <li><strong>OnEnable：</strong>（仅在对象处于激活状态时调用）在启用对象后立即调用此函数。在创建 MonoBehaviour 实例时（例如加载关卡或实例化具有脚本组件的游戏对象时）会执行此调用。</li>
 <li><strong>OnLevelWasLoaded：</strong>执行此函数可告知游戏已加载新关卡。</li>
 </ul>
-<p>请注意，对于添加到场景中的对象，在为任何对象调用 Start 和 Update 等函数之前，会为_所有_脚本调用 Awake 和 OnEnable 函数。当然，在游戏运行过程中实例化对象时，不能强制执行此调用。</p>
+<p>请注意，对于添加到场景中的对象，在为任何对象调用 Start 和 Update 等函数之前，会为<em>所有</em>脚本调用 Awake 和 OnEnable 函数。当然，在游戏运行过程中实例化对象时，不能强制执行此调用。</p>
 <h2 id="在第一次帧更新之前"><a href="#在第一次帧更新之前" class="headerlink" title="在第一次帧更新之前"></a>在第一次帧更新之前</h2><ul>
 <li><strong>Start：</strong>仅当启用脚本实例后，才会在第一次帧更新之前调用 Start。</li>
 </ul>
@@ -351,7 +350,7 @@
 
  
 
-<script async src="/js/app.js?v=1678883651415"></script>
+<script async src="/js/app.js?v=1679553233383"></script>
 
 <script src="https://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script> <script> hljs.initHighlightingOnLoad(); </script>
 

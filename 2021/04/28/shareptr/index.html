@@ -10,12 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     <link href="https://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
-    <meta name="description" content="为什么使用std::make_sharedstd::shared_ptr是常用的智能指针，建立一个shared_ptr对象有两种方式： &#x2F;&#x2F; (1) std::shared_ptr&lt;Widget&gt; p1(new Widget); &#x2F;&#x2F; (2) std::shared_ptr&lt;Widget&gt; p2(std::make_shared&lt;Widget&gt;());  通常">
+    <meta name="description" content="为什么使用std::make_sharedstd::shared_ptr是常用的智能指针，建立一个shared_ptr对象有两种方式： &#x2F;&#x2F; (1) std::shared_ptr&lt;Widget&gt; p1(new Widget); &#x2F;&#x2F; (2) std::shared_ptr&lt;Widget&gt; p2(std::make_shared&lt;Widget&gt;()); 通常方">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shareptr">
 <meta property="og:url" content="http://liangjisama.top/2021/04/28/shareptr/index.html">
 <meta property="og:site_name" content="LiangJiSama Offical">
-<meta property="og:description" content="为什么使用std::make_sharedstd::shared_ptr是常用的智能指针，建立一个shared_ptr对象有两种方式： &#x2F;&#x2F; (1) std::shared_ptr&lt;Widget&gt; p1(new Widget); &#x2F;&#x2F; (2) std::shared_ptr&lt;Widget&gt; p2(std::make_shared&lt;Widget&gt;());  通常">
+<meta property="og:description" content="为什么使用std::make_sharedstd::shared_ptr是常用的智能指针，建立一个shared_ptr对象有两种方式： &#x2F;&#x2F; (1) std::shared_ptr&lt;Widget&gt; p1(new Widget); &#x2F;&#x2F; (2) std::shared_ptr&lt;Widget&gt; p2(std::make_shared&lt;Widget&gt;()); 通常方">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2021/04/29/416mdcYxwj2KuvB.png">
 <meta property="og:image" content="https://i.loli.net/2021/04/29/5OjNR8Wa2lGHxXK.png">
@@ -32,9 +32,9 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678883651416">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1679553233383">
     
-    <link rel="stylesheet" href="/css/style.css?v=1678883651416">
+    <link rel="stylesheet" href="/css/style.css?v=1679553233383">
 
     
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -59,7 +59,7 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>17</div>
+        <div><span>文章</span>18</div>
         <div><span>标签</span>8</div>
         <div><span>分类</span>2</div>
     </div>
@@ -135,7 +135,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/GAMES101/">GAMES101</a>
-          <span class="category-list-count">4</span>
+          <span class="category-list-count">5</span>
         </li>
 
         
@@ -185,7 +185,7 @@
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">文章归档</h3>
     <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">13</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -198,6 +198,10 @@
     <h3 class="nexmoe-widget-title">最新文章</h3>
     <div class="nexmoe-widget">
       <ul>
+        
+          <li>
+            <a href="/2023/03/23/Games101/%E4%BD%9C%E4%B8%9A7%E5%85%B3%E4%BA%8Epdf%E5%92%8C%E9%87%87%E6%A0%B7%E7%9A%84%E7%90%86%E8%A7%A3/">作业7关于pdf和采样的理解</a>
+          </li>
         
           <li>
             <a href="/2023/03/15/Games101/%E4%BD%9C%E4%B8%9A5/">作业5</a>
@@ -213,10 +217,6 @@
         
           <li>
             <a href="/2023/03/15/Games101/%E5%9C%A8macos%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%85%8D%E7%BD%AEgames101%E4%BD%9C%E4%B8%9A%E7%8E%AF%E5%A2%83/">在macos 环境下配置games101 作业环境</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/06/tcp/">tcp</a>
           </li>
         
       </ul>
@@ -252,7 +252,7 @@
             <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
         
         
-    <a><i class="nexmoefont icon-areachart"></i>约908字</a>
+    <a><i class="nexmoefont icon-areachart"></i>约879字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要3分钟</a>
 
     </div>
@@ -269,25 +269,20 @@
 <span class="function">std::shared_ptr&lt;Widget&gt; <span class="title">p1</span><span class="params">(<span class="keyword">new</span> Widget)</span></span>;
 <span class="comment">// (2)</span>
 <span class="function">std::shared_ptr&lt;Widget&gt; <span class="title">p2</span><span class="params">(std::make_shared&lt;Widget&gt;())</span></span>;</code></pre>
-
 <p>通常方法（2）使用make_shared是更受推荐的做法。原因是</p>
 <h2 id="减少重复代码"><a href="#减少重复代码" class="headerlink" title="减少重复代码"></a>减少重复代码</h2><p>对于</p>
 <pre><code class="highlight c++"><span class="comment">// (2)</span>
 <span class="function">std::shared_ptr&lt;Widget&gt; <span class="title">p2</span><span class="params">(std::make_shared&lt;Widget&gt;())</span></span>;</code></pre>
-
 <p>它可以简化为</p>
 <pre><code class="highlight c++"><span class="comment">// (2)</span>
 <span class="function"><span class="keyword">auto</span> <span class="title">p2</span><span class="params">(std::make_shared&lt;Widget&gt;())</span></span>;</code></pre>
-
 <p>对比(1)少书写了一次Widget，在代码中减少重复总是一件好事，对吧:)</p>
 <h2 id="效率更高"><a href="#效率更高" class="headerlink" title="效率更高"></a>效率更高</h2><p>对于</p>
 <pre><code class="highlight c++"><span class="comment">// (1)</span>
 <span class="function">std::shared_ptr&lt;Widget&gt; <span class="title">p1</span><span class="params">(<span class="keyword">new</span> Widget)</span></span>;</code></pre>
-
 <p>存在两次内存分配操作：<br> 1.new Widget<br> 2.为p1分配控制块（control block），控制块用于存放引用计数等信息<br> 而对于</p>
 <pre><code class="highlight c++"><span class="comment">// (2)</span>
 <span class="function"><span class="keyword">auto</span> <span class="title">p2</span><span class="params">(std::make_shared&lt;Widget&gt;())</span></span>;</code></pre>
-
 <p>只有一次内存内配操作，make_shared会一次性申请足够大的空间用于存放Widget对象和智能指针的控制块。<br> 在MSVC版本的STL中，make_shared的实现是</p>
 <pre><code class="highlight c++"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">class</span> _Ty,</span>
 <span class="function">	<span class="keyword">class</span>... _Types&gt; <span class="keyword">inline</span></span>
@@ -300,7 +295,6 @@
 	_Ret._Resetp0(_Rx-&gt;_Getptr(), _Rx);
 	<span class="keyword">return</span> (_Ret);
 	&#125;</code></pre>
-
 <p>这里的_Ref_count_obj类包含成员变量：<br> 1.控制块<br> 2.一个内存块，用于存放智能指针管理的资源对象<br> 所以new _Ref_count_obj能一次性为控制块和资源对象申请内存。<br> 感兴趣的读者可以再看看_Ref_count_obj的构造函数：</p>
 <pre><code class="highlight c++"><span class="keyword">template</span>&lt;<span class="keyword">class</span>... _Types&gt;
 	_Ref_count_obj(_Types&amp;&amp;... _Args)
@@ -308,8 +302,7 @@
 	&#123;	<span class="comment">// construct from argument list</span>
 	::<span class="keyword">new</span> ((<span class="type">void</span> *)&amp;_Storage) _Ty(_STD forward&lt;_Types&gt;(_Args)...);
 	&#125;</code></pre>
-
-<p>此处其实也有一个new操作，但是是placement new，不涉及内存分配。所以内存分配操作还是只有一次。<br> 引用计数在_Ref_count_obj的父类_Ref_count_base中。而_Storage就是存放资源对象的内存块。_</p>
+<p>此处其实也有一个new操作，但是是placement new，不涉及内存分配。所以内存分配操作还是只有一次。<br> 引用计数在<em>Ref_count_obj的父类_Ref_count_base中。而_Storage就是存放资源对象的内存块。</em></p>
 <p><em>placement new 会在已经开辟的空间中存放这个sotrage对象，即把对象放在指定的空间位置</em><br> 那_Storage是怎么来的？它其实是一个联合体，编译器在编译时能获取到资源对象的大小，然后利用模板实例化出具有相等大小的联合体或结构体，这个联合体或结构体的对象就可以用于存放资源对象。</p>
 <p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/04/29/5OjNR8Wa2lGHxXK.png" alt="image-20210429222958679" data-caption="image-20210429222958679" loading="lazy"></p>
 <h1 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr</h1><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/04/29/FzufkYTaVjehvCp.png" alt="image-20210429223330843" data-caption="image-20210429223330843" loading="lazy"></p>
@@ -317,13 +310,11 @@
 <h3 id="左值和右值"><a href="#左值和右值" class="headerlink" title="左值和右值"></a>左值和右值</h3><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://i.loli.net/2021/04/29/BS9JzYjKe5OPbHl.png" alt="image-20210429223525254" data-caption="image-20210429223525254" loading="lazy"></p>
 <p>如 函数返回的值为右值，nullptr为字面量为右值</p>
 <p>函数返回引用时返回的为左值</p>
-<p>[参考文章]: <a target="_blank" rel="noopener" href="https://nettee.github.io/posts/2018/Understanding-lvalues-and-rvalues-in-C-and-C/">https://nettee.github.io/posts/2018/Understanding-lvalues-and-rvalues-in-C-and-C/</a>	“关于右值和左值”</p>
 <h1 id="weak-ptr"><a href="#weak-ptr" class="headerlink" title="weak_ptr"></a>weak_ptr</h1><pre><code class="highlight c++">_Atomic_word  _M_use_count;     <span class="comment">// #shared</span>
 _Atomic_word  _M_weak_count;    <span class="comment">// #weak + (#shared != 0)</span></code></pre>
-
-<p>由上述代码可见，实际上share_ptr和weak_ptr上都有指向一个计数类，包括对share_ptr的计数和对weak_ptr+(#shared!&#x3D;0)的计数</p>
+<p>由上述代码可见，实际上share_ptr和weak_ptr上都有指向一个计数类，包括对share_ptr的计数和对weak_ptr+(#shared!=0)的计数</p>
 <p>即对于weak的计数来说，就算没有任何weak_ptr，其初始化值仍为1</p>
-<p>那么weak_ptr什么时候判断share&#x3D;&#x3D;0了呢？</p>
+<p>那么weak_ptr什么时候判断share==0了呢？</p>
 <pre><code class="highlight c++"><span class="keyword">if</span> (__gnu_cxx::__exchange_and_add_dispatch(&amp;_M_use_count, <span class="number">-1</span>) == <span class="number">1</span>)
 	  &#123;
             _GLIBCXX_SYNCHRONIZATION_HAPPENS_AFTER(&amp;_M_use_count);
@@ -347,7 +338,6 @@ _Atomic_word  _M_weak_count;    <span class="comment">// #weak + (#shared != 0)<
               &#125;
 	  &#125;
       &#125;</code></pre>
-
 
     
   </article>
@@ -418,7 +408,7 @@ _Atomic_word  _M_weak_count;    <span class="comment">// #weak + (#shared != 0)<
 
  
 
-<script async src="/js/app.js?v=1678883651416"></script>
+<script async src="/js/app.js?v=1679553233384"></script>
 
 <script src="https://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script> <script> hljs.initHighlightingOnLoad(); </script>
 

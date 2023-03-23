@@ -10,12 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     <link href="https://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
-    <meta name="description" content="作业5我们需要翻找代码找到u,v的含义，因为这个代码实际上并没有贴图，代码中有这样一行注释： uv stores the u and v barycentric coordinates of the intersected point  因此，我们返回求得的重心坐标u，v即可。">
+    <meta name="description" content="作业5我们需要翻找代码找到u,v的含义，因为这个代码实际上并没有贴图，代码中有这样一行注释： uv stores the u and v barycentric coordinates of the intersected point 因此，我们返回求得的重心坐标u，v即可。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="作业5">
 <meta property="og:url" content="http://liangjisama.top/2023/03/15/Games101/%E4%BD%9C%E4%B8%9A5/index.html">
 <meta property="og:site_name" content="LiangJiSama Offical">
-<meta property="og:description" content="作业5我们需要翻找代码找到u,v的含义，因为这个代码实际上并没有贴图，代码中有这样一行注释： uv stores the u and v barycentric coordinates of the intersected point  因此，我们返回求得的重心坐标u，v即可。">
+<meta property="og:description" content="作业5我们需要翻找代码找到u,v的含义，因为这个代码实际上并没有贴图，代码中有这样一行注释： uv stores the u and v barycentric coordinates of the intersected point 因此，我们返回求得的重心坐标u，v即可。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-15T12:33:01.000Z">
 <meta property="article:modified_time" content="2023-03-15T12:33:15.465Z">
@@ -26,9 +26,9 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678883651400">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1679553233367">
     
-    <link rel="stylesheet" href="/css/style.css?v=1678883651400">
+    <link rel="stylesheet" href="/css/style.css?v=1679553233367">
 
     
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -53,7 +53,7 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>17</div>
+        <div><span>文章</span>18</div>
         <div><span>标签</span>8</div>
         <div><span>分类</span>2</div>
     </div>
@@ -129,7 +129,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/GAMES101/">GAMES101</a>
-          <span class="category-list-count">4</span>
+          <span class="category-list-count">5</span>
         </li>
 
         
@@ -179,7 +179,7 @@
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">文章归档</h3>
     <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">13</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -192,6 +192,10 @@
     <h3 class="nexmoe-widget-title">最新文章</h3>
     <div class="nexmoe-widget">
       <ul>
+        
+          <li>
+            <a href="/2023/03/23/Games101/%E4%BD%9C%E4%B8%9A7%E5%85%B3%E4%BA%8Epdf%E5%92%8C%E9%87%87%E6%A0%B7%E7%9A%84%E7%90%86%E8%A7%A3/">作业7关于pdf和采样的理解</a>
+          </li>
         
           <li>
             <a href="/2023/03/15/Games101/%E4%BD%9C%E4%B8%9A5/">作业5</a>
@@ -207,10 +211,6 @@
         
           <li>
             <a href="/2023/03/15/Games101/%E5%9C%A8macos%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%85%8D%E7%BD%AEgames101%E4%BD%9C%E4%B8%9A%E7%8E%AF%E5%A2%83/">在macos 环境下配置games101 作业环境</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/06/tcp/">tcp</a>
           </li>
         
       </ul>
@@ -259,14 +259,11 @@
 
     <p>作业5我们需要翻找代码找到u,v的含义，因为这个代码实际上并没有贴图，代码中有这样一行注释：</p>
 <pre><code class="highlight livecodeserver">uv stores <span class="keyword">the</span> u <span class="keyword">and</span> v barycentric coordinates <span class="keyword">of</span> <span class="keyword">the</span> intersected point</code></pre>
-
 <p>因此，我们返回求得的重心坐标u，v即可。</p>
 <span id="more"></span>
-
 <p>有一个奇怪的现象，在判断条件是否合法时，我们使用下面意义完全相同的两行，第一行会在图像中出现一个穿透底下平面的蓝点，而第二行则完全正常。</p>
 <pre><code class="highlight C++"><span class="comment">//if(tnear &gt;= 0 &amp;&amp; u&gt;=0 &amp;&amp; v&gt;=0 &amp;&amp; (1-u-v)&gt;=0)return true;</span>
 <span class="keyword">if</span>(tnear &gt;= <span class="number">0</span> &amp;&amp; u&gt;=<span class="number">0</span> &amp;&amp; v&gt;=<span class="number">0</span> &amp;&amp; u+v &lt;= <span class="number">1</span>)<span class="keyword">return</span> <span class="literal">true</span>;</code></pre>
-
 <p>这次作业的更多详解：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ycrsw/article/details/124199544">https://blog.csdn.net/ycrsw/article/details/124199544</a></p>
 <p>注意！ 由于此处的三角形只有面向相机的一面，所以并没有判断正面和反面。</p>
 
@@ -330,7 +327,7 @@
 
  
 
-<script async src="/js/app.js?v=1678883651400"></script>
+<script async src="/js/app.js?v=1679553233368"></script>
 
 <script src="https://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script> <script> hljs.initHighlightingOnLoad(); </script>
 

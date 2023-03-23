@@ -22,9 +22,9 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678883651421">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1679553233388">
     
-    <link rel="stylesheet" href="/css/style.css?v=1678883651421">
+    <link rel="stylesheet" href="/css/style.css?v=1679553233388">
 
     
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -49,7 +49,7 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>17</div>
+        <div><span>文章</span>18</div>
         <div><span>标签</span>8</div>
         <div><span>分类</span>2</div>
     </div>
@@ -125,7 +125,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/GAMES101/">GAMES101</a>
-          <span class="category-list-count">4</span>
+          <span class="category-list-count">5</span>
         </li>
 
         
@@ -175,7 +175,7 @@
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">文章归档</h3>
     <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">13</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -188,6 +188,10 @@
     <h3 class="nexmoe-widget-title">最新文章</h3>
     <div class="nexmoe-widget">
       <ul>
+        
+          <li>
+            <a href="/2023/03/23/Games101/%E4%BD%9C%E4%B8%9A7%E5%85%B3%E4%BA%8Epdf%E5%92%8C%E9%87%87%E6%A0%B7%E7%9A%84%E7%90%86%E8%A7%A3/">作业7关于pdf和采样的理解</a>
+          </li>
         
           <li>
             <a href="/2023/03/15/Games101/%E4%BD%9C%E4%B8%9A5/">作业5</a>
@@ -203,10 +207,6 @@
         
           <li>
             <a href="/2023/03/15/Games101/%E5%9C%A8macos%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%85%8D%E7%BD%AEgames101%E4%BD%9C%E4%B8%9A%E7%8E%AF%E5%A2%83/">在macos 环境下配置games101 作业环境</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/06/tcp/">tcp</a>
           </li>
         
       </ul>
@@ -226,6 +226,44 @@
     <div id="nexmoe-content">
         <div class="nexmoe-primary">
             <section class="nexmoe-posts">
+    
+    <div class="nexmoe-post">
+        <a href="/2023/03/23/Games101/%E4%BD%9C%E4%B8%9A7%E5%85%B3%E4%BA%8Epdf%E5%92%8C%E9%87%87%E6%A0%B7%E7%9A%84%E7%90%86%E8%A7%A3/">
+            
+                <div class="nexmoe-post-cover mdui-ripple"> 
+                    <img src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" alt="作业7关于pdf和采样的理解" loading="lazy">
+                    <h1>作业7关于pdf和采样的理解</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2023年03月23日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/GAMES101/">GAMES101</a>
+        
+        
+    <a><i class="nexmoefont icon-areachart"></i>约600字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要2分钟</a>
+
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+        <article>
+            <p>对蒙特卡洛采样有一定的疑惑，下面将介绍一些蒙特卡洛采样的概念。</p>
+<p>对于随机变量X，我们有函数f(x)和其概率密度函数p(x)，我们想要估计函数f(x)<strong>积分的值</strong>,通常来说我们想要知道蒙特卡洛采样结果$g(x)=\frac{1}{n}*\sum_{1}^{n}{\frac{f(x)}{p(x)}}$。</p>
+<p>需要注意的是，蒙特卡洛方法要求对于任何f(x)存在的地方p(x)&gt;0。</p>
+<p>我们简单证明其期望相等</p>
+<script type="math/tex; mode=display">E[g(x)]=\frac{1}{n}*\sum_{1}^{n}{E[\frac{f(x)}{p(x)}]}</script><p>其中$E[\frac{f(x)}{p(x)}]=\int{\frac{f(x)}{p(x)}*p(x)}=\int{f(x)}$</p>
+<p>我们通过上述方法就可以简单求到该函数的积分的期望。</p>
+        </article>
+    </div>
     
     <div class="nexmoe-post">
         <a href="/2023/03/15/Games101/%E4%BD%9C%E4%B8%9A5/">
@@ -258,7 +296,6 @@
         <article>
             <p>作业5我们需要翻找代码找到u,v的含义，因为这个代码实际上并没有贴图，代码中有这样一行注释：</p>
 <pre><code class="highlight livecodeserver">uv stores <span class="keyword">the</span> u <span class="keyword">and</span> v barycentric coordinates <span class="keyword">of</span> <span class="keyword">the</span> intersected point</code></pre>
-
 <p>因此，我们返回求得的重心坐标u，v即可。</p>
         </article>
     </div>
@@ -280,7 +317,7 @@
             <a class="nexmoefont icon-appstore-fill -link" href="/categories/GAMES101/">GAMES101</a>
         
         
-    <a><i class="nexmoefont icon-areachart"></i>约526字</a>
+    <a><i class="nexmoefont icon-areachart"></i>约525字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要2分钟</a>
 
     </div>
@@ -330,7 +367,6 @@
             <p>这一次作业比较简单，我们主要是需要对新的框架调整我们对应代码的格式。</p>
 <pre><code class="highlight c++"><span class="comment">//Render()</span>
 framebuffer[m++] = scene.<span class="built_in">castRay</span>(ray,<span class="number">0</span>); <span class="comment">// castRay(ray, current_depth);</span></code></pre>
-
 <pre><code class="highlight c++"><span class="function"><span class="keyword">inline</span> Intersection <span class="title">Triangle::getIntersection</span><span class="params">(Ray ray)</span></span>
 <span class="function"></span>&#123;
     Intersection inter;
@@ -387,7 +423,7 @@ framebuffer[m++] = scene.<span class="built_in">castRay</span>(ray,<span class="
             <p>在macos 环境下配置games101 作业环境。</p>
 <p>按照下文的方法配置即可。</p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/371245964">https://zhuanlan.zhihu.com/p/371245964</a></p>
-<p>有两个需要注意的点，一是由于opencv2 已经从brew中停止维护，我们需要手动安装opencv2，只需从opencv官网下载opencv2.4包，并按照<a target="_blank" rel="noopener" href="https://blog.csdn.net/NeoZng/article/details/123085674%E6%89%80%E7%A4%BA%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E5%8D%B3%E5%8F%AF%E3%80%82">https://blog.csdn.net/NeoZng/article/details/123085674所示方法进行编译安装即可。</a></p>
+<p>有两个需要注意的点，一是由于opencv2 已经从brew中停止维护，我们需要手动安装opencv2，只需从opencv官网下载opencv2.4包，并按照<a target="_blank" rel="noopener" href="https://blog.csdn.net/NeoZng/article/details/123085674所示方法进行编译安装即可。">https://blog.csdn.net/NeoZng/article/details/123085674所示方法进行编译安装即可。</a><br>
         </article>
     </div>
     
@@ -434,7 +470,7 @@ framebuffer[m++] = scene.<span class="built_in">castRay</span>(ray,<span class="
 
  
 
-<script async src="/js/app.js?v=1678883651421"></script>
+<script async src="/js/app.js?v=1679553233389"></script>
 
 <script src="https://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script> <script> hljs.initHighlightingOnLoad(); </script>
 
