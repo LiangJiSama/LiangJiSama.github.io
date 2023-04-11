@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>作业7 部分问题 加分部分-多线程 - LiangJiSama Offical</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <link href="https://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+    <meta name="description" content="作业7常见踩坑：https:&#x2F;&#x2F;blog.csdn.net&#x2F;ycrsw&#x2F;article&#x2F;details&#x2F;124565054 作业7实现参考：https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_42489848&#x2F;article&#x2F;details&#x2F;125548847 https:&#x2F;&#x2F;blog.csdn.net&#x2F;Xuuuuuuuuuuu&#x2F;article&#x2F;details&#x2F;129001805 作业7多线">
+<meta property="og:type" content="article">
+<meta property="og:title" content="作业7 部分问题 加分部分-多线程">
+<meta property="og:url" content="http://liangjisama.top/2023/03/28/Games101/Games101%20%E4%BD%9C%E4%B8%9A7%20%E5%8A%A0%E5%88%86%E9%83%A8%E5%88%86-%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.html">
+<meta property="og:site_name" content="LiangJiSama Offical">
+<meta property="og:description" content="作业7常见踩坑：https:&#x2F;&#x2F;blog.csdn.net&#x2F;ycrsw&#x2F;article&#x2F;details&#x2F;124565054 作业7实现参考：https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_42489848&#x2F;article&#x2F;details&#x2F;125548847 https:&#x2F;&#x2F;blog.csdn.net&#x2F;Xuuuuuuuuuuu&#x2F;article&#x2F;details&#x2F;129001805 作业7多线">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/04/11_14_41_21_binary_1_thread.png">
+<meta property="og:image" content="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/04/11_14_22_52_11_14_22_19_image-20230411142219581-20230411142252399.png">
+<meta property="og:image" content="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/04/11_14_10_25_binary.png">
+<meta property="article:published_time" content="2023-03-28T08:18:56.000Z">
+<meta property="article:modified_time" content="2023-04-11T06:49:09.875Z">
+<meta property="article:author" content="Kagamine Len">
+<meta property="article:tag" content="多线程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/04/11_14_41_21_binary_1_thread.png">
+    
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1681195772167">
+    
+    <link rel="stylesheet" href="/css/style.css?v=1681195772167">
+
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="mdui-drawer-body-left">
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Kagamine Len" class="mdui-btn mdui-btn-icon"><img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Kagamine Len">
+            <img src="https://i.loli.net/2021/04/27/ZAib7wdrOfgCsBl.jpg" alt="Kagamine Len" alt="Kagamine Len">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>19</div>
+        <div><span>标签</span>9</div>
+        <div><span>分类</span>2</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://github.com/LiangJiSama"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/GAMES101/">GAMES101</a>
+          <span class="category-list-count">6</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/笔记/">笔记</a>
+          <span class="category-list-count">13</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/unity/" style="font-size: 10px;">unity</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 15px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 10px;">计算机组成原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(9);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">13</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/03/28/Games101/Games101%20%E4%BD%9C%E4%B8%9A7%20%E5%8A%A0%E5%88%86%E9%83%A8%E5%88%86-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">作业7 部分问题 加分部分-多线程</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/23/Games101/%E4%BD%9C%E4%B8%9A7%E5%85%B3%E4%BA%8Epdf%E5%92%8C%E9%87%87%E6%A0%B7%E7%9A%84%E7%90%86%E8%A7%A3/">作业7关于pdf和采样的理解</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/15/Games101/%E4%BD%9C%E4%B8%9A5/">作业5</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/15/Games101/%E4%BD%9C%E4%B8%9A3%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">作业3的相关问题</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/15/Games101/%E4%BD%9C%E4%B8%9A6/">作业6</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2023 Kagamine Len
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <script> MathJax = { tex: { inlineMath: [['$', '$']] }, svg: { fontCache: 'global' } }; </script> <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"> </script>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://i.loli.net/2021/05/05/mD2bZt6p4JqgI1M.png" alt="作业7 部分问题 加分部分-多线程" loading="lazy">
+            <h1>作业7 部分问题 加分部分-多线程</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2023年03月28日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/GAMES101/">GAMES101</a>
+        
+        
+    <a><i class="nexmoefont icon-areachart"></i>约2.7k字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要11分钟</a>
+
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <p>作业7常见踩坑：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ycrsw/article/details/124565054">https://blog.csdn.net/ycrsw/article/details/124565054</a></p>
+<p>作业7实现参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42489848/article/details/125548847">https://blog.csdn.net/weixin_42489848/article/details/125548847</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Xuuuuuuuuuuu/article/details/129001805">https://blog.csdn.net/Xuuuuuuuuuuu/article/details/129001805</a></p>
+<p>作业7多线程实现：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41835314/article/details/125235659">https://blog.csdn.net/qq_41835314/article/details/125235659</a></p>
+<p>这部分多线程主要采用<code>std::thread</code>实现，主要参考文章：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sjc_0910/article/details/118861539">https://blog.csdn.net/sjc_0910/article/details/118861539</a></p>
+<span id="more"></span>
+<h2 id="出现的一些问题"><a href="#出现的一些问题" class="headerlink" title="出现的一些问题"></a>出现的一些问题</h2><p>代码如下所示：</p>
+<pre><code class="highlight c++">&#123;
+    <span class="comment">// TO DO Implement Path Tracing Algorithm here</span>
+    <span class="keyword">auto</span> inter_p = <span class="built_in">intersect</span>(ray);
+    <span class="keyword">if</span>(!inter_p.happened)&#123;
+        <span class="keyword">return</span> &#123;<span class="number">100</span>&#125;; <span class="comment">//return for background color</span>
+    &#125;
+    <span class="keyword">if</span>(inter_p.m-&gt;<span class="built_in">hasEmission</span>())&#123;
+        <span class="keyword">return</span> inter_p.m-&gt;<span class="built_in">getEmission</span>(); <span class="comment">//对于光源，我们有光源发出的光Lo(p,wo) = Le(p,wo)</span>
+    &#125;
+
+    Intersection inter_light;
+    <span class="type">float</span> pdf_light;
+    <span class="built_in">sampleLight</span>(inter_light, pdf_light); <span class="comment">//按道理，我们应该对所有的光源计算总的pdf，不过这里只有一个光源，应该没有问题。</span>
+    Vector3f L_dir;
+
+
+    <span class="keyword">auto</span> &amp;x = inter_p.coords;
+    <span class="keyword">auto</span> wo = (ray.origin - x).<span class="built_in">normalized</span>();
+    <span class="keyword">auto</span> &amp;xx = inter_light.coords;
+    <span class="keyword">auto</span> &amp;n = inter_p.normal;
+    <span class="keyword">auto</span> wi = (xx - x).<span class="built_in">normalized</span>();
+
+<span class="comment">//    Vector3f p_deviation = (dotProduct(ray.direction, inter_p.normal) &lt; 0) ?</span>
+<span class="comment">//                           x + inter_p.normal * EPSILON :</span>
+<span class="comment">//                           x - inter_p.normal * EPSILON ;</span>
+    <span class="function">Ray <span class="title">wi_ray</span><span class="params">(x,wi)</span></span>;
+    Intersection x2light = <span class="built_in">intersect</span>(wi_ray);
+
+    <span class="type">float</span> d = (xx - x).<span class="built_in">norm</span>();
+
+<span class="comment">//    if(x2light.distance - d &lt;= -0.01 &amp;&amp; (x2light.happened &amp;&amp; (x2light.coords - xx).norm() &lt; 5e-3))&#123;</span>
+<span class="comment">//        assert(false);</span>
+<span class="comment">//    &#125;//没有交打到无穷远处使光线能量出现了负值出现了问题,还会出现交到更远处的情况-》灯光平面和所在平面平行的情况</span>
+    <span class="keyword">if</span>(x2light.happened &amp;&amp; <span class="built_in">abs</span>(x2light.distance - d) &lt;= <span class="number">0.001</span>)&#123; <span class="comment">//这里注意使用inter_light.normal 而非 x2light.normal 两者在交接点上很有可能不是同一个物体</span>
+    <span class="comment">//if(x2light.happened &amp;&amp; (x2light.coords - xx).norm() &lt; 5e-3)&#123;</span>
+        L_dir = inter_light.emit * inter_p.m-&gt;<span class="built_in">eval</span>(wo,wi,n) * <span class="built_in">dotProduct</span>(n,wi) * <span class="built_in">dotProduct</span>(inter_light.normal,-wi) <span class="comment">//没有东西在光线的上面，因此后一项一定大于0</span>
+                / (d * d * pdf_light);
+        <span class="comment">//assert(L_dir.x &gt;= 0);</span>
+    &#125;
+    Vector3f L_indir;
+    <span class="comment">//对material的sample是随机sample，即按照漫反射的方式sample，而对于object的sample则是对面积的均匀采样。</span>
+    <span class="type">float</span> rr = <span class="built_in">get_random_float</span>();
+    <span class="keyword">if</span>(rr &lt;= RussianRoulette)&#123;
+        wi = inter_p.m-&gt;<span class="built_in">sample</span>(wo,n);
+        <span class="comment">//assert(wi.norm()&lt;=1.01&amp;&amp;wi.norm()&gt;=0.99);</span>
+        <span class="function">Ray <span class="title">indir_ray</span><span class="params">(x,wi)</span></span>;
+        Intersection inter_indir = <span class="built_in">intersect</span>(indir_ray);
+
+        <span class="keyword">if</span>(inter_indir.happened &amp;&amp; !inter_indir.m-&gt;<span class="built_in">hasEmission</span>()) <span class="comment">//发光部分已经计算过了，这里不再计算</span>
+        &#123;
+            <span class="type">float</span> pdf = inter_p.m-&gt;<span class="built_in">pdf</span>(wo,wi,n);
+            <span class="keyword">if</span>(pdf &gt; EPSILON) &#123;
+                L_indir = <span class="built_in">castRay</span>(indir_ray, depth + <span class="number">1</span>) * inter_p.m-&gt;<span class="built_in">eval</span>(wo, wi, n) * <span class="built_in">dotProduct</span>(wi, n)
+                          / (pdf * RussianRoulette); <span class="comment">//我说能量怎么越算越大</span>
+            &#125;
+        &#125;
+
+
+    &#125;
+    <span class="keyword">return</span> L_dir + L_indir;
+&#125;</code></pre>
+<p>主要问题在上面的注释中都有提到，包括前面的文章提到的一些问题。</p>
+<p>出现白色噪点的问题和能量越算越大分别是因为pdf过小（实际上是0），和没有在最后除以(pdf * p_RR)</p>
+<p>这里首先我们需要注意<code>eval()</code>、<code>inter_p.m-&gt;pdf(wo,wi,n)</code>等一系列包含入射方向的函数，实际上这些函数的入射方向均是没有使用的，但是在实现微表面模型的情况下会进行使用，以下这行代码的错误使用，会导致箱子阴面出现黑色噪点：</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/04/11_14_41_21_binary_1_thread.png" alt="黑色噪点" data-caption="黑色噪点" loading="lazy"></p>
+<pre><code class="highlight c++">L_dir = inter_light.emit * inter_p.m-&gt;<span class="built_in">eval</span>(wo,wi,n) * <span class="built_in">dotProduct</span>(n,wi) * <span class="built_in">dotProduct</span>(inter_light.normal,-wi)</code></pre>
+<p>由于是漫反射模型，<code>eval(wo,wi,n)</code>为一个常值，但是我们需要保证wi（指向光源）和n（法向）方向角度小于180°，以此让<code>dotProduct(n,wi)</code>&lt;0，后面那一项由于光线天然就在所有的物体上方，-wi一定是从光源向下的，正好和n同侧，反而不需要处理。</p>
+<p>当我们写成<code>(wi,wo,n)</code>时，就会出现负值了，当然由于wo并没有真正使用，因此他的方向是随意的，从origin-&gt;p和反过来均可，主要影响后面微表面模型的实现。</p>
+<p>下面这个问题就比较坑了，在一开始的版本中，直接光的判断中，我使用的是如下语句：</p>
+<pre><code class="highlight c++"><span class="keyword">if</span>(x2light.distance - d) &gt; <span class="number">-0.001</span>)&#123; <span class="comment">/*calculate direct lightning...*/</span>&#125;</code></pre>
+<p>逻辑上来说，实际发出的检测射线最远就和光线相交，但是由于浮点数精度误差，他可能打到其他平面（如天花板表面的点，和灯交就直接打到了墙壁上）甚至有可能出现求不出交的情况。</p>
+<p>我们需要避免这两种情况发生（至少避免负数出现，虽然会导致结果有偏）。</p>
+<p>此时，正是我们认为不可能取负数的<code>dotProduct(inter_light.normal, -wi)</code>取到了负数，导致<code>L_dir</code>甚至会变成一个很大的负数。</p>
+<p>基本上，我们就是在处理浮点数导致的误差。</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/04/11_14_22_52_11_14_22_19_image-20230411142219581-20230411142252399.png" alt="" data-caption="" loading="lazy"></p>
+<h2 id="多线程部分"><a href="#多线程部分" class="headerlink" title="多线程部分"></a>多线程部分</h2><p>在构造<code>std::thread</code>时，我们需要将需要调用的函数和参数传入构造函数中，否则将会构造一个空thread，此时该thread仅可被移动赋值，并不会真正执行。当然在构造该函数时，为了保证thread在执行过程中，传入的参数是存在的，我们无法调用一个拥有一个引用参数的函数（对于<code>std::bind</code>也是类似），当我们传入一个引用值时，他也会被<code>decay_copy</code>成一个不带引用且无cv的参数列表。</p>
+<p>decay代码分析:<a target="_blank" rel="noopener" href="https://blog.csdn.net/shift_wwx/article/details/120270204">https://blog.csdn.net/shift_wwx/article/details/120270204</a></p>
+<p>decay_copy的过程：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/425393495">https://zhuanlan.zhihu.com/p/425393495</a></p>
+<p>decay_copy过程中参数如何保存和展开？</p>
+<p>模版参数包/可变模板参数：<a target="_blank" rel="noopener" href="https://www.bbsmax.com/A/6pdD6EgDJw/">https://www.bbsmax.com/A/6pdD6EgDJw/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/qicosmos/p/4325949.html">https://www.cnblogs.com/qicosmos/p/4325949.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/chenlong_cxy/article/details/126807356">https://blog.csdn.net/chenlong_cxy/article/details/126807356</a></p>
+<p>补充阅读：</p>
+<p>模板偏特化：<a target="_blank" rel="noopener" href="https://blog.csdn.net/K346K346/article/details/82179205">https://blog.csdn.net/K346K346/article/details/82179205</a></p>
+<p>c++17折叠表达式：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43964318/article/details/127127521">https://blog.csdn.net/qq_43964318/article/details/127127521</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38409301/article/details/122276764">https://blog.csdn.net/qq_38409301/article/details/122276764</a></p>
+<p>如果想要传入一个引用值，我们需要通过<code>std::ref</code>、<code>std::cref</code>传入伪装的引用值。</p>
+<p><code>std::ref</code>内容解析：<a target="_blank" rel="noopener" href="https://blog.csdn.net/leapmotion/article/details/120338292">https://blog.csdn.net/leapmotion/article/details/120338292</a></p>
+<pre><code class="highlight c++"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">U</span>, <span class="keyword">class</span> = <span class="keyword">decltype</span>(
+    detail::<span class="built_in">FUN</span>&lt;T&gt;(std::<span class="built_in">declval</span>&lt;U&gt;()), <span class="comment">//declval仅做参数推导，不做实际运算，这里不允许使用右值</span>
+    std::<span class="type">enable_if_t</span>&lt;!std::is_same_v&lt;reference_wrapper, std::<span class="type">remove_cvref_t</span>&lt;U&gt;&gt;&gt;() <span class="comment">//enable_if_t有两个参数，若果左边成立，返回右边的值(这里右边为void)，即成立就能编译通过</span>
+  )&gt;<span class="comment">//这里的逗号表达式仅返回有伴的值，即void，实际上只是进行了类型检查</span>
+<span class="keyword">constexpr</span> <span class="built_in">reference_wrapper</span>(U&amp;&amp; u) <span class="built_in">noexcept</span>(<span class="built_in">noexcept</span>(detail::<span class="built_in">FUN</span>&lt;T&gt;(std::forward&lt;U&gt;(u))))
+    : _ptr(std::<span class="built_in">addressof</span>(detail::<span class="built_in">FUN</span>&lt;T&gt;(std::forward&lt;U&gt;(u)))) &#123;&#125; <span class="comment">//返回完美转发</span>
+</code></pre>
+<p>Decltype:<a target="_blank" rel="noopener" href="https://blog.csdn.net/u014609638/article/details/106987131">https://blog.csdn.net/u014609638/article/details/106987131</a></p>
+<p><code>std::forward</code>完美转发：简单版：<a target="_blank" rel="noopener" href="https://blog.csdn.net/xiangbaohui/article/details/103673177">https://blog.csdn.net/xiangbaohui/article/details/103673177</a></p>
+<p>超全版：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/5iedu/p/11324772.html">https://www.cnblogs.com/5iedu/p/11324772.html</a></p>
+<p>返回类型（按值返回，按常量引用返回，按引用返回）：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012814856/article/details/84099328">https://blog.csdn.net/u012814856/article/details/84099328</a></p>
+<pre><code class="highlight c++"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span>
+<span class="function">T&amp;&amp; <span class="title">forward</span><span class="params">(<span class="keyword">typename</span> remove_reference&lt;T&gt;::type&amp; param)</span></span>
+<span class="function"></span>&#123;
+    <span class="keyword">return</span> <span class="built_in">static_cast</span>&lt;T&amp;&amp;&gt;(param); <span class="comment">//可能会发生引用折叠！</span>
+&#125;</code></pre>
+<p>类型前的typename:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/398447963">https://zhuanlan.zhihu.com/p/398447963</a></p>
+<p>如果我们不使用typename，即</p>
+<pre><code class="highlight c++"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span>
+<span class="function"><span class="type">void</span> <span class="title">test</span><span class="params">(T t)</span></span>&#123;
+		T::a; <span class="comment">//表示内部的某个静态变量</span>
+&#125;</code></pre>
+<p>指向数组的引用（？）：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_52525841/article/details/122734831">https://blog.csdn.net/m0_52525841/article/details/122734831</a></p>
+<pre><code class="highlight c++"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span>
+<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span>
+
+<span class="keyword">class</span> <span class="title class_">Test</span>&#123;
+    std::string name;
+<span class="keyword">public</span>:
+    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;<span class="function"><span class="type">void</span> <span class="title">setName</span><span class="params">(T&amp;&amp; new_name)</span></span>&#123;  <span class="comment">//&quot;abc&quot;在这里被解析为const char &amp; []，直接完美转发后下方将直接调用构造函数</span>
+        <span class="keyword">this</span>-&gt;name = std::forward&lt;T&gt;(new_name);
+    &#125;
+  	<span class="function"><span class="type">void</span> <span class="title">setName</span><span class="params">(<span class="type">const</span> std::string &amp;s)</span></span>&#123; <span class="comment">//这里会生成临时的中间变量s，并且由于s是左值引用，导致我们必须对其再进行一次拷贝</span>
+    	<span class="keyword">this</span>-&gt;name = s;
+    &#125;
+    <span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;
+        std::cout&lt;&lt;name&lt;&lt;std::endl;
+    &#125;
+&#125;;
+
+<span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;
+    Test t;
+    t.<span class="built_in">setName</span>(<span class="string">&quot;abc&quot;</span>);
+    t.<span class="built_in">print</span>();
+  	std::string a = std::<span class="built_in">string</span>(<span class="string">&quot;abc&quot;</span>);
+&#125;
+<span class="comment">//隐式转换的规则是什么？</span></code></pre>
+<pre><code class="highlight c++"><span class="comment">//使用const std::string &amp;s的情况</span>
+t.<span class="built_in">setName</span>(std::<span class="built_in">basic_string</span>&lt;<span class="type">char</span>&gt;(<span class="string">&quot;abc&quot;</span>, std::<span class="built_in">allocator</span>&lt;<span class="type">char</span>&gt;())); <span class="comment">//构造中间变量</span>
+<span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">setName</span><span class="params">(<span class="type">const</span> std::basic_string&lt;<span class="type">char</span>&gt; &amp; s)</span> <span class="comment">//如果这里再写一个右值引用的情况，应该可以避免一次拷贝</span></span>
+<span class="function"></span>&#123;
+  <span class="keyword">this</span>-&gt;name.<span class="keyword">operator</span>=(s); <span class="comment">//如果是右值引用，这里就需要进行移动</span>
+  <span class="comment">//因此完美转发更适用于万能引用的情况</span>
+&#125;</code></pre>
+<pre><code class="highlight c++"><span class="comment">//使用T&amp;&amp;的情况</span>
+<span class="keyword">template</span>&lt;&gt;
+<span class="keyword">inline</span> <span class="type">void</span> <span class="built_in">setName</span>&lt;<span class="function"><span class="type">const</span> <span class="title">char</span> <span class="params">(&amp;)</span>[4]&gt;<span class="params">(<span class="type">const</span> <span class="type">char</span> (&amp;new_name)[<span class="number">4</span>])</span></span>
+<span class="function"></span>&#123;
+  <span class="keyword">this</span>-&gt;name.<span class="keyword">operator</span>=(std::forward&lt;<span class="type">const</span> <span class="built_in">char</span> (&amp;)[<span class="number">4</span>]&gt;(new_name));
+&#125;
+t.<span class="built_in">setName</span>&lt;<span class="function"><span class="type">const</span> <span class="title">char</span> <span class="params">(&amp;)</span>[4]&gt;<span class="params">(<span class="string">&quot;abc&quot;</span>)</span></span>; <span class="comment">//避免了拷贝的发生</span>
+<span class="comment">//模板如何进行的匹配？ 为什么不使用const std::string &amp;</span>
+<span class="comment">//https://blog.csdn.net/weixin_44410704/article/details/127983116 c++函数模板 匹配过程？</span>
+</code></pre>
+<pre><code class="highlight c++"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span>
+<span class="function"><span class="keyword">auto</span> <span class="title">test</span><span class="params">(T&amp;&amp; t)</span> <span class="comment">//auto-&gt;remove_reference&lt;T&gt;</span></span>
+<span class="function"></span>&#123;
+    <span class="keyword">return</span> std::forward&lt;T&gt;(t); <span class="comment">//由于t是一个万能引用对象。按值返回时实施std::forward</span>
+                               <span class="comment">//如果原对象一是个右值，则被移动到返回值上。如果原对象</span>
+                               <span class="comment">//是个左值，则会被拷贝到返回值上。</span>
+&#125;</code></pre>
+<p>为什么forward需要显式指明类型T？</p>
+<p>首先，是由于forward函数加入了remove_reference 进行类型推断，导致我们必须显示说明需要使用的类型。</p>
+<p>原理上可能是typename T::some_class 不允许我们隐式做类型推断。</p>
+<p>实际上是为了避免下文所说的这种问题，即自动的类型推断退化了完美转发的功能。</p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/7779900/why-is-template-argument-deduction-disabled-with-stdforward">https://stackoverflow.com/questions/7779900/why-is-template-argument-deduction-disabled-with-stdforward</a></p>
+<p>假如我们去掉<code>remove_reference&lt;T&gt;</code>，即直接使用T&amp;&amp;，对于左值，是没有问题的，对于右值<code>T&amp;&amp; t</code>虽然被以右值传入，但是由于这是个有名变量，已经被变化为了左值，此时也会被转发为左值，失去了完美转发的功能。</p>
+<p>typename是否禁止了自动类型推断？</p>
+<p>多线程相关部分：读写者模型，生产者消费者模型</p>
+<p>CAS LL/SC(检查寄存器)：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/371954148">https://zhuanlan.zhihu.com/p/371954148</a></p>
+<p>c＋＋并发编程：<a target="_blank" rel="noopener" href="https://paul.pub/cpp-concurrency/#id-%E9%80%9A%E7%94%A8%E4%BA%92%E6%96%A5%E7%AE%A1%E7%90%86">https://paul.pub/cpp-concurrency/#id-%E9%80%9A%E7%94%A8%E4%BA%92%E6%96%A5%E7%AE%A1%E7%90%86</a></p>
+<p>这篇文章的并发有一个问题，在条件变量的章节，我们在读取账户资金的过程中发生了写，此时会发生读取的数据不正确，我们反而可能需要对写部分加读锁，因为写部分是可以并发的，而写和读的部分是不可以的。</p>
+<p>c++内存模型：<a target="_blank" rel="noopener" href="https://paul.pub/cpp-memory-model/">https://paul.pub/cpp-memory-model/</a>    </p>
+<p>more about memory_order:<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/24301047">https://www.zhihu.com/question/24301047</a></p>
+<p>需要关注多个文件中变量和函数的声明方式，包含extern，inline和static</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>对于多线程实现本身，我们只需要将height划分到各个进程上即可，在macbook2023上，大概能提速三倍左右（和电源配置也有关系），下图是最终获取的图像，实现过程中还遇到了一些问题。</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/04/11_14_10_25_binary.png" alt="binary" data-caption="binary" loading="lazy"></p>
+
+    
+  </article>
+
+  
+      
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">出现的一些问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%83%A8%E5%88%86"><span class="toc-number">2.</span> <span class="toc-text">多线程部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">3.</span> <span class="toc-text">结果</span></a></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-search-space">
+	<div class="search-container">
+		<div class="search-header">
+			<div class="search-input-container">
+				<input
+					class="search-input"
+					type="text"
+					placeholder="搜索"
+					oninput="sinput();"
+				/>
+			</div>
+			<a class="search-close" onclick="sclose();">×</a>
+		</div>
+		<div class="search-body"></div>
+	</div>
+</div>
+
+    
+<script src="/lib/mdui_043tiny/mdui.js"></script>
+<script src="/lib/fancybox/fancybox.umd.js"></script>
+
+
+ 
+
+<script async src="/js/app.js?v=1681195772174"></script>
+
+<script src="https://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script> <script> hljs.initHighlightingOnLoad(); </script>
+
+</body>
+
+</html>
