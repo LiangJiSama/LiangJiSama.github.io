@@ -17,23 +17,23 @@
 <meta property="og:site_name" content="LiangJiSama Offical">
 <meta property="og:description" content="作业7常见踩坑：https:&#x2F;&#x2F;blog.csdn.net&#x2F;ycrsw&#x2F;article&#x2F;details&#x2F;124565054 作业7实现参考：https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_42489848&#x2F;article&#x2F;details&#x2F;125548847 https:&#x2F;&#x2F;blog.csdn.net&#x2F;Xuuuuuuuuuuu&#x2F;article&#x2F;details&#x2F;129001805 作业7多线">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/04/11_14_41_21_binary_1_thread.png">
-<meta property="og:image" content="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/04/11_14_22_52_11_14_22_19_image-20230411142219581-20230411142252399.png">
-<meta property="og:image" content="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/04/11_14_10_25_binary.png">
+<meta property="og:image" content="https://s2.loli.net/2023/04/11/X67BiTmLH9WCs28.png">
+<meta property="og:image" content="https://s2.loli.net/2023/04/11/bIuYW8AaZfmtUHp.png">
+<meta property="og:image" content="https://s2.loli.net/2023/04/11/13xsfZHAVpmBMWw.png">
 <meta property="article:published_time" content="2023-03-28T08:18:56.000Z">
-<meta property="article:modified_time" content="2023-04-11T06:49:09.875Z">
+<meta property="article:modified_time" content="2023-04-11T07:09:37.125Z">
 <meta property="article:author" content="Kagamine Len">
 <meta property="article:tag" content="多线程">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/04/11_14_41_21_binary_1_thread.png">
+<meta name="twitter:image" content="https://s2.loli.net/2023/04/11/X67BiTmLH9WCs28.png">
     
 <link rel="stylesheet" href="/lib/fancybox/fancybox.css">
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1681195772167">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1681197020968">
     
-    <link rel="stylesheet" href="/css/style.css?v=1681195772167">
+    <link rel="stylesheet" href="/css/style.css?v=1681197020968">
 
     
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -334,7 +334,7 @@
 <p>主要问题在上面的注释中都有提到，包括前面的文章提到的一些问题。</p>
 <p>出现白色噪点的问题和能量越算越大分别是因为pdf过小（实际上是0），和没有在最后除以(pdf * p_RR)</p>
 <p>这里首先我们需要注意<code>eval()</code>、<code>inter_p.m-&gt;pdf(wo,wi,n)</code>等一系列包含入射方向的函数，实际上这些函数的入射方向均是没有使用的，但是在实现微表面模型的情况下会进行使用，以下这行代码的错误使用，会导致箱子阴面出现黑色噪点：</p>
-<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/04/11_14_41_21_binary_1_thread.png" alt="黑色噪点" data-caption="黑色噪点" loading="lazy"></p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s2.loli.net/2023/04/11/X67BiTmLH9WCs28.png" alt="黑色噪点" data-caption="黑色噪点" loading="lazy"></p>
 <pre><code class="highlight c++">L_dir = inter_light.emit * inter_p.m-&gt;<span class="built_in">eval</span>(wo,wi,n) * <span class="built_in">dotProduct</span>(n,wi) * <span class="built_in">dotProduct</span>(inter_light.normal,-wi)</code></pre>
 <p>由于是漫反射模型，<code>eval(wo,wi,n)</code>为一个常值，但是我们需要保证wi（指向光源）和n（法向）方向角度小于180°，以此让<code>dotProduct(n,wi)</code>&lt;0，后面那一项由于光线天然就在所有的物体上方，-wi一定是从光源向下的，正好和n同侧，反而不需要处理。</p>
 <p>当我们写成<code>(wi,wo,n)</code>时，就会出现负值了，当然由于wo并没有真正使用，因此他的方向是随意的，从origin-&gt;p和反过来均可，主要影响后面微表面模型的实现。</p>
@@ -344,7 +344,7 @@
 <p>我们需要避免这两种情况发生（至少避免负数出现，虽然会导致结果有偏）。</p>
 <p>此时，正是我们认为不可能取负数的<code>dotProduct(inter_light.normal, -wi)</code>取到了负数，导致<code>L_dir</code>甚至会变成一个很大的负数。</p>
 <p>基本上，我们就是在处理浮点数导致的误差。</p>
-<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/04/11_14_22_52_11_14_22_19_image-20230411142219581-20230411142252399.png" alt="" data-caption="" loading="lazy"></p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s2.loli.net/2023/04/11/bIuYW8AaZfmtUHp.png" alt="" data-caption="" loading="lazy"></p>
 <h2 id="多线程部分"><a href="#多线程部分" class="headerlink" title="多线程部分"></a>多线程部分</h2><p>在构造<code>std::thread</code>时，我们需要将需要调用的函数和参数传入构造函数中，否则将会构造一个空thread，此时该thread仅可被移动赋值，并不会真正执行。当然在构造该函数时，为了保证thread在执行过程中，传入的参数是存在的，我们无法调用一个拥有一个引用参数的函数（对于<code>std::bind</code>也是类似），当我们传入一个引用值时，他也会被<code>decay_copy</code>成一个不带引用且无cv的参数列表。</p>
 <p>decay代码分析:<a target="_blank" rel="noopener" href="https://blog.csdn.net/shift_wwx/article/details/120270204">https://blog.csdn.net/shift_wwx/article/details/120270204</a></p>
 <p>decay_copy的过程：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/425393495">https://zhuanlan.zhihu.com/p/425393495</a></p>
@@ -444,7 +444,7 @@ t.<span class="built_in">setName</span>&lt;<span class="function"><span class="t
 <p>more about memory_order:<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/24301047">https://www.zhihu.com/question/24301047</a></p>
 <p>需要关注多个文件中变量和函数的声明方式，包含extern，inline和static</p>
 <h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>对于多线程实现本身，我们只需要将height划分到各个进程上即可，在macbook2023上，大概能提速三倍左右（和电源配置也有关系），下图是最终获取的图像，实现过程中还遇到了一些问题。</p>
-<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="http://nas.liangjisama.top:30000/shiro/image-bed/raw/master/pictures/2023/04/11_14_10_25_binary.png" alt="binary" data-caption="binary" loading="lazy"></p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s2.loli.net/2023/04/11/13xsfZHAVpmBMWw.png" alt="binary" data-caption="binary" loading="lazy"></p>
 
     
   </article>
@@ -515,7 +515,7 @@ t.<span class="built_in">setName</span>&lt;<span class="function"><span class="t
 
  
 
-<script async src="/js/app.js?v=1681195772174"></script>
+<script async src="/js/app.js?v=1681197020976"></script>
 
 <script src="https://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script> <script> hljs.initHighlightingOnLoad(); </script>
 
